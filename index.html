@@ -489,6 +489,25 @@ tbody td{padding:10px 14px;border-bottom:1px solid #f1f5f9;color:var(--text);whi
 
 <script>
 const DATA_URL='./data.json', ROWS_PER_PAGE=20;
+
+/*
+ ╔═══════════════════════════════════════════════════════════════════╗
+ ║  HOW TO USE ON ONEDRIVE / SHAREPOINT / LOCAL FILE                ║
+ ╠═══════════════════════════════════════════════════════════════════╣
+ ║  OneDrive blocks fetch(). To fix, embed your data directly:      ║
+ ║                                                                   ║
+ ║  1. Open mobily_dashboard.html, load both Excel files            ║
+ ║  2. Click "Export JSON for GitHub" — downloads data.json         ║
+ ║  3. Open data.json in Notepad → Select All → Copy                ║
+ ║  4. In THIS file find:  window.DASHBOARD_DATA = null;            ║
+ ║  5. Replace null with the JSON:                                   ║
+ ║        window.DASHBOARD_DATA = { "meta": { ... whole JSON } };   ║
+ ║  6. Save index.html → works on OneDrive with no fetch error      ║
+ ║                                                                   ║
+ ║  To UPDATE: repeat steps 1-6 with a fresh export                 ║
+ ╚═══════════════════════════════════════════════════════════════════╝
+*/
+window.DASHBOARD_DATA = null; // ← REPLACE null WITH YOUR EXPORTED JSON
 let allRows=[],filteredRows=[],sortColIdx=-1,sortAsc=true,currentPage=1;
 let activeCat='All', activeSsv='All';
 let lineC=null,donutC=null,regionC=null,itMonthC=null,itPieC=null;
@@ -1112,67 +1131,119 @@ const AGED_KEYS=['0-30','31-60','61-90','91-180','180+'];
 const AGED_LABELS=['0–30 days','31–60 days','61–90 days','91–180 days','180+ days'];
 const AGED_COLS=['#10b981','#6366f1','#f59e0b','#ef4444','#7c3aed'];
 
-function renderAgedSection(agedData){
-  if(!agedData)return;
-  _agedDataM=agedData;
+function renderAgedSection(rawSites){
+  if(!rawSites||!rawSites.length) return;
 
-  // KPI row
-  const kpiEl=$('aged-kpi-row');
+  // ── 1. Recalculate agingDays live: today − RFIT ──────────────────────────
+  const now = Date.now();
+  const BUCKET_KEYS = ['0-30','31-60','61-90','91-180','180+'];
+  const buckets = {'0-30':[],'31-60':[],'61-90':[],'91-180':[],'180+':[]};
+
+  const sites = rawSites.map(s => {
+    let days = 0;
+    const iso = s.rfitISO || s._rfitISO || '';
+    if(iso){
+      const ms = new Date(iso).getTime();
+      if(!isNaN(ms)) days = Math.max(0, Math.round((now - ms)/(86400000)));
+    } else if(s.rfitDate){
+      const ms = new Date(s.rfitDate).getTime();
+      if(!isNaN(ms)) days = Math.max(0, Math.round((now - ms)/(86400000)));
+    }
+    return {...s, agingDays: days};
+  }).sort((a,b) => b.agingDays - a.agingDays);
+
+  sites.forEach(s => {
+    const d = s.agingDays;
+    if(d <= 30)        buckets['0-30'].push(s);
+    else if(d <= 60)   buckets['31-60'].push(s);
+    else if(d <= 90)   buckets['61-90'].push(s);
+    else if(d <= 180)  buckets['91-180'].push(s);
+    else               buckets['180+'].push(s);
+  });
+
+  // ── 2. Store in _agedDataM for drill-downs ───────────────────────────────
+  _agedDataM = {
+    allSites:       sites,
+    total:          sites.length,
+    withSubmission: sites.filter(s => s.ssvSubDate).length,
+    noSubmission:   sites.filter(s => !s.ssvSubDate).length,
+    buckets: Object.fromEntries(
+      BUCKET_KEYS.map(k => [k, {count: buckets[k].length, sites: buckets[k]}])
+    )
+  };
+
+  // ── 3. KPI cards ─────────────────────────────────────────────────────────
+  const kpiEl = $('aged-kpi-row');
   if(kpiEl){
-    const all=agedData.allSites||[];
-    const withSub=all.filter(s=>s.ssvSubDate).length;
-    const noSub=all.filter(s=>!s.ssvSubDate).length;
-    kpiEl.innerHTML=[
-      {label:'Total Aged Sites', val:agedData.total, sub:'Under IT/RFIT · not accepted', col:'#ef4444', icon:'⏰',
-       click:`openAgedModalM('All Sites',_agedDataM.allSites||[])`},
-      {label:'With SSV Submission', val:agedData.withSubmission, sub:'Submitted · pending acceptance', col:'#f59e0b', icon:'📝',
-       click:`openAgedModalM('Submitted — Pending',(_agedDataM.allSites||[]).filter(s=>s.ssvSubDate))`},
-      {label:'No Submission Yet', val:agedData.noSubmission, sub:'RFIT done · no SSV yet', col:'#7c3aed', icon:'🚫',
-       click:`openAgedModalM('No SSV Submission',(_agedDataM.allSites||[]).filter(s=>!s.ssvSubDate))`},
-    ].map(k=>`<div class="card kpi" style="cursor:pointer;background:linear-gradient(135deg,${k.col}12,${k.col}06);border:1.5px solid ${k.col}33" onclick="${k.click}">
+    const d = _agedDataM;
+    kpiEl.innerHTML = [
+      {label:'Total Aged Sites',    val:d.total,          sub:'Under IT/RFIT · not accepted',      col:'#ef4444', icon:'⏰',
+       click:"openAgedModalM('All Sites',_agedDataM.allSites)"},
+      {label:'With SSV Submission', val:d.withSubmission, sub:'Submitted · pending acceptance',     col:'#f59e0b', icon:'📝',
+       click:"openAgedModalM('Submitted — Pending',_agedDataM.allSites.filter(s=>s.ssvSubDate))"},
+      {label:'No Submission Yet',   val:d.noSubmission,   sub:'RFIT done · no SSV submitted yet',  col:'#7c3aed', icon:'🚫',
+       click:"openAgedModalM('No SSV Submission',_agedDataM.allSites.filter(s=>!s.ssvSubDate))"},
+    ].map(k => `<div class="card kpi" style="cursor:pointer;background:linear-gradient(135deg,${k.col}12,${k.col}06);border:1.5px solid ${k.col}33" onclick="${k.click}">
       <span style="font-size:22px">${k.icon}</span>
       <div style="font-size:28px;font-weight:800;color:${k.col};letter-spacing:-1px">${k.val}</div>
-      <div style="font-size:12px;font-weight:600;color:var(--text)">${k.label}</div>
+      <div style="font-size:12px;font-weight:600;color:var(--text);margin-top:4px">${k.label}</div>
       <div style="font-size:11px;color:var(--muted);margin-top:2px">${k.sub}</div>
     </div>`).join('');
   }
 
-  // Chart
-  const canvas=$('agedChart');
+  // ── 4. Bar chart ─────────────────────────────────────────────────────────
+  const canvas = $('agedChart');
   if(canvas){
-    if(_agedChartM)_agedChartM.destroy();
-    const data=AGED_KEYS.map(k=>agedData.buckets[k]?.count||0);
-    _agedChartM=new Chart(canvas.getContext('2d'),{
-      type:'bar',
-      data:{labels:AGED_LABELS,datasets:[{
-        label:'Aged Sites',data,
-        backgroundColor:AGED_COLS.map(c=>c+'cc'),borderColor:AGED_COLS,
-        borderWidth:2,borderRadius:10,borderSkipped:false,hoverBackgroundColor:AGED_COLS
-      }]},
-      options:{responsive:true,maintainAspectRatio:false,
-        plugins:{legend:{display:false},
-          tooltip:{callbacks:{label:i=>i.raw+' sites'},
-            backgroundColor:'rgba(15,23,42,.88)',titleColor:'#f1f5f9',bodyColor:'#94a3b8',padding:12,cornerRadius:8}},
-        scales:{x:{grid:{display:false},ticks:{color:'#64748b',font:{size:11}}},
-                y:{grid:{color:'rgba(0,0,0,.05)'},ticks:{color:'#64748b',font:{size:11}},beginAtZero:true}},
-        onClick(evt,elements){
-          if(!elements.length)return;
-          const key=AGED_KEYS[elements[0].index];
-          openAgedModalM(AGED_LABELS[elements[0].index], agedData.buckets[key]?.sites||[]);
+    if(_agedChartM) _agedChartM.destroy();
+    const chartData = BUCKET_KEYS.map(k => _agedDataM.buckets[k].count);
+    _agedChartM = new Chart(canvas.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: AGED_LABELS,
+        datasets: [{
+          label: 'Aged Sites',
+          data: chartData,
+          backgroundColor: AGED_COLS.map(c => c+'cc'),
+          borderColor: AGED_COLS,
+          borderWidth: 2,
+          borderRadius: 10,
+          borderSkipped: false,
+          hoverBackgroundColor: AGED_COLS
+        }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: {display: false},
+          tooltip: {
+            callbacks: {label: i => i.raw + ' sites'},
+            backgroundColor:'rgba(15,23,42,.88)', titleColor:'#f1f5f9',
+            bodyColor:'#94a3b8', padding:12, cornerRadius:8
+          }
+        },
+        scales: {
+          x: {grid:{display:false}, ticks:{color:'#64748b',font:{size:11}}},
+          y: {grid:{color:'rgba(0,0,0,.05)'}, ticks:{color:'#64748b',font:{size:11}}, beginAtZero:true}
+        },
+        onClick(evt, elements){
+          if(!elements.length) return;
+          const k = BUCKET_KEYS[elements[0].index];
+          openAgedModalM(AGED_LABELS[elements[0].index], _agedDataM.buckets[k].sites);
         }
       }
     });
   }
 
-  // Summary list
-  const sumEl=$('aged-summary-list');
+  // ── 5. Summary list ───────────────────────────────────────────────────────
+  const sumEl = $('aged-summary-list');
   if(sumEl){
-    const total=agedData.total||1;
-    sumEl.innerHTML=AGED_KEYS.map((k,i)=>{
-      const n=agedData.buckets[k]?.count||0;
-      const pct=Math.round(n/total*100);
-      return `<div onclick="openAgedModalM('${AGED_LABELS[i]}',_agedDataM.buckets['${k}']?.sites||[])"
-        style="display:flex;align-items:center;justify-content:space-between;padding:9px 12px;border-radius:8px;margin-bottom:7px;cursor:pointer;border:1px solid var(--border);transition:background .15s"
+    const total = _agedDataM.total || 1;
+    sumEl.innerHTML = BUCKET_KEYS.map((k,i) => {
+      const n   = _agedDataM.buckets[k].count;
+      const pct = Math.round(n / total * 100);
+      return `<div onclick="openAgedModalM('${AGED_LABELS[i]}',_agedDataM.buckets['${k}'].sites)"
+        style="display:flex;align-items:center;justify-content:space-between;padding:9px 12px;
+               border-radius:8px;margin-bottom:7px;cursor:pointer;border:1px solid var(--border);transition:background .15s"
         onmouseover="this.style.background='#f0f4ff'" onmouseout="this.style.background=''">
         <div style="display:flex;align-items:center;gap:8px">
           <div style="width:10px;height:10px;border-radius:50%;background:${AGED_COLS[i]}"></div>
@@ -1186,7 +1257,7 @@ function renderAgedSection(agedData){
     }).join('');
   }
 
-  // Table
+  // ── 6. Table ─────────────────────────────────────────────────────────────
   renderAgedTableM('All');
 }
 
@@ -1289,6 +1360,18 @@ function openAgedModalM(label, sites){
 /* Load */
 async function loadData(){
   hideError(); setLoading(true);
+
+  // PRIORITY 1: Inline embedded data (works on OneDrive, SharePoint, local file)
+  if(window.DASHBOARD_DATA){
+    try{
+      const data=window.DASHBOARD_DATA;
+      if(!data.meta||!data.kpis||!data.chart||!data.table)
+        throw new Error('Embedded data is missing required fields. Re-export from mobily_dashboard.html.');
+      renderDashboard(data); setLoading(false); return;
+    }catch(err){setLoading(false);showError(err.message);console.error(err);return;}
+  }
+
+  // PRIORITY 2: Fetch from data.json (works on GitHub Pages, web servers)
   try{
     const res=await fetch(`${DATA_URL}?v=${Date.now()}`);
     if(!res.ok)throw new Error(`Server returned ${res.status} ${res.statusText}`);
@@ -1296,7 +1379,17 @@ async function loadData(){
     if(!data.meta||!data.kpis||!data.chart||!data.table)
       throw new Error('data.json missing required fields. Re-export from mobily_dashboard.html.');
     renderDashboard(data); setLoading(false);
-  }catch(err){setLoading(false);showError(err.message||'Check data.json is in the same folder.');console.error(err);}
+  }catch(err){
+    setLoading(false);
+    // Give a helpful message for the OneDrive case
+    const msg=err.message||'';
+    if(msg.includes('fetch')||msg.includes('Failed')||msg.includes('NetworkError')){
+      showError('Cannot load data.json from this location (OneDrive/SharePoint block file requests). Solution: open mobily_dashboard.html, load both Excel files, click "Export JSON for GitHub", then follow the embed instructions inside index.html.');
+    } else {
+      showError(msg||'Check data.json is in the same folder.');
+    }
+    console.error(err);
+  }
 }
 document.addEventListener('DOMContentLoaded',loadData);
 </script>
