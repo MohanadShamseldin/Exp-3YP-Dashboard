@@ -2,7 +2,7 @@
   "meta": {
     "project": "Mobily 3Y NW Expansion",
     "reportTitle": "Project Progress Report",
-    "lastUpdated": "2026-06-02T10:28:58.999Z",
+    "lastUpdated": "2026-06-02T13:06:58.989Z",
     "period": "June 2026"
   },
   "kpis": [
@@ -40,7 +40,7 @@
     },
     {
       "label": "IT Combined Acc.",
-      "value": 1174,
+      "value": 1220,
       "unit": "",
       "change": 0,
       "trend": "up",
@@ -127,21 +127,343 @@
   },
   "itSummary": {
     "enabled": true,
-    "it5gTotal": 1148,
-    "it5gAccepted": 1079,
-    "it4gTotal": 928,
+    "it5gTotal": 1155,
+    "it5gAccepted": 1125,
+    "it4gTotal": 935,
     "it4gAccepted": 95,
-    "itCombined": 1174,
-    "it5gOnly": 1079,
+    "itCombined": 1220,
+    "it5gOnly": 1125,
     "it4gOnly": 95,
     "mainSSVFinal": 1175,
-    "difference": 1,
+    "difference": -45,
     "mainOnlySites": [],
     "itOnlySites": [
       {
         "id": "W2325",
         "src": "IT",
         "accDate": "2026-05-15",
+        "feedback": "Accepted",
+        "note": "In IT combined — not in Main SSV"
+      },
+      {
+        "id": "W3574",
+        "src": "IT",
+        "accDate": "2026-05-23",
+        "feedback": "Accepted",
+        "note": "In IT combined — not in Main SSV"
+      },
+      {
+        "id": "W3655",
+        "src": "IT",
+        "accDate": "2026-05-30",
+        "feedback": "Accepted",
+        "note": "In IT combined — not in Main SSV"
+      },
+      {
+        "id": "W4238",
+        "src": "IT",
+        "accDate": "2026-05-30",
+        "feedback": "Accepted",
+        "note": "In IT combined — not in Main SSV"
+      },
+      {
+        "id": "W6457",
+        "src": "IT",
+        "accDate": "2026-05-30",
+        "feedback": "Accepted",
+        "note": "In IT combined — not in Main SSV"
+      },
+      {
+        "id": "W2301",
+        "src": "IT",
+        "accDate": "2026-05-30",
+        "feedback": "Accepted",
+        "note": "In IT combined — not in Main SSV"
+      },
+      {
+        "id": "W2222",
+        "src": "IT",
+        "accDate": "2026-05-30",
+        "feedback": "Accepted",
+        "note": "In IT combined — not in Main SSV"
+      },
+      {
+        "id": "W4186",
+        "src": "IT",
+        "accDate": "2026-05-30",
+        "feedback": "Accepted",
+        "note": "In IT combined — not in Main SSV"
+      },
+      {
+        "id": "W4407",
+        "src": "IT",
+        "accDate": "2026-05-30",
+        "feedback": "Accepted",
+        "note": "In IT combined — not in Main SSV"
+      },
+      {
+        "id": "W3883",
+        "src": "IT",
+        "accDate": "2026-05-30",
+        "feedback": "Accepted",
+        "note": "In IT combined — not in Main SSV"
+      },
+      {
+        "id": "W5743",
+        "src": "IT",
+        "accDate": "2026-05-30",
+        "feedback": "Accepted",
+        "note": "In IT combined — not in Main SSV"
+      },
+      {
+        "id": "W2017",
+        "src": "IT",
+        "accDate": "2026-05-30",
+        "feedback": "Accepted",
+        "note": "In IT combined — not in Main SSV"
+      },
+      {
+        "id": "W4564",
+        "src": "IT",
+        "accDate": "2026-05-30",
+        "feedback": "Accepted",
+        "note": "In IT combined — not in Main SSV"
+      },
+      {
+        "id": "W2862",
+        "src": "IT",
+        "accDate": "2026-05-30",
+        "feedback": "Accepted",
+        "note": "In IT combined — not in Main SSV"
+      },
+      {
+        "id": "W5506",
+        "src": "IT",
+        "accDate": "2026-05-30",
+        "feedback": "Accepted",
+        "note": "In IT combined — not in Main SSV"
+      },
+      {
+        "id": "W5730",
+        "src": "IT",
+        "accDate": "2026-05-30",
+        "feedback": "Accepted",
+        "note": "In IT combined — not in Main SSV"
+      },
+      {
+        "id": "W4696",
+        "src": "IT",
+        "accDate": "2026-05-30",
+        "feedback": "Accepted",
+        "note": "In IT combined — not in Main SSV"
+      },
+      {
+        "id": "W4167",
+        "src": "IT",
+        "accDate": "2026-05-30",
+        "feedback": "Accepted",
+        "note": "In IT combined — not in Main SSV"
+      },
+      {
+        "id": "W2809",
+        "src": "IT",
+        "accDate": "2026-05-30",
+        "feedback": "Accepted",
+        "note": "In IT combined — not in Main SSV"
+      },
+      {
+        "id": "W6147",
+        "src": "IT",
+        "accDate": "2026-05-30",
+        "feedback": "Accepted",
+        "note": "In IT combined — not in Main SSV"
+      },
+      {
+        "id": "W5644",
+        "src": "IT",
+        "accDate": "2026-05-30",
+        "feedback": "Accepted",
+        "note": "In IT combined — not in Main SSV"
+      },
+      {
+        "id": "W2135",
+        "src": "IT",
+        "accDate": "2026-05-30",
+        "feedback": "Accepted",
+        "note": "In IT combined — not in Main SSV"
+      },
+      {
+        "id": "W4168",
+        "src": "IT",
+        "accDate": "2026-05-30",
+        "feedback": "Accepted",
+        "note": "In IT combined — not in Main SSV"
+      },
+      {
+        "id": "W2808",
+        "src": "IT",
+        "accDate": "2026-05-30",
+        "feedback": "Accepted",
+        "note": "In IT combined — not in Main SSV"
+      },
+      {
+        "id": "W6458",
+        "src": "IT",
+        "accDate": "2026-05-30",
+        "feedback": "Accepted",
+        "note": "In IT combined — not in Main SSV"
+      },
+      {
+        "id": "W6322",
+        "src": "IT",
+        "accDate": "2026-05-30",
+        "feedback": "Accepted",
+        "note": "In IT combined — not in Main SSV"
+      },
+      {
+        "id": "W2369",
+        "src": "IT",
+        "accDate": "2026-05-30",
+        "feedback": "Accepted",
+        "note": "In IT combined — not in Main SSV"
+      },
+      {
+        "id": "W3610",
+        "src": "IT",
+        "accDate": "2026-05-30",
+        "feedback": "Accepted",
+        "note": "In IT combined — not in Main SSV"
+      },
+      {
+        "id": "W4730",
+        "src": "IT",
+        "accDate": "2026-05-30",
+        "feedback": "Accepted",
+        "note": "In IT combined — not in Main SSV"
+      },
+      {
+        "id": "W4479",
+        "src": "IT",
+        "accDate": "2026-05-30",
+        "feedback": "Accepted",
+        "note": "In IT combined — not in Main SSV"
+      },
+      {
+        "id": "W2364",
+        "src": "IT",
+        "accDate": "2026-05-30",
+        "feedback": "Accepted",
+        "note": "In IT combined — not in Main SSV"
+      },
+      {
+        "id": "W4205",
+        "src": "IT",
+        "accDate": "2026-05-30",
+        "feedback": "Accepted",
+        "note": "In IT combined — not in Main SSV"
+      },
+      {
+        "id": "W5757",
+        "src": "IT",
+        "accDate": "2026-05-30",
+        "feedback": "Accepted",
+        "note": "In IT combined — not in Main SSV"
+      },
+      {
+        "id": "W2382",
+        "src": "IT",
+        "accDate": "2026-05-30",
+        "feedback": "Accepted",
+        "note": "In IT combined — not in Main SSV"
+      },
+      {
+        "id": "W2086",
+        "src": "IT",
+        "accDate": "2026-05-30",
+        "feedback": "Accepted",
+        "note": "In IT combined — not in Main SSV"
+      },
+      {
+        "id": "W6466",
+        "src": "IT",
+        "accDate": "2026-05-30",
+        "feedback": "Accepted",
+        "note": "In IT combined — not in Main SSV"
+      },
+      {
+        "id": "W2813",
+        "src": "IT",
+        "accDate": "2026-05-30",
+        "feedback": "Accepted",
+        "note": "In IT combined — not in Main SSV"
+      },
+      {
+        "id": "W4426",
+        "src": "IT",
+        "accDate": "2026-05-30",
+        "feedback": "Accepted",
+        "note": "In IT combined — not in Main SSV"
+      },
+      {
+        "id": "W2192",
+        "src": "IT",
+        "accDate": "2026-05-30",
+        "feedback": "Accepted",
+        "note": "In IT combined — not in Main SSV"
+      },
+      {
+        "id": "W3671",
+        "src": "IT",
+        "accDate": "2026-06-01",
+        "feedback": "Accepted",
+        "note": "In IT combined — not in Main SSV"
+      },
+      {
+        "id": "W2394",
+        "src": "IT",
+        "accDate": "2026-06-01",
+        "feedback": "Accepted",
+        "note": "In IT combined — not in Main SSV"
+      },
+      {
+        "id": "W5896",
+        "src": "IT",
+        "accDate": "2026-06-01",
+        "feedback": "Accepted",
+        "note": "In IT combined — not in Main SSV"
+      },
+      {
+        "id": "W6263",
+        "src": "IT",
+        "accDate": "2026-06-01",
+        "feedback": "Accepted",
+        "note": "In IT combined — not in Main SSV"
+      },
+      {
+        "id": "W3358",
+        "src": "IT",
+        "accDate": "2026-06-01",
+        "feedback": "Accepted",
+        "note": "In IT combined — not in Main SSV"
+      },
+      {
+        "id": "W3909",
+        "src": "IT",
+        "accDate": "2026-06-01",
+        "feedback": "Accepted",
+        "note": "In IT combined — not in Main SSV"
+      },
+      {
+        "id": "W6553",
+        "src": "IT",
+        "accDate": "2026-06-01",
+        "feedback": "Accepted",
+        "note": "In IT combined — not in Main SSV"
+      },
+      {
+        "id": "W2005",
+        "src": "IT",
+        "accDate": "2026-06-01",
         "feedback": "Accepted",
         "note": "In IT combined — not in Main SSV"
       }
@@ -6621,29 +6943,287 @@
           "feedback": "Accepted",
           "accDate": "2026-05-16",
           "src": "5G Exp_3_HW"
+        },
+        {
+          "id": "W3574",
+          "feedback": "Accepted",
+          "accDate": "2026-05-23",
+          "src": "5G Exp_3_HW"
+        },
+        {
+          "id": "W3655",
+          "feedback": "Accepted",
+          "accDate": "2026-05-30",
+          "src": "5G Exp_3_HW"
+        },
+        {
+          "id": "W4238",
+          "feedback": "Accepted",
+          "accDate": "2026-05-30",
+          "src": "5G Exp_3_HW"
+        },
+        {
+          "id": "W6457",
+          "feedback": "Accepted",
+          "accDate": "2026-05-30",
+          "src": "5G Exp_3_HW"
+        },
+        {
+          "id": "W2301",
+          "feedback": "Accepted",
+          "accDate": "2026-05-30",
+          "src": "5G Exp_3_HW"
+        },
+        {
+          "id": "W2222",
+          "feedback": "Accepted",
+          "accDate": "2026-05-30",
+          "src": "5G Exp_3_HW"
+        },
+        {
+          "id": "W4186",
+          "feedback": "Accepted",
+          "accDate": "2026-05-30",
+          "src": "5G Exp_3_HW"
+        },
+        {
+          "id": "W4407",
+          "feedback": "Accepted",
+          "accDate": "2026-05-30",
+          "src": "5G Exp_3_HW"
+        },
+        {
+          "id": "W3883",
+          "feedback": "Accepted",
+          "accDate": "2026-05-30",
+          "src": "5G Exp_3_HW"
+        },
+        {
+          "id": "W5743",
+          "feedback": "Accepted",
+          "accDate": "2026-05-30",
+          "src": "5G Exp_3_HW"
+        },
+        {
+          "id": "W2017",
+          "feedback": "Accepted",
+          "accDate": "2026-05-30",
+          "src": "5G Exp_3_HW"
+        },
+        {
+          "id": "W4564",
+          "feedback": "Accepted",
+          "accDate": "2026-05-30",
+          "src": "5G Exp_3_HW"
+        },
+        {
+          "id": "W2862",
+          "feedback": "Accepted",
+          "accDate": "2026-05-30",
+          "src": "5G Exp_3_HW"
+        },
+        {
+          "id": "W5506",
+          "feedback": "Accepted",
+          "accDate": "2026-05-30",
+          "src": "5G Exp_3_HW"
+        },
+        {
+          "id": "W5730",
+          "feedback": "Accepted",
+          "accDate": "2026-05-30",
+          "src": "5G Exp_3_HW"
+        },
+        {
+          "id": "W4696",
+          "feedback": "Accepted",
+          "accDate": "2026-05-30",
+          "src": "5G Exp_3_HW"
+        },
+        {
+          "id": "W4167",
+          "feedback": "Accepted",
+          "accDate": "2026-05-30",
+          "src": "5G Exp_3_HW"
+        },
+        {
+          "id": "W2809",
+          "feedback": "Accepted",
+          "accDate": "2026-05-30",
+          "src": "5G Exp_3_HW"
+        },
+        {
+          "id": "W6147",
+          "feedback": "Accepted",
+          "accDate": "2026-05-30",
+          "src": "5G Exp_3_HW"
+        },
+        {
+          "id": "W5644",
+          "feedback": "Accepted",
+          "accDate": "2026-05-30",
+          "src": "5G Exp_3_HW"
+        },
+        {
+          "id": "W2135",
+          "feedback": "Accepted",
+          "accDate": "2026-05-30",
+          "src": "5G Exp_3_HW"
+        },
+        {
+          "id": "W4168",
+          "feedback": "Accepted",
+          "accDate": "2026-05-30",
+          "src": "5G Exp_3_HW"
+        },
+        {
+          "id": "W2808",
+          "feedback": "Accepted",
+          "accDate": "2026-05-30",
+          "src": "5G Exp_3_HW"
+        },
+        {
+          "id": "W6458",
+          "feedback": "Accepted",
+          "accDate": "2026-05-30",
+          "src": "5G Exp_3_HW"
+        },
+        {
+          "id": "W6322",
+          "feedback": "Accepted",
+          "accDate": "2026-05-30",
+          "src": "5G Exp_3_HW"
+        },
+        {
+          "id": "W2369",
+          "feedback": "Accepted",
+          "accDate": "2026-05-30",
+          "src": "5G Exp_3_HW"
+        },
+        {
+          "id": "W3610",
+          "feedback": "Accepted",
+          "accDate": "2026-05-30",
+          "src": "5G Exp_3_HW"
+        },
+        {
+          "id": "W4730",
+          "feedback": "Accepted",
+          "accDate": "2026-05-30",
+          "src": "5G Exp_3_HW"
+        },
+        {
+          "id": "W4479",
+          "feedback": "Accepted",
+          "accDate": "2026-05-30",
+          "src": "5G Exp_3_HW"
+        },
+        {
+          "id": "W2364",
+          "feedback": "Accepted",
+          "accDate": "2026-05-30",
+          "src": "5G Exp_3_HW"
+        },
+        {
+          "id": "W4205",
+          "feedback": "Accepted",
+          "accDate": "2026-05-30",
+          "src": "5G Exp_3_HW"
+        },
+        {
+          "id": "W5757",
+          "feedback": "Accepted",
+          "accDate": "2026-05-30",
+          "src": "5G Exp_3_HW"
+        },
+        {
+          "id": "W2382",
+          "feedback": "Accepted",
+          "accDate": "2026-05-30",
+          "src": "5G Exp_3_HW"
+        },
+        {
+          "id": "W2086",
+          "feedback": "Accepted",
+          "accDate": "2026-05-30",
+          "src": "5G Exp_3_HW"
+        },
+        {
+          "id": "W6466",
+          "feedback": "Accepted",
+          "accDate": "2026-05-30",
+          "src": "5G Exp_3_HW"
+        },
+        {
+          "id": "W2813",
+          "feedback": "Accepted",
+          "accDate": "2026-05-30",
+          "src": "5G Exp_3_HW"
+        },
+        {
+          "id": "W4426",
+          "feedback": "Accepted",
+          "accDate": "2026-05-30",
+          "src": "5G Exp_3_HW"
+        },
+        {
+          "id": "W2192",
+          "feedback": "Accepted",
+          "accDate": "2026-05-30",
+          "src": "5G Exp_3_HW"
+        },
+        {
+          "id": "W3671",
+          "feedback": "Accepted",
+          "accDate": "2026-06-01",
+          "src": "5G Exp_3_HW"
+        },
+        {
+          "id": "W2394",
+          "feedback": "Accepted",
+          "accDate": "2026-06-01",
+          "src": "5G Exp_3_HW"
+        },
+        {
+          "id": "W5896",
+          "feedback": "Accepted",
+          "accDate": "2026-06-01",
+          "src": "5G Exp_3_HW"
+        },
+        {
+          "id": "W6263",
+          "feedback": "Accepted",
+          "accDate": "2026-06-01",
+          "src": "5G Exp_3_HW"
+        },
+        {
+          "id": "W3358",
+          "feedback": "Accepted",
+          "accDate": "2026-06-01",
+          "src": "5G Exp_3_HW"
+        },
+        {
+          "id": "W3909",
+          "feedback": "Accepted",
+          "accDate": "2026-06-01",
+          "src": "5G Exp_3_HW"
+        },
+        {
+          "id": "W6553",
+          "feedback": "Accepted",
+          "accDate": "2026-06-01",
+          "src": "5G Exp_3_HW"
+        },
+        {
+          "id": "W2005",
+          "feedback": "Accepted",
+          "accDate": "2026-06-01",
+          "src": "5G Exp_3_HW"
         }
       ],
       "submitted": [
         {
           "id": "W6350",
-          "feedback": "Submitted",
-          "accDate": "",
-          "src": "5G Exp_3_HW"
-        },
-        {
-          "id": "W4205",
-          "feedback": "Submitted",
-          "accDate": "",
-          "src": "5G Exp_3_HW"
-        },
-        {
-          "id": "W5669",
-          "feedback": "Submitted",
-          "accDate": "",
-          "src": "5G Exp_3_HW"
-        },
-        {
-          "id": "W4696",
           "feedback": "Submitted",
           "accDate": "",
           "src": "5G Exp_3_HW"
@@ -6655,205 +7235,7 @@
           "src": "5G Exp_3_HW"
         },
         {
-          "id": "W3574",
-          "feedback": "Submitted",
-          "accDate": "",
-          "src": "5G Exp_3_HW"
-        },
-        {
-          "id": "W5896",
-          "feedback": "Submitted",
-          "accDate": "",
-          "src": "5G Exp_3_HW"
-        },
-        {
-          "id": "W4167",
-          "feedback": "Submitted",
-          "accDate": "",
-          "src": "5G Exp_3_HW"
-        },
-        {
           "id": "W3929",
-          "feedback": "Submitted",
-          "accDate": "",
-          "src": "5G Exp_3_HW"
-        },
-        {
-          "id": "W2809",
-          "feedback": "Submitted",
-          "accDate": "",
-          "src": "5G Exp_3_HW"
-        },
-        {
-          "id": "W6263",
-          "feedback": "Submitted",
-          "accDate": "",
-          "src": "5G Exp_3_HW"
-        },
-        {
-          "id": "W6147",
-          "feedback": "Submitted",
-          "accDate": "",
-          "src": "5G Exp_3_HW"
-        },
-        {
-          "id": "W5644",
-          "feedback": "Submitted",
-          "accDate": "",
-          "src": "5G Exp_3_HW"
-        },
-        {
-          "id": "W2135",
-          "feedback": "Submitted",
-          "accDate": "",
-          "src": "5G Exp_3_HW"
-        },
-        {
-          "id": "W2394",
-          "feedback": "Submitted",
-          "accDate": "",
-          "src": "5G Exp_3_HW"
-        },
-        {
-          "id": "W3358",
-          "feedback": "Submitted",
-          "accDate": "",
-          "src": "5G Exp_3_HW"
-        },
-        {
-          "id": "W4168",
-          "feedback": "Submitted",
-          "accDate": "",
-          "src": "5G Exp_3_HW"
-        },
-        {
-          "id": "W2808",
-          "feedback": "Submitted",
-          "accDate": "",
-          "src": "5G Exp_3_HW"
-        },
-        {
-          "id": "W6458",
-          "feedback": "Submitted",
-          "accDate": "",
-          "src": "5G Exp_3_HW"
-        },
-        {
-          "id": "W6322",
-          "feedback": "Submitted",
-          "accDate": "",
-          "src": "5G Exp_3_HW"
-        },
-        {
-          "id": "W3671",
-          "feedback": "Submitted",
-          "accDate": "",
-          "src": "5G Exp_3_HW"
-        },
-        {
-          "id": "W2369",
-          "feedback": "Submitted",
-          "accDate": "",
-          "src": "5G Exp_3_HW"
-        },
-        {
-          "id": "W5757",
-          "feedback": "Submitted",
-          "accDate": "",
-          "src": "5G Exp_3_HW"
-        },
-        {
-          "id": "W3610",
-          "feedback": "Submitted",
-          "accDate": "",
-          "src": "5G Exp_3_HW"
-        },
-        {
-          "id": "W4730",
-          "feedback": "Submitted",
-          "accDate": "",
-          "src": "5G Exp_3_HW"
-        },
-        {
-          "id": "W2130",
-          "feedback": "Submitted",
-          "accDate": "",
-          "src": "5G Exp_3_HW"
-        },
-        {
-          "id": "W4479",
-          "feedback": "Submitted",
-          "accDate": "",
-          "src": "5G Exp_3_HW"
-        },
-        {
-          "id": "W2086",
-          "feedback": "Submitted",
-          "accDate": "",
-          "src": "5G Exp_3_HW"
-        },
-        {
-          "id": "W3655",
-          "feedback": "Submitted",
-          "accDate": "",
-          "src": "5G Exp_3_HW"
-        },
-        {
-          "id": "W2364",
-          "feedback": "Submitted",
-          "accDate": "",
-          "src": "5G Exp_3_HW"
-        },
-        {
-          "id": "W4238",
-          "feedback": "Submitted",
-          "accDate": "",
-          "src": "5G Exp_3_HW"
-        },
-        {
-          "id": "W6457",
-          "feedback": "Submitted",
-          "accDate": "",
-          "src": "5G Exp_3_HW"
-        },
-        {
-          "id": "W2301",
-          "feedback": "Submitted",
-          "accDate": "",
-          "src": "5G Exp_3_HW"
-        },
-        {
-          "id": "W2222",
-          "feedback": "Submitted",
-          "accDate": "",
-          "src": "5G Exp_3_HW"
-        },
-        {
-          "id": "W4186",
-          "feedback": "Submitted",
-          "accDate": "",
-          "src": "5G Exp_3_HW"
-        },
-        {
-          "id": "W4407",
-          "feedback": "Submitted",
-          "accDate": "",
-          "src": "5G Exp_3_HW"
-        },
-        {
-          "id": "W6466",
-          "feedback": "Submitted",
-          "accDate": "",
-          "src": "5G Exp_3_HW"
-        },
-        {
-          "id": "W2382",
-          "feedback": "Submitted",
-          "accDate": "",
-          "src": "5G Exp_3_HW"
-        },
-        {
-          "id": "W3883",
           "feedback": "Submitted",
           "accDate": "",
           "src": "5G Exp_3_HW"
@@ -6871,79 +7253,13 @@
           "src": "5G Exp_3_HW"
         },
         {
-          "id": "W3909",
-          "feedback": "Submitted",
-          "accDate": "",
-          "src": "5G Exp_3_HW"
-        },
-        {
-          "id": "W5743",
-          "feedback": "Submitted",
-          "accDate": "",
-          "src": "5G Exp_3_HW"
-        },
-        {
-          "id": "W2813",
-          "feedback": "Submitted",
-          "accDate": "",
-          "src": "5G Exp_3_HW"
-        },
-        {
-          "id": "W6553",
-          "feedback": "Submitted",
-          "accDate": "",
-          "src": "5G Exp_3_HW"
-        },
-        {
           "id": "W6027",
           "feedback": "Submitted",
           "accDate": "",
           "src": "5G Exp_3_HW"
         },
         {
-          "id": "W2017",
-          "feedback": "Submitted",
-          "accDate": "",
-          "src": "5G Exp_3_HW"
-        },
-        {
-          "id": "W4564",
-          "feedback": "Submitted",
-          "accDate": "",
-          "src": "5G Exp_3_HW"
-        },
-        {
-          "id": "W2862",
-          "feedback": "Submitted",
-          "accDate": "",
-          "src": "5G Exp_3_HW"
-        },
-        {
-          "id": "W5506",
-          "feedback": "Submitted",
-          "accDate": "",
-          "src": "5G Exp_3_HW"
-        },
-        {
-          "id": "W5730",
-          "feedback": "Submitted",
-          "accDate": "",
-          "src": "5G Exp_3_HW"
-        },
-        {
           "id": "W3882",
-          "feedback": "Submitted",
-          "accDate": "",
-          "src": "5G Exp_3_HW"
-        },
-        {
-          "id": "W4426",
-          "feedback": "Submitted",
-          "accDate": "",
-          "src": "5G Exp_3_HW"
-        },
-        {
-          "id": "W2005",
           "feedback": "Submitted",
           "accDate": "",
           "src": "5G Exp_3_HW"
@@ -6961,12 +7277,6 @@
           "src": "5G Exp_3_HW"
         },
         {
-          "id": "W2838",
-          "feedback": "Submitted",
-          "accDate": "",
-          "src": "5G Exp_3_HW"
-        },
-        {
           "id": "W6157",
           "feedback": "Submitted",
           "accDate": "",
@@ -6977,29 +7287,59 @@
           "feedback": "Submitted",
           "accDate": "",
           "src": "5G Exp_3_HW"
-        }
-      ],
-      "underit": [
+        },
+        {
+          "id": "W5815",
+          "feedback": "Submitted",
+          "accDate": "",
+          "src": "5G Exp_3_HW"
+        },
+        {
+          "id": "W2880",
+          "feedback": "Submitted",
+          "accDate": "",
+          "src": "5G Exp_3_HW"
+        },
+        {
+          "id": "W2260",
+          "feedback": "Submitted",
+          "accDate": "",
+          "src": "5G Exp_3_HW"
+        },
+        {
+          "id": "W2214",
+          "feedback": "Submitted",
+          "accDate": "",
+          "src": "5G Exp_3_HW"
+        },
+        {
+          "id": "W4359",
+          "feedback": "Submitted",
+          "accDate": "",
+          "src": "5G Exp_3_HW"
+        },
+        {
+          "id": "W6015",
+          "feedback": "Submitted",
+          "accDate": "",
+          "src": "5G Exp_3_HW"
+        },
         {
           "id": "W5538",
-          "feedback": "Under IT",
+          "feedback": "Submitted",
           "accDate": "",
           "src": "5G Exp_3_HW"
         },
         {
           "id": "W4020",
-          "feedback": "Under IT",
+          "feedback": "Submitted",
           "accDate": "",
           "src": "5G Exp_3_HW"
-        },
+        }
+      ],
+      "underit": [
         {
           "id": "W4692",
-          "feedback": "Under IT",
-          "accDate": "",
-          "src": "5G Exp_3_HW"
-        },
-        {
-          "id": "W2192",
           "feedback": "Under IT",
           "accDate": "",
           "src": "5G Exp_3_HW"
@@ -7011,37 +7351,62 @@
           "src": "5G Exp_3_HW"
         },
         {
-          "id": "W5815",
+          "id": "W2825",
           "feedback": "Under IT",
           "accDate": "",
           "src": "5G Exp_3_HW"
         },
         {
-          "id": "W2214",
+          "id": "W4293",
           "feedback": "Under IT",
           "accDate": "",
           "src": "5G Exp_3_HW"
         },
         {
-          "id": "W2260",
+          "id": "W6148",
           "feedback": "Under IT",
           "accDate": "",
           "src": "5G Exp_3_HW"
         },
         {
-          "id": "W2880",
+          "id": "W4357",
           "feedback": "Under IT",
           "accDate": "",
           "src": "5G Exp_3_HW"
         },
         {
-          "id": "W6015",
+          "id": "W5751",
+          "feedback": "Under IT",
+          "accDate": "",
+          "src": "5G Exp_3_HW"
+        },
+        {
+          "id": "W5812",
           "feedback": "Under IT",
           "accDate": "",
           "src": "5G Exp_3_HW"
         }
       ],
-      "pending": []
+      "pending": [
+        {
+          "id": "W5669",
+          "feedback": "Issue",
+          "accDate": "",
+          "src": "5G Exp_3_HW"
+        },
+        {
+          "id": "W2130",
+          "feedback": "Issue",
+          "accDate": "",
+          "src": "5G Exp_3_HW"
+        },
+        {
+          "id": "W2838",
+          "feedback": "Issue",
+          "accDate": "",
+          "src": "5G Exp_3_HW"
+        }
+      ]
     },
     "g4Groups": {
       "accepted": [
@@ -8337,1742 +8702,860 @@
       7
     ]
   },
-  "agedSites": {
-    "total": 71,
-    "withSubmission": 55,
-    "noSubmission": 16,
-    "buckets": {
-      "0-30": {
-        "count": 63,
-        "sites": [
-          {
-            "id": "W4564",
-            "gov": "JEDDAH",
-            "city": "JEDDAH",
-            "activity": "4G/5G",
-            "cat": "—",
-            "rfitDate": "17-May-2026",
-            "agingDays": 16,
-            "ssvSubDate": "19-May-2026",
-            "ssvSubStatus": "Submitted",
-            "ho5Date": ""
-          },
-          {
-            "id": "W3358",
-            "gov": "MAKKAH",
-            "city": "MAKKAH AL MUKARRAMAH",
-            "activity": "4G/5G/ODU",
-            "cat": "A",
-            "rfitDate": "09-May-2026",
-            "agingDays": 24,
-            "ssvSubDate": "12-May-2026",
-            "ssvSubStatus": "Submitted",
-            "ho5Date": "18-May-2026"
-          },
-          {
-            "id": "W2215",
-            "gov": "JEDDAH",
-            "city": "JEDDAH",
-            "activity": "4G/5G",
-            "cat": "—",
-            "rfitDate": "15-May-2026",
-            "agingDays": 18,
-            "ssvSubDate": "18-May-2026",
-            "ssvSubStatus": "Submitted",
-            "ho5Date": ""
-          },
-          {
-            "id": "W3655",
-            "gov": "MAKKAH",
-            "city": "MAKKAH AL MUKARRAMAH",
-            "activity": "5G",
-            "cat": "A",
-            "rfitDate": "13-May-2026",
-            "agingDays": 20,
-            "ssvSubDate": "16-May-2026",
-            "ssvSubStatus": "Submitted",
-            "ho5Date": ""
-          },
-          {
-            "id": "W4238",
-            "gov": "JEDDAH",
-            "city": "JEDDAH",
-            "activity": "5G",
-            "cat": "A",
-            "rfitDate": "13-May-2026",
-            "agingDays": 20,
-            "ssvSubDate": "16-May-2026",
-            "ssvSubStatus": "Submitted",
-            "ho5Date": ""
-          },
-          {
-            "id": "W6466",
-            "gov": "MAKKAH",
-            "city": "MAKKAH AL MUKARRAMAH",
-            "activity": "5G",
-            "cat": "A",
-            "rfitDate": "15-May-2026",
-            "agingDays": 18,
-            "ssvSubDate": "17-May-2026",
-            "ssvSubStatus": "Submitted",
-            "ho5Date": ""
-          },
-          {
-            "id": "W6147",
-            "gov": "JEDDAH",
-            "city": "JEDDAH",
-            "activity": "5G",
-            "cat": "A",
-            "rfitDate": "05-May-2026",
-            "agingDays": 28,
-            "ssvSubDate": "09-May-2026",
-            "ssvSubStatus": "Submitted",
-            "ho5Date": "16-May-2026"
-          },
-          {
-            "id": "W6322",
-            "gov": "MAKKAH",
-            "city": "MAKKAH AL MUKARRAMAH",
-            "activity": "5G",
-            "cat": "A",
-            "rfitDate": "11-May-2026",
-            "agingDays": 22,
-            "ssvSubDate": "13-May-2026",
-            "ssvSubStatus": "Submitted",
-            "ho5Date": ""
-          },
-          {
-            "id": "W5506",
-            "gov": "MAKKAH",
-            "city": "MAKKAH AL MUKARRAMAH",
-            "activity": "5G",
-            "cat": "A",
-            "rfitDate": "16-May-2026",
-            "agingDays": 17,
-            "ssvSubDate": "19-May-2026",
-            "ssvSubStatus": "Submitted",
-            "ho5Date": ""
-          },
-          {
-            "id": "W6027",
-            "gov": "JEDDAH",
-            "city": "JEDDAH",
-            "activity": "5G",
-            "cat": "—",
-            "rfitDate": "17-May-2026",
-            "agingDays": 16,
-            "ssvSubDate": "19-May-2026",
-            "ssvSubStatus": "Submitted",
-            "ho5Date": ""
-          },
-          {
-            "id": "W3909",
-            "gov": "JEDDAH",
-            "city": "JEDDAH",
-            "activity": "5G",
-            "cat": "—",
-            "rfitDate": "15-May-2026",
-            "agingDays": 18,
-            "ssvSubDate": "18-May-2026",
-            "ssvSubStatus": "Submitted",
-            "ho5Date": ""
-          },
-          {
-            "id": "W2130",
-            "gov": "JEDDAH",
-            "city": "JEDDAH",
-            "activity": "5G",
-            "cat": "A",
-            "rfitDate": "12-May-2026",
-            "agingDays": 21,
-            "ssvSubDate": "13-May-2026",
-            "ssvSubStatus": "Submitted",
-            "ho5Date": ""
-          },
-          {
-            "id": "W2838",
-            "gov": "JEDDAH",
-            "city": "JEDDAH",
-            "activity": "5G",
-            "cat": "—",
-            "rfitDate": "18-May-2026",
-            "agingDays": 15,
-            "ssvSubDate": "",
-            "ssvSubStatus": "Not Submitted",
-            "ho5Date": ""
-          },
-          {
-            "id": "W3883",
-            "gov": "JEDDAH",
-            "city": "JEDDAH",
-            "activity": "5G",
-            "cat": "A",
-            "rfitDate": "15-May-2026",
-            "agingDays": 18,
-            "ssvSubDate": "18-May-2026",
-            "ssvSubStatus": "Submitted",
-            "ho5Date": ""
-          },
-          {
-            "id": "W6458",
-            "gov": "MAKKAH",
-            "city": "MAKKAH AL MUKARRAMAH",
-            "activity": "2G/5G/ODU",
-            "cat": "A",
-            "rfitDate": "11-May-2026",
-            "agingDays": 22,
-            "ssvSubDate": "12-May-2026",
-            "ssvSubStatus": "Submitted",
-            "ho5Date": "18-May-2026"
-          },
-          {
-            "id": "W4168",
-            "gov": "JEDDAH",
-            "city": "JEDDAH",
-            "activity": "5G/ODU",
-            "cat": "A",
-            "rfitDate": "09-May-2026",
-            "agingDays": 24,
-            "ssvSubDate": "12-May-2026",
-            "ssvSubStatus": "Submitted",
-            "ho5Date": "18-May-2026"
-          },
-          {
-            "id": "W5644",
-            "gov": "JEDDAH",
-            "city": "JEDDAH",
-            "activity": "5G/ODU",
-            "cat": "A",
-            "rfitDate": "09-May-2026",
-            "agingDays": 24,
-            "ssvSubDate": "10-May-2026",
-            "ssvSubStatus": "Submitted",
-            "ho5Date": ""
-          },
-          {
-            "id": "W2809",
-            "gov": "JEDDAH",
-            "city": "JEDDAH",
-            "activity": "5G/ODU",
-            "cat": "A",
-            "rfitDate": "05-May-2026",
-            "agingDays": 28,
-            "ssvSubDate": "06-May-2026",
-            "ssvSubStatus": "Submitted",
-            "ho5Date": ""
-          },
-          {
-            "id": "W3929",
-            "gov": "MAKKAH",
-            "city": "MAKKAH AL MUKARRAMAH",
-            "activity": "5G/ODU",
-            "cat": "A",
-            "rfitDate": "03-May-2026",
-            "agingDays": 30,
-            "ssvSubDate": "06-May-2026",
-            "ssvSubStatus": "Submitted",
-            "ho5Date": ""
-          },
-          {
-            "id": "W2382",
-            "gov": "MAKKAH",
-            "city": "MAKKAH AL MUKARRAMAH",
-            "activity": "5G",
-            "cat": "—",
-            "rfitDate": "15-May-2026",
-            "agingDays": 18,
-            "ssvSubDate": "18-May-2026",
-            "ssvSubStatus": "Submitted",
-            "ho5Date": ""
-          },
-          {
-            "id": "W2813",
-            "gov": "JEDDAH",
-            "city": "JEDDAH",
-            "activity": "5G",
-            "cat": "—",
-            "rfitDate": "16-May-2026",
-            "agingDays": 17,
-            "ssvSubDate": "19-May-2026",
-            "ssvSubStatus": "Submitted",
-            "ho5Date": ""
-          },
-          {
-            "id": "W4020",
-            "gov": "AT TAIF",
-            "city": "AT TAIF",
-            "activity": "5G",
-            "cat": "—",
-            "rfitDate": "15-May-2026",
-            "agingDays": 18,
-            "ssvSubDate": "",
-            "ssvSubStatus": "Not Submitted",
-            "ho5Date": ""
-          },
-          {
-            "id": "W4407",
-            "gov": "JEDDAH",
-            "city": "JEDDAH",
-            "activity": "5G",
-            "cat": "—",
-            "rfitDate": "16-May-2026",
-            "agingDays": 17,
-            "ssvSubDate": "19-May-2026",
-            "ssvSubStatus": "Submitted",
-            "ho5Date": ""
-          },
-          {
-            "id": "W5538",
-            "gov": "MAKKAH",
-            "city": "MAKKAH AL MUKARRAMAH",
-            "activity": "5G",
-            "cat": "A",
-            "rfitDate": "15-May-2026",
-            "agingDays": 18,
-            "ssvSubDate": "",
-            "ssvSubStatus": "Not Submitted",
-            "ho5Date": ""
-          },
-          {
-            "id": "W6015",
-            "gov": "JEDDAH",
-            "city": "JEDDAH",
-            "activity": "5G",
-            "cat": "—",
-            "rfitDate": "19-May-2026",
-            "agingDays": 14,
-            "ssvSubDate": "",
-            "ssvSubStatus": "Not Submitted",
-            "ho5Date": ""
-          },
-          {
-            "id": "W6263",
-            "gov": "JEDDAH",
-            "city": "JEDDAH",
-            "activity": "5G",
-            "cat": "C",
-            "rfitDate": "06-May-2026",
-            "agingDays": 27,
-            "ssvSubDate": "09-May-2026",
-            "ssvSubStatus": "Submitted",
-            "ho5Date": "13-May-2026"
-          },
-          {
-            "id": "W6457",
-            "gov": "AT TAIF",
-            "city": "AT TAIF",
-            "activity": "5G",
-            "cat": "A",
-            "rfitDate": "13-May-2026",
-            "agingDays": 20,
-            "ssvSubDate": "16-May-2026",
-            "ssvSubStatus": "Submitted",
-            "ho5Date": ""
-          },
-          {
-            "id": "W4692",
-            "gov": "JEDDAH",
-            "city": "JEDDAH",
-            "activity": "5G",
-            "cat": "—",
-            "rfitDate": "17-May-2026",
-            "agingDays": 16,
-            "ssvSubDate": "",
-            "ssvSubStatus": "Not Submitted",
-            "ho5Date": ""
-          },
-          {
-            "id": "W5730",
-            "gov": "JEDDAH",
-            "city": "JEDDAH",
-            "activity": "5G/ODU",
-            "cat": "—",
-            "rfitDate": "17-May-2026",
-            "agingDays": 16,
-            "ssvSubDate": "19-May-2026",
-            "ssvSubStatus": "Submitted",
-            "ho5Date": ""
-          },
-          {
-            "id": "W2086",
-            "gov": "MAKKAH",
-            "city": "MAKKAH AL MUKARRAMAH",
-            "activity": "5G/ODU",
-            "cat": "A",
-            "rfitDate": "11-May-2026",
-            "agingDays": 22,
-            "ssvSubDate": "16-May-2026",
-            "ssvSubStatus": "Submitted",
-            "ho5Date": ""
-          },
-          {
-            "id": "W2236",
-            "gov": "JEDDAH",
-            "city": "JEDDAH",
-            "activity": "5G/ODU",
-            "cat": "—",
-            "rfitDate": "15-May-2026",
-            "agingDays": 18,
-            "ssvSubDate": "18-May-2026",
-            "ssvSubStatus": "Submitted",
-            "ho5Date": ""
-          },
-          {
-            "id": "W2808",
-            "gov": "JEDDAH",
-            "city": "JEDDAH",
-            "activity": "5G/ODU",
-            "cat": "A",
-            "rfitDate": "11-May-2026",
-            "agingDays": 22,
-            "ssvSubDate": "12-May-2026",
-            "ssvSubStatus": "Submitted",
-            "ho5Date": ""
-          },
-          {
-            "id": "W5896",
-            "gov": "JEDDAH",
-            "city": "JEDDAH",
-            "activity": "5G/ODU",
-            "cat": "A",
-            "rfitDate": "03-May-2026",
-            "agingDays": 30,
-            "ssvSubDate": "05-May-2026",
-            "ssvSubStatus": "Submitted",
-            "ho5Date": ""
-          },
-          {
-            "id": "W3671",
-            "gov": "AT TAIF",
-            "city": "AT TAIF",
-            "activity": "5G/ODU",
-            "cat": "A",
-            "rfitDate": "03-May-2026",
-            "agingDays": 30,
-            "ssvSubDate": "12-May-2026",
-            "ssvSubStatus": "Submitted",
-            "ho5Date": "12-May-2026"
-          },
-          {
-            "id": "W2364",
-            "gov": "MAKKAH",
-            "city": "MAKKAH AL MUKARRAMAH",
-            "activity": "5G",
-            "cat": "A",
-            "rfitDate": "13-May-2026",
-            "agingDays": 20,
-            "ssvSubDate": "16-May-2026",
-            "ssvSubStatus": "Submitted",
-            "ho5Date": ""
-          },
-          {
-            "id": "W2301",
-            "gov": "JEDDAH",
-            "city": "JEDDAH",
-            "activity": "5G",
-            "cat": "—",
-            "rfitDate": "16-May-2026",
-            "agingDays": 17,
-            "ssvSubDate": "18-May-2026",
-            "ssvSubStatus": "Submitted",
-            "ho5Date": ""
-          },
-          {
-            "id": "W3186",
-            "gov": "JEDDAH",
-            "city": "JEDDAH",
-            "activity": "5G",
-            "cat": "—",
-            "rfitDate": "18-May-2026",
-            "agingDays": 15,
-            "ssvSubDate": "",
-            "ssvSubStatus": "Not Submitted",
-            "ho5Date": ""
-          },
-          {
-            "id": "W2369",
-            "gov": "MAKKAH",
-            "city": "MAKKAH AL MUKARRAMAH",
-            "activity": "5G",
-            "cat": "A",
-            "rfitDate": "12-May-2026",
-            "agingDays": 21,
-            "ssvSubDate": "13-May-2026",
-            "ssvSubStatus": "Submitted",
-            "ho5Date": "16-May-2026"
-          },
-          {
-            "id": "W2846",
-            "gov": "JEDDAH",
-            "city": "JEDDAH",
-            "activity": "5G",
-            "cat": "—",
-            "rfitDate": "19-May-2026",
-            "agingDays": 14,
-            "ssvSubDate": "",
-            "ssvSubStatus": "Not Submitted",
-            "ho5Date": ""
-          },
-          {
-            "id": "W2110",
-            "gov": "JEDDAH",
-            "city": "JEDDAH",
-            "activity": "5G",
-            "cat": "—",
-            "rfitDate": "17-May-2026",
-            "agingDays": 16,
-            "ssvSubDate": "",
-            "ssvSubStatus": "Not Submitted",
-            "ho5Date": ""
-          },
-          {
-            "id": "W2117",
-            "gov": "JEDDAH",
-            "city": "JEDDAH",
-            "activity": "5G",
-            "cat": "—",
-            "rfitDate": "18-May-2026",
-            "agingDays": 15,
-            "ssvSubDate": "",
-            "ssvSubStatus": "Not Submitted",
-            "ho5Date": ""
-          },
-          {
-            "id": "W2135",
-            "gov": "JEDDAH",
-            "city": "JEDDAH",
-            "activity": "5G",
-            "cat": "A",
-            "rfitDate": "09-May-2026",
-            "agingDays": 24,
-            "ssvSubDate": "11-May-2026",
-            "ssvSubStatus": "Submitted",
-            "ho5Date": ""
-          },
-          {
-            "id": "W2192",
-            "gov": "JEDDAH",
-            "city": "JEDDAH",
-            "activity": "5G",
-            "cat": "—",
-            "rfitDate": "17-May-2026",
-            "agingDays": 16,
-            "ssvSubDate": "",
-            "ssvSubStatus": "Not Submitted",
-            "ho5Date": ""
-          },
-          {
-            "id": "W2214",
-            "gov": "JEDDAH",
-            "city": "JEDDAH",
-            "activity": "5G",
-            "cat": "—",
-            "rfitDate": "19-May-2026",
-            "agingDays": 14,
-            "ssvSubDate": "",
-            "ssvSubStatus": "Not Submitted",
-            "ho5Date": ""
-          },
-          {
-            "id": "W2260",
-            "gov": "JEDDAH",
-            "city": "JEDDAH",
-            "activity": "5G",
-            "cat": "—",
-            "rfitDate": "19-May-2026",
-            "agingDays": 14,
-            "ssvSubDate": "",
-            "ssvSubStatus": "Not Submitted",
-            "ho5Date": ""
-          },
-          {
-            "id": "W2325",
-            "gov": "JEDDAH",
-            "city": "JEDDAH",
-            "activity": "5G",
-            "cat": "B",
-            "rfitDate": "12-May-2026",
-            "agingDays": 21,
-            "ssvSubDate": "13-May-2026",
-            "ssvSubStatus": "Submitted",
-            "ho5Date": ""
-          },
-          {
-            "id": "W2394",
-            "gov": "MAKKAH",
-            "city": "MAKKAH AL MUKARRAMAH",
-            "activity": "5G",
-            "cat": "A",
-            "rfitDate": "10-May-2026",
-            "agingDays": 23,
-            "ssvSubDate": "11-May-2026",
-            "ssvSubStatus": "Submitted",
-            "ho5Date": "16-May-2026"
-          },
-          {
-            "id": "W2880",
-            "gov": "JEDDAH",
-            "city": "JEDDAH",
-            "activity": "5G",
-            "cat": "—",
-            "rfitDate": "19-May-2026",
-            "agingDays": 14,
-            "ssvSubDate": "",
-            "ssvSubStatus": "Not Submitted",
-            "ho5Date": ""
-          },
-          {
-            "id": "W3882",
-            "gov": "JEDDAH",
-            "city": "JEDDAH",
-            "activity": "5G",
-            "cat": "—",
-            "rfitDate": "18-May-2026",
-            "agingDays": 15,
-            "ssvSubDate": "",
-            "ssvSubStatus": "Not Submitted",
-            "ho5Date": ""
-          },
-          {
-            "id": "W4426",
-            "gov": "",
-            "city": "JEDDAH",
-            "activity": "5G",
-            "cat": "—",
-            "rfitDate": "17-May-2026",
-            "agingDays": 16,
-            "ssvSubDate": "20-May-2026",
-            "ssvSubStatus": "Submitted",
-            "ho5Date": ""
-          },
-          {
-            "id": "W4479",
-            "gov": "MAKKAH",
-            "city": "MAKKAH AL MUKARRAMAH",
-            "activity": "5G",
-            "cat": "A",
-            "rfitDate": "12-May-2026",
-            "agingDays": 21,
-            "ssvSubDate": "13-May-2026",
-            "ssvSubStatus": "Submitted",
-            "ho5Date": ""
-          },
-          {
-            "id": "W4730",
-            "gov": "Makkah",
-            "city": "MAKKAH AL MUKARRAMAH",
-            "activity": "5G",
-            "cat": "A",
-            "rfitDate": "12-May-2026",
-            "agingDays": 21,
-            "ssvSubDate": "16-May-2026",
-            "ssvSubStatus": "Submitted",
-            "ho5Date": ""
-          },
-          {
-            "id": "W5743",
-            "gov": "JEDDAH",
-            "city": "JEDDAH",
-            "activity": "5G",
-            "cat": "—",
-            "rfitDate": "16-May-2026",
-            "agingDays": 17,
-            "ssvSubDate": "18-May-2026",
-            "ssvSubStatus": "Submitted",
-            "ho5Date": ""
-          },
-          {
-            "id": "W5757",
-            "gov": "JEDDAH",
-            "city": "JEDDAH",
-            "activity": "5G",
-            "cat": "A",
-            "rfitDate": "10-May-2026",
-            "agingDays": 23,
-            "ssvSubDate": "13-May-2026",
-            "ssvSubStatus": "Submitted",
-            "ho5Date": ""
-          },
-          {
-            "id": "W5815",
-            "gov": "JEDDAH",
-            "city": "JEDDAH",
-            "activity": "5G",
-            "cat": "—",
-            "rfitDate": "19-May-2026",
-            "agingDays": 14,
-            "ssvSubDate": "",
-            "ssvSubStatus": "Not Submitted",
-            "ho5Date": ""
-          },
-          {
-            "id": "W6157",
-            "gov": "JEDDAH",
-            "city": "JEDDAH",
-            "activity": "5G",
-            "cat": "—",
-            "rfitDate": "18-May-2026",
-            "agingDays": 15,
-            "ssvSubDate": "",
-            "ssvSubStatus": "Not Submitted",
-            "ho5Date": ""
-          },
-          {
-            "id": "W6553",
-            "gov": "JEDDAH",
-            "city": "JEDDAH",
-            "activity": "5G",
-            "cat": "—",
-            "rfitDate": "16-May-2026",
-            "agingDays": 17,
-            "ssvSubDate": "19-May-2026",
-            "ssvSubStatus": "Submitted",
-            "ho5Date": ""
-          },
-          {
-            "id": "W4186",
-            "gov": "JEDDAH",
-            "city": "JEDDAH",
-            "activity": "5G",
-            "cat": "—",
-            "rfitDate": "15-May-2026",
-            "agingDays": 18,
-            "ssvSubDate": "17-May-2026",
-            "ssvSubStatus": "Submitted",
-            "ho5Date": ""
-          },
-          {
-            "id": "W4167",
-            "gov": "JEDDAH",
-            "city": "JEDDAH",
-            "activity": "5G/ODU",
-            "cat": "A",
-            "rfitDate": "04-May-2026",
-            "agingDays": 29,
-            "ssvSubDate": "06-May-2026",
-            "ssvSubStatus": "Submitted",
-            "ho5Date": ""
-          },
-          {
-            "id": "W3610",
-            "gov": "MAKKAH",
-            "city": "MAKKAH AL MUKARRAMAH",
-            "activity": "5G/ODU",
-            "cat": "A",
-            "rfitDate": "11-May-2026",
-            "agingDays": 22,
-            "ssvSubDate": "13-May-2026",
-            "ssvSubStatus": "Submitted",
-            "ho5Date": "18-May-2026"
-          },
-          {
-            "id": "W2222",
-            "gov": "JEDDAH",
-            "city": "JEDDAH",
-            "activity": "5G/ODU",
-            "cat": "A",
-            "rfitDate": "13-May-2026",
-            "agingDays": 20,
-            "ssvSubDate": "17-May-2026",
-            "ssvSubStatus": "Submitted",
-            "ho5Date": ""
-          },
-          {
-            "id": "W2862",
-            "gov": "JEDDAH",
-            "city": "JEDDAH",
-            "activity": "5G",
-            "cat": "—",
-            "rfitDate": "17-May-2026",
-            "agingDays": 16,
-            "ssvSubDate": "20-May-2026",
-            "ssvSubStatus": "Submitted",
-            "ho5Date": ""
-          },
-          {
-            "id": "W2017",
-            "gov": "JEDDAH",
-            "city": "JEDDAH",
-            "activity": "5G",
-            "cat": "—",
-            "rfitDate": "17-May-2026",
-            "agingDays": 16,
-            "ssvSubDate": "20-May-2026",
-            "ssvSubStatus": "Submitted",
-            "ho5Date": ""
-          }
-        ]
-      },
-      "31-60": {
-        "count": 7,
-        "sites": [
-          {
-            "id": "W4896",
-            "gov": "AL BAHA",
-            "city": "AL BAHA",
-            "activity": "",
-            "cat": "A",
-            "rfitDate": "26-Apr-2026",
-            "agingDays": 37,
-            "ssvSubDate": "06-May-2026",
-            "ssvSubStatus": "Submitted",
-            "ho5Date": ""
-          },
-          {
-            "id": "W5669",
-            "gov": "ADHIM",
-            "city": "ADHIM",
-            "activity": "5G",
-            "cat": "A",
-            "rfitDate": "02-May-2026",
-            "agingDays": 31,
-            "ssvSubDate": "05-May-2026",
-            "ssvSubStatus": "Submitted",
-            "ho5Date": "13-May-2026"
-          },
-          {
-            "id": "W4696",
-            "gov": "JEDDAH",
-            "city": "JEDDAH",
-            "activity": "5G",
-            "cat": "A",
-            "rfitDate": "21-Apr-2026",
-            "agingDays": 42,
-            "ssvSubDate": "25-Apr-2026",
-            "ssvSubStatus": "Submitted",
-            "ho5Date": ""
-          },
-          {
-            "id": "W4205",
-            "gov": "JEDDAH",
-            "city": "JEDDAH",
-            "activity": "5G/ODU",
-            "cat": "A",
-            "rfitDate": "28-Apr-2026",
-            "agingDays": 35,
-            "ssvSubDate": "29-Apr-2026",
-            "ssvSubStatus": "Submitted",
-            "ho5Date": ""
-          },
-          {
-            "id": "W3404",
-            "gov": "MAKKAH AL MUKARRAMAH",
-            "city": "MAKKAH AL MUKARRAMAH",
-            "activity": "5G",
-            "cat": "A",
-            "rfitDate": "02-May-2026",
-            "agingDays": 31,
-            "ssvSubDate": "05-May-2026",
-            "ssvSubStatus": "Submitted",
-            "ho5Date": "11-May-2026"
-          },
-          {
-            "id": "W6350",
-            "gov": "JEDDAH",
-            "city": "JEDDAH",
-            "activity": "5G",
-            "cat": "A",
-            "rfitDate": "15-Apr-2026",
-            "agingDays": 48,
-            "ssvSubDate": "22-Apr-2026",
-            "ssvSubStatus": "Submitted",
-            "ho5Date": ""
-          },
-          {
-            "id": "W3574",
-            "gov": "JEDDAH",
-            "city": "JEDDAH",
-            "activity": "5G/ODU",
-            "cat": "A",
-            "rfitDate": "02-May-2026",
-            "agingDays": 31,
-            "ssvSubDate": "05-May-2026",
-            "ssvSubStatus": "Submitted",
-            "ho5Date": "12-May-2026"
-          }
-        ]
-      },
-      "61-90": {
-        "count": 1,
-        "sites": [
-          {
-            "id": "W6082",
-            "gov": "RABIGH",
-            "city": "Others",
-            "activity": "4G",
-            "cat": "B",
-            "rfitDate": "11-Mar-2026",
-            "agingDays": 83,
-            "ssvSubDate": "12-Apr-2026",
-            "ssvSubStatus": "Submitted",
-            "ho5Date": "14-Mar-2026"
-          }
-        ]
-      },
-      "91-180": {
-        "count": 0,
-        "sites": []
-      },
-      "180+": {
-        "count": 0,
-        "sites": []
-      }
+  "agedSites": [
+    {
+      "id": "W6082",
+      "gov": "RABIGH",
+      "city": "Others",
+      "activity": "4G",
+      "cat": "B",
+      "rfitDate": "11-Mar-2026",
+      "rfitISO": "2026-03-11",
+      "ssvSubDate": "12-Apr-2026",
+      "ssvSubStatus": "Submitted",
+      "ho5Date": "14-Mar-2026"
     },
-    "allSites": [
-      {
-        "id": "W6082",
-        "gov": "RABIGH",
-        "city": "Others",
-        "activity": "4G",
-        "cat": "B",
-        "rfitDate": "11-Mar-2026",
-        "agingDays": 83,
-        "ssvSubDate": "12-Apr-2026",
-        "ssvSubStatus": "Submitted",
-        "ho5Date": "14-Mar-2026"
-      },
-      {
-        "id": "W6350",
-        "gov": "JEDDAH",
-        "city": "JEDDAH",
-        "activity": "5G",
-        "cat": "A",
-        "rfitDate": "15-Apr-2026",
-        "agingDays": 48,
-        "ssvSubDate": "22-Apr-2026",
-        "ssvSubStatus": "Submitted",
-        "ho5Date": ""
-      },
-      {
-        "id": "W4696",
-        "gov": "JEDDAH",
-        "city": "JEDDAH",
-        "activity": "5G",
-        "cat": "A",
-        "rfitDate": "21-Apr-2026",
-        "agingDays": 42,
-        "ssvSubDate": "25-Apr-2026",
-        "ssvSubStatus": "Submitted",
-        "ho5Date": ""
-      },
-      {
-        "id": "W4896",
-        "gov": "AL BAHA",
-        "city": "AL BAHA",
-        "activity": "",
-        "cat": "A",
-        "rfitDate": "26-Apr-2026",
-        "agingDays": 37,
-        "ssvSubDate": "06-May-2026",
-        "ssvSubStatus": "Submitted",
-        "ho5Date": ""
-      },
-      {
-        "id": "W4205",
-        "gov": "JEDDAH",
-        "city": "JEDDAH",
-        "activity": "5G/ODU",
-        "cat": "A",
-        "rfitDate": "28-Apr-2026",
-        "agingDays": 35,
-        "ssvSubDate": "29-Apr-2026",
-        "ssvSubStatus": "Submitted",
-        "ho5Date": ""
-      },
-      {
-        "id": "W5669",
-        "gov": "ADHIM",
-        "city": "ADHIM",
-        "activity": "5G",
-        "cat": "A",
-        "rfitDate": "02-May-2026",
-        "agingDays": 31,
-        "ssvSubDate": "05-May-2026",
-        "ssvSubStatus": "Submitted",
-        "ho5Date": "13-May-2026"
-      },
-      {
-        "id": "W3404",
-        "gov": "MAKKAH AL MUKARRAMAH",
-        "city": "MAKKAH AL MUKARRAMAH",
-        "activity": "5G",
-        "cat": "A",
-        "rfitDate": "02-May-2026",
-        "agingDays": 31,
-        "ssvSubDate": "05-May-2026",
-        "ssvSubStatus": "Submitted",
-        "ho5Date": "11-May-2026"
-      },
-      {
-        "id": "W3574",
-        "gov": "JEDDAH",
-        "city": "JEDDAH",
-        "activity": "5G/ODU",
-        "cat": "A",
-        "rfitDate": "02-May-2026",
-        "agingDays": 31,
-        "ssvSubDate": "05-May-2026",
-        "ssvSubStatus": "Submitted",
-        "ho5Date": "12-May-2026"
-      },
-      {
-        "id": "W3929",
-        "gov": "MAKKAH",
-        "city": "MAKKAH AL MUKARRAMAH",
-        "activity": "5G/ODU",
-        "cat": "A",
-        "rfitDate": "03-May-2026",
-        "agingDays": 30,
-        "ssvSubDate": "06-May-2026",
-        "ssvSubStatus": "Submitted",
-        "ho5Date": ""
-      },
-      {
-        "id": "W5896",
-        "gov": "JEDDAH",
-        "city": "JEDDAH",
-        "activity": "5G/ODU",
-        "cat": "A",
-        "rfitDate": "03-May-2026",
-        "agingDays": 30,
-        "ssvSubDate": "05-May-2026",
-        "ssvSubStatus": "Submitted",
-        "ho5Date": ""
-      },
-      {
-        "id": "W3671",
-        "gov": "AT TAIF",
-        "city": "AT TAIF",
-        "activity": "5G/ODU",
-        "cat": "A",
-        "rfitDate": "03-May-2026",
-        "agingDays": 30,
-        "ssvSubDate": "12-May-2026",
-        "ssvSubStatus": "Submitted",
-        "ho5Date": "12-May-2026"
-      },
-      {
-        "id": "W4167",
-        "gov": "JEDDAH",
-        "city": "JEDDAH",
-        "activity": "5G/ODU",
-        "cat": "A",
-        "rfitDate": "04-May-2026",
-        "agingDays": 29,
-        "ssvSubDate": "06-May-2026",
-        "ssvSubStatus": "Submitted",
-        "ho5Date": ""
-      },
-      {
-        "id": "W6147",
-        "gov": "JEDDAH",
-        "city": "JEDDAH",
-        "activity": "5G",
-        "cat": "A",
-        "rfitDate": "05-May-2026",
-        "agingDays": 28,
-        "ssvSubDate": "09-May-2026",
-        "ssvSubStatus": "Submitted",
-        "ho5Date": "16-May-2026"
-      },
-      {
-        "id": "W2809",
-        "gov": "JEDDAH",
-        "city": "JEDDAH",
-        "activity": "5G/ODU",
-        "cat": "A",
-        "rfitDate": "05-May-2026",
-        "agingDays": 28,
-        "ssvSubDate": "06-May-2026",
-        "ssvSubStatus": "Submitted",
-        "ho5Date": ""
-      },
-      {
-        "id": "W6263",
-        "gov": "JEDDAH",
-        "city": "JEDDAH",
-        "activity": "5G",
-        "cat": "C",
-        "rfitDate": "06-May-2026",
-        "agingDays": 27,
-        "ssvSubDate": "09-May-2026",
-        "ssvSubStatus": "Submitted",
-        "ho5Date": "13-May-2026"
-      },
-      {
-        "id": "W3358",
-        "gov": "MAKKAH",
-        "city": "MAKKAH AL MUKARRAMAH",
-        "activity": "4G/5G/ODU",
-        "cat": "A",
-        "rfitDate": "09-May-2026",
-        "agingDays": 24,
-        "ssvSubDate": "12-May-2026",
-        "ssvSubStatus": "Submitted",
-        "ho5Date": "18-May-2026"
-      },
-      {
-        "id": "W4168",
-        "gov": "JEDDAH",
-        "city": "JEDDAH",
-        "activity": "5G/ODU",
-        "cat": "A",
-        "rfitDate": "09-May-2026",
-        "agingDays": 24,
-        "ssvSubDate": "12-May-2026",
-        "ssvSubStatus": "Submitted",
-        "ho5Date": "18-May-2026"
-      },
-      {
-        "id": "W5644",
-        "gov": "JEDDAH",
-        "city": "JEDDAH",
-        "activity": "5G/ODU",
-        "cat": "A",
-        "rfitDate": "09-May-2026",
-        "agingDays": 24,
-        "ssvSubDate": "10-May-2026",
-        "ssvSubStatus": "Submitted",
-        "ho5Date": ""
-      },
-      {
-        "id": "W2135",
-        "gov": "JEDDAH",
-        "city": "JEDDAH",
-        "activity": "5G",
-        "cat": "A",
-        "rfitDate": "09-May-2026",
-        "agingDays": 24,
-        "ssvSubDate": "11-May-2026",
-        "ssvSubStatus": "Submitted",
-        "ho5Date": ""
-      },
-      {
-        "id": "W2394",
-        "gov": "MAKKAH",
-        "city": "MAKKAH AL MUKARRAMAH",
-        "activity": "5G",
-        "cat": "A",
-        "rfitDate": "10-May-2026",
-        "agingDays": 23,
-        "ssvSubDate": "11-May-2026",
-        "ssvSubStatus": "Submitted",
-        "ho5Date": "16-May-2026"
-      },
-      {
-        "id": "W5757",
-        "gov": "JEDDAH",
-        "city": "JEDDAH",
-        "activity": "5G",
-        "cat": "A",
-        "rfitDate": "10-May-2026",
-        "agingDays": 23,
-        "ssvSubDate": "13-May-2026",
-        "ssvSubStatus": "Submitted",
-        "ho5Date": ""
-      },
-      {
-        "id": "W6322",
-        "gov": "MAKKAH",
-        "city": "MAKKAH AL MUKARRAMAH",
-        "activity": "5G",
-        "cat": "A",
-        "rfitDate": "11-May-2026",
-        "agingDays": 22,
-        "ssvSubDate": "13-May-2026",
-        "ssvSubStatus": "Submitted",
-        "ho5Date": ""
-      },
-      {
-        "id": "W6458",
-        "gov": "MAKKAH",
-        "city": "MAKKAH AL MUKARRAMAH",
-        "activity": "2G/5G/ODU",
-        "cat": "A",
-        "rfitDate": "11-May-2026",
-        "agingDays": 22,
-        "ssvSubDate": "12-May-2026",
-        "ssvSubStatus": "Submitted",
-        "ho5Date": "18-May-2026"
-      },
-      {
-        "id": "W2086",
-        "gov": "MAKKAH",
-        "city": "MAKKAH AL MUKARRAMAH",
-        "activity": "5G/ODU",
-        "cat": "A",
-        "rfitDate": "11-May-2026",
-        "agingDays": 22,
-        "ssvSubDate": "16-May-2026",
-        "ssvSubStatus": "Submitted",
-        "ho5Date": ""
-      },
-      {
-        "id": "W2808",
-        "gov": "JEDDAH",
-        "city": "JEDDAH",
-        "activity": "5G/ODU",
-        "cat": "A",
-        "rfitDate": "11-May-2026",
-        "agingDays": 22,
-        "ssvSubDate": "12-May-2026",
-        "ssvSubStatus": "Submitted",
-        "ho5Date": ""
-      },
-      {
-        "id": "W3610",
-        "gov": "MAKKAH",
-        "city": "MAKKAH AL MUKARRAMAH",
-        "activity": "5G/ODU",
-        "cat": "A",
-        "rfitDate": "11-May-2026",
-        "agingDays": 22,
-        "ssvSubDate": "13-May-2026",
-        "ssvSubStatus": "Submitted",
-        "ho5Date": "18-May-2026"
-      },
-      {
-        "id": "W2130",
-        "gov": "JEDDAH",
-        "city": "JEDDAH",
-        "activity": "5G",
-        "cat": "A",
-        "rfitDate": "12-May-2026",
-        "agingDays": 21,
-        "ssvSubDate": "13-May-2026",
-        "ssvSubStatus": "Submitted",
-        "ho5Date": ""
-      },
-      {
-        "id": "W2369",
-        "gov": "MAKKAH",
-        "city": "MAKKAH AL MUKARRAMAH",
-        "activity": "5G",
-        "cat": "A",
-        "rfitDate": "12-May-2026",
-        "agingDays": 21,
-        "ssvSubDate": "13-May-2026",
-        "ssvSubStatus": "Submitted",
-        "ho5Date": "16-May-2026"
-      },
-      {
-        "id": "W2325",
-        "gov": "JEDDAH",
-        "city": "JEDDAH",
-        "activity": "5G",
-        "cat": "B",
-        "rfitDate": "12-May-2026",
-        "agingDays": 21,
-        "ssvSubDate": "13-May-2026",
-        "ssvSubStatus": "Submitted",
-        "ho5Date": ""
-      },
-      {
-        "id": "W4479",
-        "gov": "MAKKAH",
-        "city": "MAKKAH AL MUKARRAMAH",
-        "activity": "5G",
-        "cat": "A",
-        "rfitDate": "12-May-2026",
-        "agingDays": 21,
-        "ssvSubDate": "13-May-2026",
-        "ssvSubStatus": "Submitted",
-        "ho5Date": ""
-      },
-      {
-        "id": "W4730",
-        "gov": "Makkah",
-        "city": "MAKKAH AL MUKARRAMAH",
-        "activity": "5G",
-        "cat": "A",
-        "rfitDate": "12-May-2026",
-        "agingDays": 21,
-        "ssvSubDate": "16-May-2026",
-        "ssvSubStatus": "Submitted",
-        "ho5Date": ""
-      },
-      {
-        "id": "W3655",
-        "gov": "MAKKAH",
-        "city": "MAKKAH AL MUKARRAMAH",
-        "activity": "5G",
-        "cat": "A",
-        "rfitDate": "13-May-2026",
-        "agingDays": 20,
-        "ssvSubDate": "16-May-2026",
-        "ssvSubStatus": "Submitted",
-        "ho5Date": ""
-      },
-      {
-        "id": "W4238",
-        "gov": "JEDDAH",
-        "city": "JEDDAH",
-        "activity": "5G",
-        "cat": "A",
-        "rfitDate": "13-May-2026",
-        "agingDays": 20,
-        "ssvSubDate": "16-May-2026",
-        "ssvSubStatus": "Submitted",
-        "ho5Date": ""
-      },
-      {
-        "id": "W6457",
-        "gov": "AT TAIF",
-        "city": "AT TAIF",
-        "activity": "5G",
-        "cat": "A",
-        "rfitDate": "13-May-2026",
-        "agingDays": 20,
-        "ssvSubDate": "16-May-2026",
-        "ssvSubStatus": "Submitted",
-        "ho5Date": ""
-      },
-      {
-        "id": "W2364",
-        "gov": "MAKKAH",
-        "city": "MAKKAH AL MUKARRAMAH",
-        "activity": "5G",
-        "cat": "A",
-        "rfitDate": "13-May-2026",
-        "agingDays": 20,
-        "ssvSubDate": "16-May-2026",
-        "ssvSubStatus": "Submitted",
-        "ho5Date": ""
-      },
-      {
-        "id": "W2222",
-        "gov": "JEDDAH",
-        "city": "JEDDAH",
-        "activity": "5G/ODU",
-        "cat": "A",
-        "rfitDate": "13-May-2026",
-        "agingDays": 20,
-        "ssvSubDate": "17-May-2026",
-        "ssvSubStatus": "Submitted",
-        "ho5Date": ""
-      },
-      {
-        "id": "W2215",
-        "gov": "JEDDAH",
-        "city": "JEDDAH",
-        "activity": "4G/5G",
-        "cat": "—",
-        "rfitDate": "15-May-2026",
-        "agingDays": 18,
-        "ssvSubDate": "18-May-2026",
-        "ssvSubStatus": "Submitted",
-        "ho5Date": ""
-      },
-      {
-        "id": "W6466",
-        "gov": "MAKKAH",
-        "city": "MAKKAH AL MUKARRAMAH",
-        "activity": "5G",
-        "cat": "A",
-        "rfitDate": "15-May-2026",
-        "agingDays": 18,
-        "ssvSubDate": "17-May-2026",
-        "ssvSubStatus": "Submitted",
-        "ho5Date": ""
-      },
-      {
-        "id": "W3909",
-        "gov": "JEDDAH",
-        "city": "JEDDAH",
-        "activity": "5G",
-        "cat": "—",
-        "rfitDate": "15-May-2026",
-        "agingDays": 18,
-        "ssvSubDate": "18-May-2026",
-        "ssvSubStatus": "Submitted",
-        "ho5Date": ""
-      },
-      {
-        "id": "W3883",
-        "gov": "JEDDAH",
-        "city": "JEDDAH",
-        "activity": "5G",
-        "cat": "A",
-        "rfitDate": "15-May-2026",
-        "agingDays": 18,
-        "ssvSubDate": "18-May-2026",
-        "ssvSubStatus": "Submitted",
-        "ho5Date": ""
-      },
-      {
-        "id": "W2382",
-        "gov": "MAKKAH",
-        "city": "MAKKAH AL MUKARRAMAH",
-        "activity": "5G",
-        "cat": "—",
-        "rfitDate": "15-May-2026",
-        "agingDays": 18,
-        "ssvSubDate": "18-May-2026",
-        "ssvSubStatus": "Submitted",
-        "ho5Date": ""
-      },
-      {
-        "id": "W4020",
-        "gov": "AT TAIF",
-        "city": "AT TAIF",
-        "activity": "5G",
-        "cat": "—",
-        "rfitDate": "15-May-2026",
-        "agingDays": 18,
-        "ssvSubDate": "",
-        "ssvSubStatus": "Not Submitted",
-        "ho5Date": ""
-      },
-      {
-        "id": "W5538",
-        "gov": "MAKKAH",
-        "city": "MAKKAH AL MUKARRAMAH",
-        "activity": "5G",
-        "cat": "A",
-        "rfitDate": "15-May-2026",
-        "agingDays": 18,
-        "ssvSubDate": "",
-        "ssvSubStatus": "Not Submitted",
-        "ho5Date": ""
-      },
-      {
-        "id": "W2236",
-        "gov": "JEDDAH",
-        "city": "JEDDAH",
-        "activity": "5G/ODU",
-        "cat": "—",
-        "rfitDate": "15-May-2026",
-        "agingDays": 18,
-        "ssvSubDate": "18-May-2026",
-        "ssvSubStatus": "Submitted",
-        "ho5Date": ""
-      },
-      {
-        "id": "W4186",
-        "gov": "JEDDAH",
-        "city": "JEDDAH",
-        "activity": "5G",
-        "cat": "—",
-        "rfitDate": "15-May-2026",
-        "agingDays": 18,
-        "ssvSubDate": "17-May-2026",
-        "ssvSubStatus": "Submitted",
-        "ho5Date": ""
-      },
-      {
-        "id": "W5506",
-        "gov": "MAKKAH",
-        "city": "MAKKAH AL MUKARRAMAH",
-        "activity": "5G",
-        "cat": "A",
-        "rfitDate": "16-May-2026",
-        "agingDays": 17,
-        "ssvSubDate": "19-May-2026",
-        "ssvSubStatus": "Submitted",
-        "ho5Date": ""
-      },
-      {
-        "id": "W2813",
-        "gov": "JEDDAH",
-        "city": "JEDDAH",
-        "activity": "5G",
-        "cat": "—",
-        "rfitDate": "16-May-2026",
-        "agingDays": 17,
-        "ssvSubDate": "19-May-2026",
-        "ssvSubStatus": "Submitted",
-        "ho5Date": ""
-      },
-      {
-        "id": "W4407",
-        "gov": "JEDDAH",
-        "city": "JEDDAH",
-        "activity": "5G",
-        "cat": "—",
-        "rfitDate": "16-May-2026",
-        "agingDays": 17,
-        "ssvSubDate": "19-May-2026",
-        "ssvSubStatus": "Submitted",
-        "ho5Date": ""
-      },
-      {
-        "id": "W2301",
-        "gov": "JEDDAH",
-        "city": "JEDDAH",
-        "activity": "5G",
-        "cat": "—",
-        "rfitDate": "16-May-2026",
-        "agingDays": 17,
-        "ssvSubDate": "18-May-2026",
-        "ssvSubStatus": "Submitted",
-        "ho5Date": ""
-      },
-      {
-        "id": "W5743",
-        "gov": "JEDDAH",
-        "city": "JEDDAH",
-        "activity": "5G",
-        "cat": "—",
-        "rfitDate": "16-May-2026",
-        "agingDays": 17,
-        "ssvSubDate": "18-May-2026",
-        "ssvSubStatus": "Submitted",
-        "ho5Date": ""
-      },
-      {
-        "id": "W6553",
-        "gov": "JEDDAH",
-        "city": "JEDDAH",
-        "activity": "5G",
-        "cat": "—",
-        "rfitDate": "16-May-2026",
-        "agingDays": 17,
-        "ssvSubDate": "19-May-2026",
-        "ssvSubStatus": "Submitted",
-        "ho5Date": ""
-      },
-      {
-        "id": "W4564",
-        "gov": "JEDDAH",
-        "city": "JEDDAH",
-        "activity": "4G/5G",
-        "cat": "—",
-        "rfitDate": "17-May-2026",
-        "agingDays": 16,
-        "ssvSubDate": "19-May-2026",
-        "ssvSubStatus": "Submitted",
-        "ho5Date": ""
-      },
-      {
-        "id": "W6027",
-        "gov": "JEDDAH",
-        "city": "JEDDAH",
-        "activity": "5G",
-        "cat": "—",
-        "rfitDate": "17-May-2026",
-        "agingDays": 16,
-        "ssvSubDate": "19-May-2026",
-        "ssvSubStatus": "Submitted",
-        "ho5Date": ""
-      },
-      {
-        "id": "W4692",
-        "gov": "JEDDAH",
-        "city": "JEDDAH",
-        "activity": "5G",
-        "cat": "—",
-        "rfitDate": "17-May-2026",
-        "agingDays": 16,
-        "ssvSubDate": "",
-        "ssvSubStatus": "Not Submitted",
-        "ho5Date": ""
-      },
-      {
-        "id": "W5730",
-        "gov": "JEDDAH",
-        "city": "JEDDAH",
-        "activity": "5G/ODU",
-        "cat": "—",
-        "rfitDate": "17-May-2026",
-        "agingDays": 16,
-        "ssvSubDate": "19-May-2026",
-        "ssvSubStatus": "Submitted",
-        "ho5Date": ""
-      },
-      {
-        "id": "W2110",
-        "gov": "JEDDAH",
-        "city": "JEDDAH",
-        "activity": "5G",
-        "cat": "—",
-        "rfitDate": "17-May-2026",
-        "agingDays": 16,
-        "ssvSubDate": "",
-        "ssvSubStatus": "Not Submitted",
-        "ho5Date": ""
-      },
-      {
-        "id": "W2192",
-        "gov": "JEDDAH",
-        "city": "JEDDAH",
-        "activity": "5G",
-        "cat": "—",
-        "rfitDate": "17-May-2026",
-        "agingDays": 16,
-        "ssvSubDate": "",
-        "ssvSubStatus": "Not Submitted",
-        "ho5Date": ""
-      },
-      {
-        "id": "W4426",
-        "gov": "",
-        "city": "JEDDAH",
-        "activity": "5G",
-        "cat": "—",
-        "rfitDate": "17-May-2026",
-        "agingDays": 16,
-        "ssvSubDate": "20-May-2026",
-        "ssvSubStatus": "Submitted",
-        "ho5Date": ""
-      },
-      {
-        "id": "W2862",
-        "gov": "JEDDAH",
-        "city": "JEDDAH",
-        "activity": "5G",
-        "cat": "—",
-        "rfitDate": "17-May-2026",
-        "agingDays": 16,
-        "ssvSubDate": "20-May-2026",
-        "ssvSubStatus": "Submitted",
-        "ho5Date": ""
-      },
-      {
-        "id": "W2017",
-        "gov": "JEDDAH",
-        "city": "JEDDAH",
-        "activity": "5G",
-        "cat": "—",
-        "rfitDate": "17-May-2026",
-        "agingDays": 16,
-        "ssvSubDate": "20-May-2026",
-        "ssvSubStatus": "Submitted",
-        "ho5Date": ""
-      },
-      {
-        "id": "W2838",
-        "gov": "JEDDAH",
-        "city": "JEDDAH",
-        "activity": "5G",
-        "cat": "—",
-        "rfitDate": "18-May-2026",
-        "agingDays": 15,
-        "ssvSubDate": "",
-        "ssvSubStatus": "Not Submitted",
-        "ho5Date": ""
-      },
-      {
-        "id": "W3186",
-        "gov": "JEDDAH",
-        "city": "JEDDAH",
-        "activity": "5G",
-        "cat": "—",
-        "rfitDate": "18-May-2026",
-        "agingDays": 15,
-        "ssvSubDate": "",
-        "ssvSubStatus": "Not Submitted",
-        "ho5Date": ""
-      },
-      {
-        "id": "W2117",
-        "gov": "JEDDAH",
-        "city": "JEDDAH",
-        "activity": "5G",
-        "cat": "—",
-        "rfitDate": "18-May-2026",
-        "agingDays": 15,
-        "ssvSubDate": "",
-        "ssvSubStatus": "Not Submitted",
-        "ho5Date": ""
-      },
-      {
-        "id": "W3882",
-        "gov": "JEDDAH",
-        "city": "JEDDAH",
-        "activity": "5G",
-        "cat": "—",
-        "rfitDate": "18-May-2026",
-        "agingDays": 15,
-        "ssvSubDate": "",
-        "ssvSubStatus": "Not Submitted",
-        "ho5Date": ""
-      },
-      {
-        "id": "W6157",
-        "gov": "JEDDAH",
-        "city": "JEDDAH",
-        "activity": "5G",
-        "cat": "—",
-        "rfitDate": "18-May-2026",
-        "agingDays": 15,
-        "ssvSubDate": "",
-        "ssvSubStatus": "Not Submitted",
-        "ho5Date": ""
-      },
-      {
-        "id": "W6015",
-        "gov": "JEDDAH",
-        "city": "JEDDAH",
-        "activity": "5G",
-        "cat": "—",
-        "rfitDate": "19-May-2026",
-        "agingDays": 14,
-        "ssvSubDate": "",
-        "ssvSubStatus": "Not Submitted",
-        "ho5Date": ""
-      },
-      {
-        "id": "W2846",
-        "gov": "JEDDAH",
-        "city": "JEDDAH",
-        "activity": "5G",
-        "cat": "—",
-        "rfitDate": "19-May-2026",
-        "agingDays": 14,
-        "ssvSubDate": "",
-        "ssvSubStatus": "Not Submitted",
-        "ho5Date": ""
-      },
-      {
-        "id": "W2214",
-        "gov": "JEDDAH",
-        "city": "JEDDAH",
-        "activity": "5G",
-        "cat": "—",
-        "rfitDate": "19-May-2026",
-        "agingDays": 14,
-        "ssvSubDate": "",
-        "ssvSubStatus": "Not Submitted",
-        "ho5Date": ""
-      },
-      {
-        "id": "W2260",
-        "gov": "JEDDAH",
-        "city": "JEDDAH",
-        "activity": "5G",
-        "cat": "—",
-        "rfitDate": "19-May-2026",
-        "agingDays": 14,
-        "ssvSubDate": "",
-        "ssvSubStatus": "Not Submitted",
-        "ho5Date": ""
-      },
-      {
-        "id": "W2880",
-        "gov": "JEDDAH",
-        "city": "JEDDAH",
-        "activity": "5G",
-        "cat": "—",
-        "rfitDate": "19-May-2026",
-        "agingDays": 14,
-        "ssvSubDate": "",
-        "ssvSubStatus": "Not Submitted",
-        "ho5Date": ""
-      },
-      {
-        "id": "W5815",
-        "gov": "JEDDAH",
-        "city": "JEDDAH",
-        "activity": "5G",
-        "cat": "—",
-        "rfitDate": "19-May-2026",
-        "agingDays": 14,
-        "ssvSubDate": "",
-        "ssvSubStatus": "Not Submitted",
-        "ho5Date": ""
-      }
-    ]
-  },
+    {
+      "id": "W6350",
+      "gov": "JEDDAH",
+      "city": "JEDDAH",
+      "activity": "5G",
+      "cat": "A",
+      "rfitDate": "15-Apr-2026",
+      "rfitISO": "2026-04-15",
+      "ssvSubDate": "22-Apr-2026",
+      "ssvSubStatus": "Submitted",
+      "ho5Date": ""
+    },
+    {
+      "id": "W4696",
+      "gov": "JEDDAH",
+      "city": "JEDDAH",
+      "activity": "5G",
+      "cat": "A",
+      "rfitDate": "21-Apr-2026",
+      "rfitISO": "2026-04-21",
+      "ssvSubDate": "25-Apr-2026",
+      "ssvSubStatus": "Submitted",
+      "ho5Date": ""
+    },
+    {
+      "id": "W4896",
+      "gov": "AL BAHA",
+      "city": "AL BAHA",
+      "activity": "",
+      "cat": "A",
+      "rfitDate": "26-Apr-2026",
+      "rfitISO": "2026-04-26",
+      "ssvSubDate": "06-May-2026",
+      "ssvSubStatus": "Submitted",
+      "ho5Date": ""
+    },
+    {
+      "id": "W4205",
+      "gov": "JEDDAH",
+      "city": "JEDDAH",
+      "activity": "5G/ODU",
+      "cat": "A",
+      "rfitDate": "28-Apr-2026",
+      "rfitISO": "2026-04-28",
+      "ssvSubDate": "29-Apr-2026",
+      "ssvSubStatus": "Submitted",
+      "ho5Date": ""
+    },
+    {
+      "id": "W5669",
+      "gov": "ADHIM",
+      "city": "ADHIM",
+      "activity": "5G",
+      "cat": "A",
+      "rfitDate": "02-May-2026",
+      "rfitISO": "2026-05-02",
+      "ssvSubDate": "05-May-2026",
+      "ssvSubStatus": "Submitted",
+      "ho5Date": "13-May-2026"
+    },
+    {
+      "id": "W3404",
+      "gov": "MAKKAH AL MUKARRAMAH",
+      "city": "MAKKAH AL MUKARRAMAH",
+      "activity": "5G",
+      "cat": "A",
+      "rfitDate": "02-May-2026",
+      "rfitISO": "2026-05-02",
+      "ssvSubDate": "05-May-2026",
+      "ssvSubStatus": "Submitted",
+      "ho5Date": "11-May-2026"
+    },
+    {
+      "id": "W3574",
+      "gov": "JEDDAH",
+      "city": "JEDDAH",
+      "activity": "5G/ODU",
+      "cat": "A",
+      "rfitDate": "02-May-2026",
+      "rfitISO": "2026-05-02",
+      "ssvSubDate": "05-May-2026",
+      "ssvSubStatus": "Submitted",
+      "ho5Date": "12-May-2026"
+    },
+    {
+      "id": "W3929",
+      "gov": "MAKKAH",
+      "city": "MAKKAH AL MUKARRAMAH",
+      "activity": "5G/ODU",
+      "cat": "A",
+      "rfitDate": "03-May-2026",
+      "rfitISO": "2026-05-03",
+      "ssvSubDate": "06-May-2026",
+      "ssvSubStatus": "Submitted",
+      "ho5Date": ""
+    },
+    {
+      "id": "W5896",
+      "gov": "JEDDAH",
+      "city": "JEDDAH",
+      "activity": "5G/ODU",
+      "cat": "A",
+      "rfitDate": "03-May-2026",
+      "rfitISO": "2026-05-03",
+      "ssvSubDate": "05-May-2026",
+      "ssvSubStatus": "Submitted",
+      "ho5Date": ""
+    },
+    {
+      "id": "W3671",
+      "gov": "AT TAIF",
+      "city": "AT TAIF",
+      "activity": "5G/ODU",
+      "cat": "A",
+      "rfitDate": "03-May-2026",
+      "rfitISO": "2026-05-03",
+      "ssvSubDate": "12-May-2026",
+      "ssvSubStatus": "Submitted",
+      "ho5Date": "12-May-2026"
+    },
+    {
+      "id": "W4167",
+      "gov": "JEDDAH",
+      "city": "JEDDAH",
+      "activity": "5G/ODU",
+      "cat": "A",
+      "rfitDate": "04-May-2026",
+      "rfitISO": "2026-05-04",
+      "ssvSubDate": "06-May-2026",
+      "ssvSubStatus": "Submitted",
+      "ho5Date": ""
+    },
+    {
+      "id": "W6147",
+      "gov": "JEDDAH",
+      "city": "JEDDAH",
+      "activity": "5G",
+      "cat": "A",
+      "rfitDate": "05-May-2026",
+      "rfitISO": "2026-05-05",
+      "ssvSubDate": "09-May-2026",
+      "ssvSubStatus": "Submitted",
+      "ho5Date": "16-May-2026"
+    },
+    {
+      "id": "W2809",
+      "gov": "JEDDAH",
+      "city": "JEDDAH",
+      "activity": "5G/ODU",
+      "cat": "A",
+      "rfitDate": "05-May-2026",
+      "rfitISO": "2026-05-05",
+      "ssvSubDate": "06-May-2026",
+      "ssvSubStatus": "Submitted",
+      "ho5Date": ""
+    },
+    {
+      "id": "W6263",
+      "gov": "JEDDAH",
+      "city": "JEDDAH",
+      "activity": "5G",
+      "cat": "C",
+      "rfitDate": "06-May-2026",
+      "rfitISO": "2026-05-06",
+      "ssvSubDate": "09-May-2026",
+      "ssvSubStatus": "Submitted",
+      "ho5Date": "13-May-2026"
+    },
+    {
+      "id": "W3358",
+      "gov": "MAKKAH",
+      "city": "MAKKAH AL MUKARRAMAH",
+      "activity": "4G/5G/ODU",
+      "cat": "A",
+      "rfitDate": "09-May-2026",
+      "rfitISO": "2026-05-09",
+      "ssvSubDate": "12-May-2026",
+      "ssvSubStatus": "Submitted",
+      "ho5Date": "18-May-2026"
+    },
+    {
+      "id": "W4168",
+      "gov": "JEDDAH",
+      "city": "JEDDAH",
+      "activity": "5G/ODU",
+      "cat": "A",
+      "rfitDate": "09-May-2026",
+      "rfitISO": "2026-05-09",
+      "ssvSubDate": "12-May-2026",
+      "ssvSubStatus": "Submitted",
+      "ho5Date": "18-May-2026"
+    },
+    {
+      "id": "W5644",
+      "gov": "JEDDAH",
+      "city": "JEDDAH",
+      "activity": "5G/ODU",
+      "cat": "A",
+      "rfitDate": "09-May-2026",
+      "rfitISO": "2026-05-09",
+      "ssvSubDate": "10-May-2026",
+      "ssvSubStatus": "Submitted",
+      "ho5Date": ""
+    },
+    {
+      "id": "W2135",
+      "gov": "JEDDAH",
+      "city": "JEDDAH",
+      "activity": "5G",
+      "cat": "A",
+      "rfitDate": "09-May-2026",
+      "rfitISO": "2026-05-09",
+      "ssvSubDate": "11-May-2026",
+      "ssvSubStatus": "Submitted",
+      "ho5Date": ""
+    },
+    {
+      "id": "W2394",
+      "gov": "MAKKAH",
+      "city": "MAKKAH AL MUKARRAMAH",
+      "activity": "5G",
+      "cat": "A",
+      "rfitDate": "10-May-2026",
+      "rfitISO": "2026-05-10",
+      "ssvSubDate": "11-May-2026",
+      "ssvSubStatus": "Submitted",
+      "ho5Date": "16-May-2026"
+    },
+    {
+      "id": "W5757",
+      "gov": "JEDDAH",
+      "city": "JEDDAH",
+      "activity": "5G",
+      "cat": "A",
+      "rfitDate": "10-May-2026",
+      "rfitISO": "2026-05-10",
+      "ssvSubDate": "13-May-2026",
+      "ssvSubStatus": "Submitted",
+      "ho5Date": ""
+    },
+    {
+      "id": "W6322",
+      "gov": "MAKKAH",
+      "city": "MAKKAH AL MUKARRAMAH",
+      "activity": "5G",
+      "cat": "A",
+      "rfitDate": "11-May-2026",
+      "rfitISO": "2026-05-11",
+      "ssvSubDate": "13-May-2026",
+      "ssvSubStatus": "Submitted",
+      "ho5Date": ""
+    },
+    {
+      "id": "W6458",
+      "gov": "MAKKAH",
+      "city": "MAKKAH AL MUKARRAMAH",
+      "activity": "2G/5G/ODU",
+      "cat": "A",
+      "rfitDate": "11-May-2026",
+      "rfitISO": "2026-05-11",
+      "ssvSubDate": "12-May-2026",
+      "ssvSubStatus": "Submitted",
+      "ho5Date": "18-May-2026"
+    },
+    {
+      "id": "W2086",
+      "gov": "MAKKAH",
+      "city": "MAKKAH AL MUKARRAMAH",
+      "activity": "5G/ODU",
+      "cat": "A",
+      "rfitDate": "11-May-2026",
+      "rfitISO": "2026-05-11",
+      "ssvSubDate": "16-May-2026",
+      "ssvSubStatus": "Submitted",
+      "ho5Date": ""
+    },
+    {
+      "id": "W2808",
+      "gov": "JEDDAH",
+      "city": "JEDDAH",
+      "activity": "5G/ODU",
+      "cat": "A",
+      "rfitDate": "11-May-2026",
+      "rfitISO": "2026-05-11",
+      "ssvSubDate": "12-May-2026",
+      "ssvSubStatus": "Submitted",
+      "ho5Date": ""
+    },
+    {
+      "id": "W3610",
+      "gov": "MAKKAH",
+      "city": "MAKKAH AL MUKARRAMAH",
+      "activity": "5G/ODU",
+      "cat": "A",
+      "rfitDate": "11-May-2026",
+      "rfitISO": "2026-05-11",
+      "ssvSubDate": "13-May-2026",
+      "ssvSubStatus": "Submitted",
+      "ho5Date": "18-May-2026"
+    },
+    {
+      "id": "W2130",
+      "gov": "JEDDAH",
+      "city": "JEDDAH",
+      "activity": "5G",
+      "cat": "A",
+      "rfitDate": "12-May-2026",
+      "rfitISO": "2026-05-12",
+      "ssvSubDate": "13-May-2026",
+      "ssvSubStatus": "Submitted",
+      "ho5Date": ""
+    },
+    {
+      "id": "W2369",
+      "gov": "MAKKAH",
+      "city": "MAKKAH AL MUKARRAMAH",
+      "activity": "5G",
+      "cat": "A",
+      "rfitDate": "12-May-2026",
+      "rfitISO": "2026-05-12",
+      "ssvSubDate": "13-May-2026",
+      "ssvSubStatus": "Submitted",
+      "ho5Date": "16-May-2026"
+    },
+    {
+      "id": "W2325",
+      "gov": "JEDDAH",
+      "city": "JEDDAH",
+      "activity": "5G",
+      "cat": "B",
+      "rfitDate": "12-May-2026",
+      "rfitISO": "2026-05-12",
+      "ssvSubDate": "13-May-2026",
+      "ssvSubStatus": "Submitted",
+      "ho5Date": ""
+    },
+    {
+      "id": "W4479",
+      "gov": "MAKKAH",
+      "city": "MAKKAH AL MUKARRAMAH",
+      "activity": "5G",
+      "cat": "A",
+      "rfitDate": "12-May-2026",
+      "rfitISO": "2026-05-12",
+      "ssvSubDate": "13-May-2026",
+      "ssvSubStatus": "Submitted",
+      "ho5Date": ""
+    },
+    {
+      "id": "W4730",
+      "gov": "Makkah",
+      "city": "MAKKAH AL MUKARRAMAH",
+      "activity": "5G",
+      "cat": "A",
+      "rfitDate": "12-May-2026",
+      "rfitISO": "2026-05-12",
+      "ssvSubDate": "16-May-2026",
+      "ssvSubStatus": "Submitted",
+      "ho5Date": ""
+    },
+    {
+      "id": "W3655",
+      "gov": "MAKKAH",
+      "city": "MAKKAH AL MUKARRAMAH",
+      "activity": "5G",
+      "cat": "A",
+      "rfitDate": "13-May-2026",
+      "rfitISO": "2026-05-13",
+      "ssvSubDate": "16-May-2026",
+      "ssvSubStatus": "Submitted",
+      "ho5Date": ""
+    },
+    {
+      "id": "W4238",
+      "gov": "JEDDAH",
+      "city": "JEDDAH",
+      "activity": "5G",
+      "cat": "A",
+      "rfitDate": "13-May-2026",
+      "rfitISO": "2026-05-13",
+      "ssvSubDate": "16-May-2026",
+      "ssvSubStatus": "Submitted",
+      "ho5Date": ""
+    },
+    {
+      "id": "W6457",
+      "gov": "AT TAIF",
+      "city": "AT TAIF",
+      "activity": "5G",
+      "cat": "A",
+      "rfitDate": "13-May-2026",
+      "rfitISO": "2026-05-13",
+      "ssvSubDate": "16-May-2026",
+      "ssvSubStatus": "Submitted",
+      "ho5Date": ""
+    },
+    {
+      "id": "W2364",
+      "gov": "MAKKAH",
+      "city": "MAKKAH AL MUKARRAMAH",
+      "activity": "5G",
+      "cat": "A",
+      "rfitDate": "13-May-2026",
+      "rfitISO": "2026-05-13",
+      "ssvSubDate": "16-May-2026",
+      "ssvSubStatus": "Submitted",
+      "ho5Date": ""
+    },
+    {
+      "id": "W2222",
+      "gov": "JEDDAH",
+      "city": "JEDDAH",
+      "activity": "5G/ODU",
+      "cat": "A",
+      "rfitDate": "13-May-2026",
+      "rfitISO": "2026-05-13",
+      "ssvSubDate": "17-May-2026",
+      "ssvSubStatus": "Submitted",
+      "ho5Date": ""
+    },
+    {
+      "id": "W2215",
+      "gov": "JEDDAH",
+      "city": "JEDDAH",
+      "activity": "4G/5G",
+      "cat": "—",
+      "rfitDate": "15-May-2026",
+      "rfitISO": "2026-05-15",
+      "ssvSubDate": "18-May-2026",
+      "ssvSubStatus": "Submitted",
+      "ho5Date": ""
+    },
+    {
+      "id": "W6466",
+      "gov": "MAKKAH",
+      "city": "MAKKAH AL MUKARRAMAH",
+      "activity": "5G",
+      "cat": "A",
+      "rfitDate": "15-May-2026",
+      "rfitISO": "2026-05-15",
+      "ssvSubDate": "17-May-2026",
+      "ssvSubStatus": "Submitted",
+      "ho5Date": ""
+    },
+    {
+      "id": "W3909",
+      "gov": "JEDDAH",
+      "city": "JEDDAH",
+      "activity": "5G",
+      "cat": "—",
+      "rfitDate": "15-May-2026",
+      "rfitISO": "2026-05-15",
+      "ssvSubDate": "18-May-2026",
+      "ssvSubStatus": "Submitted",
+      "ho5Date": ""
+    },
+    {
+      "id": "W3883",
+      "gov": "JEDDAH",
+      "city": "JEDDAH",
+      "activity": "5G",
+      "cat": "A",
+      "rfitDate": "15-May-2026",
+      "rfitISO": "2026-05-15",
+      "ssvSubDate": "18-May-2026",
+      "ssvSubStatus": "Submitted",
+      "ho5Date": ""
+    },
+    {
+      "id": "W2382",
+      "gov": "MAKKAH",
+      "city": "MAKKAH AL MUKARRAMAH",
+      "activity": "5G",
+      "cat": "—",
+      "rfitDate": "15-May-2026",
+      "rfitISO": "2026-05-15",
+      "ssvSubDate": "18-May-2026",
+      "ssvSubStatus": "Submitted",
+      "ho5Date": ""
+    },
+    {
+      "id": "W4020",
+      "gov": "AT TAIF",
+      "city": "AT TAIF",
+      "activity": "5G",
+      "cat": "—",
+      "rfitDate": "15-May-2026",
+      "rfitISO": "2026-05-15",
+      "ssvSubDate": "",
+      "ssvSubStatus": "Not Submitted",
+      "ho5Date": ""
+    },
+    {
+      "id": "W5538",
+      "gov": "MAKKAH",
+      "city": "MAKKAH AL MUKARRAMAH",
+      "activity": "5G",
+      "cat": "A",
+      "rfitDate": "15-May-2026",
+      "rfitISO": "2026-05-15",
+      "ssvSubDate": "",
+      "ssvSubStatus": "Not Submitted",
+      "ho5Date": ""
+    },
+    {
+      "id": "W2236",
+      "gov": "JEDDAH",
+      "city": "JEDDAH",
+      "activity": "5G/ODU",
+      "cat": "—",
+      "rfitDate": "15-May-2026",
+      "rfitISO": "2026-05-15",
+      "ssvSubDate": "18-May-2026",
+      "ssvSubStatus": "Submitted",
+      "ho5Date": ""
+    },
+    {
+      "id": "W4186",
+      "gov": "JEDDAH",
+      "city": "JEDDAH",
+      "activity": "5G",
+      "cat": "—",
+      "rfitDate": "15-May-2026",
+      "rfitISO": "2026-05-15",
+      "ssvSubDate": "17-May-2026",
+      "ssvSubStatus": "Submitted",
+      "ho5Date": ""
+    },
+    {
+      "id": "W5506",
+      "gov": "MAKKAH",
+      "city": "MAKKAH AL MUKARRAMAH",
+      "activity": "5G",
+      "cat": "A",
+      "rfitDate": "16-May-2026",
+      "rfitISO": "2026-05-16",
+      "ssvSubDate": "19-May-2026",
+      "ssvSubStatus": "Submitted",
+      "ho5Date": ""
+    },
+    {
+      "id": "W2813",
+      "gov": "JEDDAH",
+      "city": "JEDDAH",
+      "activity": "5G",
+      "cat": "—",
+      "rfitDate": "16-May-2026",
+      "rfitISO": "2026-05-16",
+      "ssvSubDate": "19-May-2026",
+      "ssvSubStatus": "Submitted",
+      "ho5Date": ""
+    },
+    {
+      "id": "W4407",
+      "gov": "JEDDAH",
+      "city": "JEDDAH",
+      "activity": "5G",
+      "cat": "—",
+      "rfitDate": "16-May-2026",
+      "rfitISO": "2026-05-16",
+      "ssvSubDate": "19-May-2026",
+      "ssvSubStatus": "Submitted",
+      "ho5Date": ""
+    },
+    {
+      "id": "W2301",
+      "gov": "JEDDAH",
+      "city": "JEDDAH",
+      "activity": "5G",
+      "cat": "—",
+      "rfitDate": "16-May-2026",
+      "rfitISO": "2026-05-16",
+      "ssvSubDate": "18-May-2026",
+      "ssvSubStatus": "Submitted",
+      "ho5Date": ""
+    },
+    {
+      "id": "W5743",
+      "gov": "JEDDAH",
+      "city": "JEDDAH",
+      "activity": "5G",
+      "cat": "—",
+      "rfitDate": "16-May-2026",
+      "rfitISO": "2026-05-16",
+      "ssvSubDate": "18-May-2026",
+      "ssvSubStatus": "Submitted",
+      "ho5Date": ""
+    },
+    {
+      "id": "W6553",
+      "gov": "JEDDAH",
+      "city": "JEDDAH",
+      "activity": "5G",
+      "cat": "—",
+      "rfitDate": "16-May-2026",
+      "rfitISO": "2026-05-16",
+      "ssvSubDate": "19-May-2026",
+      "ssvSubStatus": "Submitted",
+      "ho5Date": ""
+    },
+    {
+      "id": "W4564",
+      "gov": "JEDDAH",
+      "city": "JEDDAH",
+      "activity": "4G/5G",
+      "cat": "—",
+      "rfitDate": "17-May-2026",
+      "rfitISO": "2026-05-17",
+      "ssvSubDate": "19-May-2026",
+      "ssvSubStatus": "Submitted",
+      "ho5Date": ""
+    },
+    {
+      "id": "W6027",
+      "gov": "JEDDAH",
+      "city": "JEDDAH",
+      "activity": "5G",
+      "cat": "—",
+      "rfitDate": "17-May-2026",
+      "rfitISO": "2026-05-17",
+      "ssvSubDate": "19-May-2026",
+      "ssvSubStatus": "Submitted",
+      "ho5Date": ""
+    },
+    {
+      "id": "W4692",
+      "gov": "JEDDAH",
+      "city": "JEDDAH",
+      "activity": "5G",
+      "cat": "—",
+      "rfitDate": "17-May-2026",
+      "rfitISO": "2026-05-17",
+      "ssvSubDate": "",
+      "ssvSubStatus": "Not Submitted",
+      "ho5Date": ""
+    },
+    {
+      "id": "W5730",
+      "gov": "JEDDAH",
+      "city": "JEDDAH",
+      "activity": "5G/ODU",
+      "cat": "—",
+      "rfitDate": "17-May-2026",
+      "rfitISO": "2026-05-17",
+      "ssvSubDate": "19-May-2026",
+      "ssvSubStatus": "Submitted",
+      "ho5Date": ""
+    },
+    {
+      "id": "W2110",
+      "gov": "JEDDAH",
+      "city": "JEDDAH",
+      "activity": "5G",
+      "cat": "—",
+      "rfitDate": "17-May-2026",
+      "rfitISO": "2026-05-17",
+      "ssvSubDate": "",
+      "ssvSubStatus": "Not Submitted",
+      "ho5Date": ""
+    },
+    {
+      "id": "W2192",
+      "gov": "JEDDAH",
+      "city": "JEDDAH",
+      "activity": "5G",
+      "cat": "—",
+      "rfitDate": "17-May-2026",
+      "rfitISO": "2026-05-17",
+      "ssvSubDate": "",
+      "ssvSubStatus": "Not Submitted",
+      "ho5Date": ""
+    },
+    {
+      "id": "W4426",
+      "gov": "",
+      "city": "JEDDAH",
+      "activity": "5G",
+      "cat": "—",
+      "rfitDate": "17-May-2026",
+      "rfitISO": "2026-05-17",
+      "ssvSubDate": "20-May-2026",
+      "ssvSubStatus": "Submitted",
+      "ho5Date": ""
+    },
+    {
+      "id": "W2862",
+      "gov": "JEDDAH",
+      "city": "JEDDAH",
+      "activity": "5G",
+      "cat": "—",
+      "rfitDate": "17-May-2026",
+      "rfitISO": "2026-05-17",
+      "ssvSubDate": "20-May-2026",
+      "ssvSubStatus": "Submitted",
+      "ho5Date": ""
+    },
+    {
+      "id": "W2017",
+      "gov": "JEDDAH",
+      "city": "JEDDAH",
+      "activity": "5G",
+      "cat": "—",
+      "rfitDate": "17-May-2026",
+      "rfitISO": "2026-05-17",
+      "ssvSubDate": "20-May-2026",
+      "ssvSubStatus": "Submitted",
+      "ho5Date": ""
+    },
+    {
+      "id": "W2838",
+      "gov": "JEDDAH",
+      "city": "JEDDAH",
+      "activity": "5G",
+      "cat": "—",
+      "rfitDate": "18-May-2026",
+      "rfitISO": "2026-05-18",
+      "ssvSubDate": "",
+      "ssvSubStatus": "Not Submitted",
+      "ho5Date": ""
+    },
+    {
+      "id": "W3186",
+      "gov": "JEDDAH",
+      "city": "JEDDAH",
+      "activity": "5G",
+      "cat": "—",
+      "rfitDate": "18-May-2026",
+      "rfitISO": "2026-05-18",
+      "ssvSubDate": "",
+      "ssvSubStatus": "Not Submitted",
+      "ho5Date": ""
+    },
+    {
+      "id": "W2117",
+      "gov": "JEDDAH",
+      "city": "JEDDAH",
+      "activity": "5G",
+      "cat": "—",
+      "rfitDate": "18-May-2026",
+      "rfitISO": "2026-05-18",
+      "ssvSubDate": "",
+      "ssvSubStatus": "Not Submitted",
+      "ho5Date": ""
+    },
+    {
+      "id": "W3882",
+      "gov": "JEDDAH",
+      "city": "JEDDAH",
+      "activity": "5G",
+      "cat": "—",
+      "rfitDate": "18-May-2026",
+      "rfitISO": "2026-05-18",
+      "ssvSubDate": "",
+      "ssvSubStatus": "Not Submitted",
+      "ho5Date": ""
+    },
+    {
+      "id": "W6157",
+      "gov": "JEDDAH",
+      "city": "JEDDAH",
+      "activity": "5G",
+      "cat": "—",
+      "rfitDate": "18-May-2026",
+      "rfitISO": "2026-05-18",
+      "ssvSubDate": "",
+      "ssvSubStatus": "Not Submitted",
+      "ho5Date": ""
+    },
+    {
+      "id": "W6015",
+      "gov": "JEDDAH",
+      "city": "JEDDAH",
+      "activity": "5G",
+      "cat": "—",
+      "rfitDate": "19-May-2026",
+      "rfitISO": "2026-05-19",
+      "ssvSubDate": "",
+      "ssvSubStatus": "Not Submitted",
+      "ho5Date": ""
+    },
+    {
+      "id": "W2846",
+      "gov": "JEDDAH",
+      "city": "JEDDAH",
+      "activity": "5G",
+      "cat": "—",
+      "rfitDate": "19-May-2026",
+      "rfitISO": "2026-05-19",
+      "ssvSubDate": "",
+      "ssvSubStatus": "Not Submitted",
+      "ho5Date": ""
+    },
+    {
+      "id": "W2214",
+      "gov": "JEDDAH",
+      "city": "JEDDAH",
+      "activity": "5G",
+      "cat": "—",
+      "rfitDate": "19-May-2026",
+      "rfitISO": "2026-05-19",
+      "ssvSubDate": "",
+      "ssvSubStatus": "Not Submitted",
+      "ho5Date": ""
+    },
+    {
+      "id": "W2260",
+      "gov": "JEDDAH",
+      "city": "JEDDAH",
+      "activity": "5G",
+      "cat": "—",
+      "rfitDate": "19-May-2026",
+      "rfitISO": "2026-05-19",
+      "ssvSubDate": "",
+      "ssvSubStatus": "Not Submitted",
+      "ho5Date": ""
+    },
+    {
+      "id": "W2880",
+      "gov": "JEDDAH",
+      "city": "JEDDAH",
+      "activity": "5G",
+      "cat": "—",
+      "rfitDate": "19-May-2026",
+      "rfitISO": "2026-05-19",
+      "ssvSubDate": "",
+      "ssvSubStatus": "Not Submitted",
+      "ho5Date": ""
+    },
+    {
+      "id": "W5815",
+      "gov": "JEDDAH",
+      "city": "JEDDAH",
+      "activity": "5G",
+      "cat": "—",
+      "rfitDate": "19-May-2026",
+      "rfitISO": "2026-05-19",
+      "ssvSubDate": "",
+      "ssvSubStatus": "Not Submitted",
+      "ho5Date": ""
+    }
+  ],
   "itMonthChart": {
     "title": "IT Monthly Acceptance by Tab",
     "labels": [
@@ -10085,7 +9568,8 @@
       "Feb 26",
       "Mar 26",
       "Apr 26",
-      "May 26"
+      "May 26",
+      "Jun 26"
     ],
     "datasets": [
       {
@@ -10100,7 +9584,8 @@
           77,
           71,
           58,
-          58
+          96,
+          8
         ],
         "color": "#818cf8"
       },
@@ -10116,7 +9601,8 @@
           24,
           16,
           23,
-          2
+          2,
+          0
         ],
         "color": "#fbbf24"
       }
