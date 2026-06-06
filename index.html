@@ -1,1397 +1,324 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Mobily 3Y NW Expansion — Management Dashboard</title>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mobily Site Acceptance Portal</title>
 <style>
-:root{
-  --bg:#f0f4ff;
-  --card:#fff;
-  --border:#e8edf5;
-  --text:#1e293b;
-  --muted:#64748b;
-  --subtle:#94a3b8;
-  --purple:#6366f1;--purple-l:#eef2ff;
-  --teal:#0ea5e9;  --teal-l:#e0f2fe;
-  --green:#10b981; --green-l:#d1fae5;
-  --amber:#f59e0b; --amber-l:#fef3c7;
-  --red:#ef4444;   --red-l:#fee2e2;
-  --pink:#ec4899;  --pink-l:#fce7f3;
-  --r:14px; --r-sm:10px;
-  --sh:0 2px 16px rgba(99,102,241,.08);
-  --sh-hover:0 8px 32px rgba(99,102,241,.18);
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;
-  background-image:radial-gradient(ellipse 80% 50% at 0% 0%,rgba(99,102,241,.08) 0%,transparent 55%),
-                   radial-gradient(ellipse 60% 40% at 100% 100%,rgba(14,165,233,.07) 0%,transparent 55%),
-                   radial-gradient(ellipse 50% 40% at 60% 30%,rgba(16,185,129,.05) 0%,transparent 50%)}
-
-/* Layout */
-.wrap{max-width:1280px;margin:0 auto;padding:20px 16px 48px}
-.row{display:grid;gap:16px}
-.cols-6{grid-template-columns:repeat(6,1fr)}
-.cols-4{grid-template-columns:repeat(4,1fr)}
-.cols-3{grid-template-columns:repeat(3,1fr)}
-.cols-2{grid-template-columns:1fr 1fr}
-.col-span-2{grid-column:span 2}
-.col-span-3{grid-column:span 3}
-@media(max-width:1100px){.cols-6{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:780px){.cols-6{grid-template-columns:repeat(2,1fr)}.cols-4,.cols-3{grid-template-columns:repeat(2,1fr)}.cols-2{grid-template-columns:1fr}.col-span-2,.col-span-3{grid-column:span 1}}
-@media(max-width:480px){.cols-6,.cols-4,.cols-3{grid-template-columns:1fr}}
-
-/* Card */
-.card{background:var(--card);border-radius:var(--r);border:1px solid var(--border);padding:20px;box-shadow:var(--sh);transition:box-shadow .2s,transform .2s}
-.card:hover{box-shadow:var(--sh-hover)}
-.card-flat{background:var(--card);border-radius:var(--r);border:1px solid var(--border);padding:20px;box-shadow:var(--sh)}
-
-/* KPI card */
-.kpi{display:flex;flex-direction:column;gap:12px;position:relative;overflow:hidden;cursor:default;border:1px solid var(--border)}
-.kpi::after{content:'';position:absolute;top:-30px;right:-30px;width:100px;height:100px;border-radius:50%;opacity:.08}
-.kpi-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
-.kpi-val{font-size:28px;font-weight:800;letter-spacing:-1px;line-height:1}
-.kpi-label{font-size:12px;font-weight:500;color:var(--muted);margin-top:2px}
-.kpi-trend{font-size:11px;font-weight:600;display:flex;align-items:center;gap:4px}
-.kpi-trend.up{color:var(--green)}.kpi-trend.down{color:var(--red)}
-
-/* Section label */
-.sec-label{display:inline-flex;align-items:center;gap:6px;padding:3px 12px;border-radius:999px;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px}
-.sec-main{background:var(--purple-l);color:var(--purple)}
-.sec-it{background:var(--teal-l);color:var(--teal)}
-.sec-hr{height:1px;background:linear-gradient(90deg,var(--border) 70%,transparent);margin-bottom:16px}
-
-/* Progress bar */
-.prog-track{height:7px;background:#f1f5f9;border-radius:4px;overflow:hidden}
-.prog-fill{height:100%;border-radius:4px;transition:width 1s ease}
-
-/* Formula row */
-.formula-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px;padding:24px;text-align:center}
-.formula-box{background:#f8faff;border:1.5px solid var(--border);border-radius:var(--r-sm);padding:12px 20px;min-width:110px}
-.formula-op{font-size:22px;font-weight:300;color:var(--subtle);line-height:1}
-.formula-val{font-size:30px;font-weight:800;letter-spacing:-1px;line-height:1}
-.formula-sub{font-size:11px;color:var(--muted);margin-top:3px;font-weight:500}
-.diff-pill{display:inline-flex;align-items:center;justify-content:center;padding:8px 22px;border-radius:999px;font-size:28px;font-weight:800;letter-spacing:-1px;transition:transform .2s,box-shadow .2s}
-.diff-pill.clickable{cursor:pointer;border:2px dashed}
-.diff-pill.clickable:hover{transform:scale(1.1)}
-.diff-zero{background:var(--green-l);color:#059669}
-.diff-pos{background:var(--amber-l);color:#d97706}
-.diff-neg{background:var(--red-l);color:#dc2626}
-.diff-neg.clickable{border-color:#fca5a5}
-.diff-neg.clickable:hover{box-shadow:0 6px 24px rgba(239,68,68,.2)}
-
-/* CAT filter tabs */
-.cat-filters{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:14px}
-.cat-btn{padding:6px 16px;border-radius:999px;font-size:12px;font-weight:600;border:1.5px solid var(--border);background:#fff;color:var(--muted);cursor:pointer;transition:all .18s}
-.cat-btn:hover{border-color:var(--purple);color:var(--purple)}
-.cat-btn.active{background:var(--purple);border-color:var(--purple);color:#fff;box-shadow:0 4px 12px rgba(99,102,241,.3)}
-.cat-btn.cat-a.active{background:#6366f1;border-color:#6366f1}
-.cat-btn.cat-b.active{background:#10b981;border-color:#10b981}
-.cat-btn.cat-c.active{background:#f59e0b;border-color:#f59e0b}
-.cat-btn.cat-d.active{background:#3b82f6;border-color:#3b82f6}
-
-/* Table */
-.tbl-wrap{overflow:auto;border-radius:var(--r-sm);border:1px solid var(--border);max-height:480px}
-table{width:100%;border-collapse:collapse;font-size:13px}
-thead th{position:sticky;top:0;background:#f8faff;padding:11px 14px;text-align:left;font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;border-bottom:1px solid var(--border);cursor:pointer;user-select:none;white-space:nowrap}
-thead th:hover{color:var(--purple)}
-tbody tr{transition:background .12s}
-tbody tr:hover{background:#f8faff}
-tbody td{padding:10px 14px;border-bottom:1px solid #f1f5f9;color:var(--text);white-space:nowrap}
-.sort-icon{margin-left:4px;opacity:.3;font-size:10px}
-.sort-icon.active{opacity:1;color:var(--purple)}
-
-/* Badges */
-.badge{display:inline-block;padding:2px 10px;border-radius:999px;font-size:11px;font-weight:700}
-.badge-green{background:#d1fae5;color:#065f46}
-.badge-blue{background:#dbeafe;color:#1e40af}
-.badge-amber{background:#fef3c7;color:#92400e}
-.badge-gray{background:#f1f5f9;color:#475569}
-.badge-a{background:#eef2ff;color:#4338ca;border:1px solid #c7d2fe}
-.badge-b{background:#d1fae5;color:#065f46;border:1px solid #6ee7b7}
-.badge-c{background:#fef3c7;color:#92400e;border:1px solid #fcd34d}
-.badge-d{background:#dbeafe;color:#1e40af;border:1px solid #93c5fd}
-.badge-dash{background:#f1f5f9;color:#94a3b8}
-
-/* Search */
-.search-box{position:relative}
-.search-box svg{position:absolute;left:10px;top:50%;transform:translateY(-50%);width:14px;height:14px;color:var(--subtle)}
-.search-box input{border:1.5px solid var(--border);border-radius:var(--r-sm);padding:8px 12px 8px 32px;font-size:13px;outline:none;font-family:inherit;width:200px;color:var(--text);background:#fff;transition:border-color .2s}
-.search-box input:focus{border-color:var(--purple)}
-
-/* Pagination */
-.pag-btn{padding:6px 14px;border-radius:8px;border:1.5px solid var(--border);background:#fff;font-size:12px;font-weight:600;color:var(--muted);cursor:pointer;transition:all .15s}
-.pag-btn:hover:not(:disabled){border-color:var(--purple);color:var(--purple)}
-.pag-btn:disabled{opacity:.35;cursor:not-allowed}
-
-/* Header */
-.dash-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:24px}
-.dash-logo{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,#6366f1,#10b981);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.dash-logo svg{width:22px;height:22px;color:#fff;fill:none;stroke:currentColor;stroke-width:2.2}
-.last-updated{display:flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--border);border-radius:10px;padding:7px 14px;font-size:12px;color:var(--muted)}
-.last-updated strong{color:var(--text)}
-.refresh-btn{display:flex;align-items:center;gap:7px;background:linear-gradient(135deg,#6366f1,#4f46e5);color:#fff;border:none;border-radius:10px;padding:9px 18px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;transition:all .2s;box-shadow:0 4px 14px rgba(99,102,241,.3)}
-.refresh-btn:hover:not(:disabled){transform:translateY(-1px);box-shadow:0 6px 20px rgba(99,102,241,.4)}
-.refresh-btn:disabled{opacity:.6;cursor:not-allowed}
-.accent-bar{height:3px;background:linear-gradient(90deg,#6366f1,#10b981,#3b82f6,#f59e0b);border-radius:2px;margin-bottom:28px}
-
-/* Skeleton */
-.skel{background:linear-gradient(90deg,#f1f5f9 25%,#e8edf5 50%,#f1f5f9 75%);background-size:200% 100%;animation:shim 1.4s infinite;border-radius:var(--r)}
-@keyframes shim{to{background-position:-200% 0}}
-
-/* Spinner */
-.spin{animation:spinA .7s linear infinite}
-@keyframes spinA{to{transform:rotate(360deg)}}
-
-/* Modal */
-#modal-overlay{position:fixed;inset:0;background:rgba(15,23,42,.55);z-index:9999;display:none;align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(4px)}
-#modal-overlay.open{display:flex}
-#modal-box{background:#fff;border-radius:20px;border:1px solid var(--border);width:100%;max-width:800px;max-height:88vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 24px 80px rgba(0,0,0,.15)}
-#modal-header{padding:22px 26px 16px;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-shrink:0;background:linear-gradient(135deg,#f8faff,#fff)}
-#modal-body{padding:20px 26px;overflow-y:auto;flex:1}
-#modal-close{background:#f1f5f9;border:none;color:var(--muted);width:32px;height:32px;border-radius:8px;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;transition:background .15s}
-#modal-close:hover{background:#e2e8f0;color:var(--text)}
-.modal-site-row{display:grid;grid-template-columns:60px 1fr 1fr 1fr 90px;gap:8px;align-items:center;padding:10px 12px;border-radius:8px;border:1px solid var(--border);background:#fafbfc;margin-bottom:6px;font-size:12px;transition:background .12s}
-.modal-site-row:hover{background:#f0f4ff;border-color:rgba(99,102,241,.2)}
-.modal-site-id{font-weight:700;color:var(--text);font-size:13px}
-.modal-badge{display:inline-block;padding:2px 8px;border-radius:6px;font-size:10px;font-weight:700;letter-spacing:.04em}
-.badge-main-tag{background:#eef2ff;color:#4338ca;border:1px solid #c7d2fe}
-.badge-it-tag{background:#d1fae5;color:#065f46;border:1px solid #6ee7b7}
-.modal-search{border:1.5px solid var(--border);border-radius:var(--r-sm);padding:9px 14px;font-size:13px;outline:none;width:100%;margin-bottom:12px;font-family:inherit;color:var(--text);transition:border-color .2s}
-.modal-search:focus{border-color:var(--purple)}
-.count-pill{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:999px;font-size:11px;font-weight:600;margin-right:6px}
-
-/* Error banner */
-#error-banner{display:none;background:#fff;border:1.5px solid #fca5a5;border-radius:var(--r);padding:16px 20px;align-items:center;gap:12px;box-shadow:var(--sh);margin-bottom:16px}
-#error-banner.visible{display:flex}
-
-/* Chart container */
-.chart-wrap{position:relative}
-
-/* Clickable number card */
-.num-card{background:var(--card);border-radius:var(--r);border:1.5px solid var(--border);padding:16px 18px;box-shadow:var(--sh);transition:all .2s;position:relative;overflow:hidden}
-.num-card .num{font-size:32px;font-weight:800;letter-spacing:-1.5px;line-height:1;cursor:pointer;display:inline-block;transition:transform .15s}
-.num-card .num.clickable{text-decoration:underline;text-underline-offset:4px;text-decoration-style:dashed;cursor:pointer}
-.num-card .num.clickable:hover{transform:scale(1.08)}
-.num-card .lbl{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
-.num-card .sub{font-size:11px;color:var(--subtle);margin-top:4px}
-.num-card .bar{height:4px;background:#f1f5f9;border-radius:2px;margin-top:10px;overflow:hidden}
-.num-card .bar-fill{height:100%;border-radius:2px;transition:width .8s ease}
-.num-card::after{content:'Click to see sites';position:absolute;bottom:8px;right:10px;font-size:9px;font-weight:600;color:var(--subtle);opacity:0;transition:opacity .2s;letter-spacing:.04em;text-transform:uppercase}
-.num-card:hover::after{opacity:1}
-
-/* IT chart cards */
-.it-chart-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-@media(max-width:700px){.it-chart-grid{grid-template-columns:1fr}}
+:root{--blue:#4A90D9;--dk:#0B2E59;--mid:#2B6CB0;--green:#00B140;--red:#E74C3C;--amber:#F5A623;--bg:#f0f5fa;--card:#fff;--border:#dce6f0;--sub:#6B8199;--text:#0B2E59}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--text)}
+.hdr{background:linear-gradient(135deg,var(--dk),var(--mid),var(--blue));padding:16px 24px;color:#fff;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.hdr h1{font-size:18px;font-weight:800}
+.hdr small{display:block;font-size:10px;color:#b8d4f0;margin-top:2px}
+.tabs{background:var(--card);border-bottom:1px solid var(--border);display:flex;overflow-x:auto;padding:0 16px}
+.tab{padding:12px 18px;border:none;background:none;cursor:pointer;font-weight:500;color:var(--sub);font-size:13px;border-bottom:3px solid transparent;white-space:nowrap;font-family:inherit}
+.tab.active{color:var(--mid);font-weight:700;border-bottom-color:var(--blue)}
+.content{padding:16px 20px;max-width:1200px;margin:0 auto}
+.hero{background:linear-gradient(135deg,var(--dk),var(--mid));border-radius:16px;padding:24px;margin-bottom:16px;color:#fff}
+.kpi-grid{display:flex;gap:8px;flex-wrap:wrap}
+.kpi{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:14px 16px;cursor:pointer;min-width:100px;flex:1 1 100px;transition:background .2s}
+.kpi:hover{background:rgba(255,255,255,.15)}
+.kpi .v{font-size:26px;font-weight:800;line-height:1}
+.kpi .l{font-size:9px;font-weight:700;color:#b8d4f0;letter-spacing:.6px;text-transform:uppercase;margin-top:4px}
+.kpi .s{font-size:10px;color:#b8d4f0;margin-top:2px}
+.pbar{margin-top:14px;height:8px;background:rgba(255,255,255,.1);border-radius:4px;overflow:hidden}
+.pbar-fill{height:100%;background:linear-gradient(90deg,#00B140,#4ade80);border-radius:4px}
+.card{background:var(--card);border-radius:14px;border:1px solid var(--border);margin-bottom:12px;overflow:hidden}
+.card-hdr{padding:14px 18px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--border)}
+.card-hdr h3{font-size:14px;flex:1}
+.card-body{padding:14px 18px}
+.mc-grid{display:flex;gap:8px;flex-wrap:wrap}
+.mc{padding:8px 14px;border-radius:10px;cursor:pointer;min-width:75px;transition:box-shadow .15s}
+.mc:hover{box-shadow:0 4px 16px rgba(0,0,0,.1)}
+.mc .v{font-size:20px;font-weight:800;line-height:1}
+.mc .l{font-size:9px;font-weight:700;color:var(--sub);letter-spacing:.5px;text-transform:uppercase;margin-top:3px}
+.mc .s2{font-size:9px;color:var(--sub);margin-top:1px}
+.badge{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:99px;font-size:11px;font-weight:700;white-space:nowrap}
+.badge .dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.b-acc{background:#e6f9ed;color:#0a7c2e}.b-acc .dot{background:#00B140}
+.b-sub{background:#e8f4fd;color:#1a5276}.b-sub .dot{background:#2E86C1}
+.b-uit{background:#fef9c3;color:#854d0e}.b-uit .dot{background:#ca8a04}
+.b-iss{background:#fde8e6;color:#922b21}.b-iss .dot{background:#E74C3C}
+.b-nf{background:#f3f4f6;color:#64748b}.b-nf .dot{background:#9ca3af}
+.tbl{width:100%;border-collapse:collapse;font-size:12px}
+.tbl thead tr{background:linear-gradient(90deg,var(--dk),var(--mid))}
+.tbl th{padding:10px 12px;text-align:left;font-weight:700;font-size:10px;color:#b8d4f0;letter-spacing:.5px;text-transform:uppercase;white-space:nowrap}
+.tbl td{padding:9px 12px;border-bottom:1px solid var(--border)}
+.tbl tr:nth-child(even){background:#f7fafd}
+.tbl tr:hover{background:#ebf4ff}
+.sid{font-weight:700;color:var(--mid);font-family:monospace;font-size:12px}
+.pg{display:flex;gap:8px;justify-content:center;padding:10px;border-top:1px solid var(--border)}
+.pg button{padding:4px 14px;border-radius:6px;border:1px solid var(--border);background:#fff;cursor:pointer;font-size:12px;color:var(--mid);font-weight:600}
+.pg button:disabled{opacity:.4;cursor:default}
+.pg span{font-size:12px;color:var(--sub);align-self:center}
+.acc-hdr{padding:12px 18px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:13px}
+.own-hdr{padding:6px 18px;background:#fffbeb;border-left:4px solid var(--amber);display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600;color:#92400e}
+.sep{border-top:1px solid var(--border);margin-top:8px;padding-top:8px}
+.modal-bg{position:fixed;inset:0;background:rgba(11,46,89,.6);z-index:1000;display:flex;align-items:flex-start;justify-content:center;padding:40px 16px;overflow-y:auto}
+.modal{background:#fff;border-radius:20px;width:100%;max-width:1100px;box-shadow:0 24px 80px rgba(11,46,89,.4);overflow:hidden}
+.modal-hdr{padding:14px 24px;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(135deg,var(--dk),var(--blue));color:#fff}
+.modal-hdr h4{font-size:15px}
+.modal-hdr button{background:rgba(255,255,255,.15);border:none;color:#fff;cursor:pointer;font-size:20px;border-radius:10px;padding:2px 12px;font-weight:700}
+.tech{display:inline-flex;align-items:center;gap:3px;padding:2px 8px;border-radius:6px;font-size:10px;font-weight:700}
+.t4g-ok{background:#dbeafe;color:#1e40af;border:1px solid #93c5fd}
+.t4g-bad{background:#fef3c7;color:#92400e;border:1px solid #fcd34d}
+.t5g-ok{background:#ede9fe;color:#5b21b6;border:1px solid #c4b5fd}
+.t5g-bad{background:#fef3c7;color:#92400e;border:1px solid #fcd34d}
+.chart-wrap{display:flex;align-items:flex-end;gap:2px;height:130px;overflow-x:auto;padding-bottom:4px}
+.chart-col{display:flex;flex-direction:column;align-items:center;min-width:28px;gap:1px}
+.bar{width:22px;border-radius:2px 2px 0 0;cursor:pointer;min-height:1px}
+.bar:hover{opacity:.8}
+.lbl{font-size:8px;color:var(--sub);margin-top:3px;text-align:center;white-space:nowrap}
+.chart-legend{display:flex;gap:12px;margin-top:8px;font-size:11px;flex-wrap:wrap}
+.chart-legend .item{display:flex;align-items:center;gap:4px}
+.chart-legend .swatch{width:10px;height:10px;border-radius:2px}
+.search-box{padding:8px 16px;border-radius:99px;border:1px solid var(--border);font-size:13px;width:100%;outline:none;margin-bottom:12px;font-family:inherit}
+.lookup-ta{width:100%;padding:10px 14px;border-radius:10px;border:1px solid var(--border);font-size:13px;outline:none;resize:vertical;font-family:inherit;background:#f7fafd;margin-bottom:10px}
+.btn{padding:8px 20px;border-radius:10px;font-weight:700;cursor:pointer;border:none;font-size:13px;font-family:inherit}
+.footer{text-align:center;padding:14px;border-top:1px solid var(--border);background:var(--card);margin-top:16px;font-size:10px;color:var(--sub)}
+.cat-cards{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+.cat-card{background:var(--card);border:1px solid var(--border);border-radius:14px;flex:1;min-width:140px;padding:16px;text-align:center;cursor:pointer;transition:box-shadow .15s}
+.cat-card:hover{box-shadow:0 4px 16px rgba(11,46,89,.1)}
 </style>
 </head>
 <body>
-<div class="wrap">
-
-  <!-- HEADER -->
-  <div class="dash-header">
-    <div style="display:flex;align-items:center;gap:12px">
-      <div class="dash-logo">
-        <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.5l4-4 4 4 4-5 4 4"/><path stroke-linecap="round" stroke-linejoin="round" d="M3 20h18M3 4h18"/></svg>
-      </div>
-      <div>
-        <h1 id="dash-title" style="font-size:18px;font-weight:800;letter-spacing:-.5px;color:var(--text)">Loading…</h1>
-        <p id="dash-subtitle" style="font-size:12px;color:var(--muted);margin-top:2px">—</p>
-      </div>
-    </div>
-    <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
-      <div class="last-updated">
-        <svg style="width:13px;height:13px;color:#10b981;fill:none;stroke:currentColor;stroke-width:2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path stroke-linecap="round" d="M12 6v6l4 2"/></svg>
-        Updated: <strong id="last-updated">—</strong>
-      </div>
-      <button class="refresh-btn" id="refresh-btn" onclick="loadData()">
-        <svg id="refresh-icon" style="width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h5M20 20v-5h-5M20.49 9A9 9 0 005.64 5.64L4 4M3.51 15a9 9 0 0014.85 3.36L20 20"/></svg>
-        Refresh
-      </button>
-    </div>
-  </div>
-
-  <div class="accent-bar"></div>
-
-  <!-- ERROR -->
-  <div id="error-banner">
-    <div style="width:38px;height:38px;border-radius:10px;background:#fee2e2;display:flex;align-items:center;justify-content:center;flex-shrink:0">
-      <svg style="width:18px;height:18px;fill:none;stroke:#ef4444;stroke-width:2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path stroke-linecap="round" d="M12 8v4m0 4h.01"/></svg>
-    </div>
-    <div>
-      <p style="font-weight:700;color:#dc2626;font-size:14px">Unable to load data</p>
-      <p id="error-msg" style="color:var(--muted);font-size:12px;margin-top:2px">—</p>
-    </div>
-    <button onclick="loadData()" style="margin-left:auto;padding:6px 14px;border-radius:8px;border:1.5px solid #fca5a5;background:#fff;color:#dc2626;font-size:12px;font-weight:600;cursor:pointer;font-family:inherit">Try again</button>
-  </div>
-
-  <!-- SKELETONS -->
-  <div id="skeletons">
-    <div class="row cols-6" style="margin-bottom:16px"><div class="skel" style="height:108px"></div><div class="skel" style="height:108px"></div><div class="skel" style="height:108px"></div><div class="skel" style="height:108px"></div><div class="skel" style="height:108px"></div><div class="skel" style="height:108px"></div></div>
-    <div class="skel" style="height:160px;margin-bottom:16px"></div>
-    <div class="row cols-2" style="margin-bottom:16px"><div class="skel" style="height:280px"></div><div class="skel" style="height:280px"></div></div>
-    <div class="skel" style="height:200px;margin-bottom:16px"></div>
-    <div class="row cols-2" style="margin-bottom:16px"><div class="skel" style="height:260px"></div><div class="skel" style="height:260px"></div></div>
-    <div class="skel" style="height:400px"></div>
-  </div>
-
-  <!-- MAIN CONTENT -->
-  <div id="main-content" style="display:none">
-
-    <!-- §1 MAIN PROJECT KPIs -->
-    <div class="sec-label sec-main">&#9679; Main Project</div>
-    <div class="sec-hr"></div>
-    <div class="row cols-6" id="kpi-main" style="margin-bottom:28px"></div>
-
-    <!-- §2 PROGRESS BARS -->
-    <div class="card-flat" style="margin-bottom:28px">
-      <p style="font-size:13px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:16px">Project Progress Overview</p>
-      <div class="row cols-2" id="progress-section"></div>
-    </div>
-
-    <!-- §3 MAIN CHARTS -->
-    <div class="row cols-2" style="margin-bottom:28px">
-      <div class="card">
-        <p id="chart-title" style="font-size:13px;font-weight:700;margin-bottom:16px;color:var(--text)"></p>
-        <div class="chart-wrap" style="height:240px"><canvas id="lineChart"></canvas></div>
-      </div>
-      <div class="card">
-        <p id="donut-title" style="font-size:13px;font-weight:700;margin-bottom:16px;color:var(--text)">Sites by Category</p>
-        <div class="chart-wrap" style="height:240px;display:flex;align-items:center;justify-content:center"><canvas id="donutChart"></canvas></div>
-      </div>
-    </div>
-
-    <!-- §4 IT ACCEPTANCE -->
-    <div class="sec-label sec-it">&#9679; IT Acceptance</div>
-    <div class="sec-hr"></div>
-
-    <!-- formula card -->
-    <div class="card" style="margin-bottom:16px" id="it-section">
-      <p style="font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px">Combined IT Acceptance Formula</p>
-      <p style="font-size:12px;color:var(--subtle);margin-bottom:16px">Click the difference number to see mismatch site IDs</p>
-      <div class="formula-row">
-        <div class="formula-box">
-          <div class="formula-val" style="color:#6366f1" id="it-5g-val">—</div>
-          <div class="formula-sub">5G Accepted</div>
-          <div class="formula-sub" id="it-5g-sub" style="color:var(--subtle)">—</div>
-        </div>
-        <div class="formula-op">+</div>
-        <div class="formula-box">
-          <div class="formula-val" style="color:#f59e0b" id="it-4g-val">—</div>
-          <div class="formula-sub">4G-Only Accepted</div>
-          <div class="formula-sub" style="color:var(--subtle)">Not in 5G tab</div>
-        </div>
-        <div class="formula-op">=</div>
-        <div class="formula-box" style="border-color:#6366f1;background:#f8f9ff">
-          <div class="formula-val" style="color:#4338ca" id="it-comb-val">—</div>
-          <div class="formula-sub" style="font-weight:700">IT Combined</div>
-        </div>
-        <div class="formula-op">vs</div>
-        <div class="formula-box" style="border-color:#0ea5e9;background:#f0f9ff">
-          <div class="formula-val" style="color:#0369a1" id="it-main-val">—</div>
-          <div class="formula-sub" style="font-weight:700">Main SSV Final</div>
-        </div>
-        <div class="formula-op">=</div>
-        <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
-          <div style="font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em">Difference</div>
-          <span id="it-diff-pill" class="diff-pill">—</span>
-          <div id="it-diff-label" style="font-size:11px;color:var(--muted)">—</div>
-          <div id="it-diff-hint" style="font-size:10px;color:var(--subtle);display:none">↑ click to see sites</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- IT detail KPIs -->
-    <div class="row cols-4" id="it-kpi-detail" style="margin-bottom:16px"></div>
-
-    <!-- 4G Activity Only clickable cards -->
-    <div style="margin-bottom:12px">
-      <p style="font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px">&#128225; 4G Activity Only Sites <span style="font-weight:400;text-transform:none;font-size:10px">(click a number to see site IDs)</span></p>
-      <div class="row cols-3" id="g4only-cards" style="margin-bottom:16px"></div>
-    </div>
-
-    <!-- SSV 5G IT Feedback clickable cards -->
-    <div style="margin-bottom:16px">
-      <p style="font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px">&#128202; SSV Acceptance Status — 5G IT Feedback <span style="font-weight:400;text-transform:none;font-size:10px">(click a number to see site IDs)</span></p>
-      <div class="row cols-4" id="ssv-cards" style="margin-bottom:16px"></div>
-    </div>
-
-    <!-- 4G / 5G SUBMITTED KPI CARDS -->
-    <div style="margin-bottom:16px">
-      <p style="font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px">&#128221; SSV Submission Counts <span style="font-weight:400;text-transform:none;font-size:10px">(click to see site list)</span></p>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
-        <div class="num-card" style="cursor:pointer" onclick="openSubmittedModal('4G')">
-          <div class="lbl">4G SSV Submitted</div>
-          <div class="num" id="mgmt-4g-sub" style="color:#f59e0b">—</div>
-          <div class="sub" id="mgmt-4g-sub-last">Last: —</div>
-          <div class="bar"><div class="bar-fill" id="mgmt-4g-sub-bar" style="background:#f59e0b"></div></div>
-        </div>
-        <div class="num-card" style="cursor:pointer" onclick="openSubmittedModal('5G')">
-          <div class="lbl">5G SSV Submitted</div>
-          <div class="num" id="mgmt-5g-sub" style="color:#6366f1">—</div>
-          <div class="sub" id="mgmt-5g-sub-last">Last: —</div>
-          <div class="bar"><div class="bar-fill" id="mgmt-5g-sub-bar" style="background:#6366f1"></div></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- IT CHARTS -->
-    <div class="it-chart-grid" style="margin-bottom:28px">
-      <div class="card">
-        <p style="font-size:13px;font-weight:700;margin-bottom:16px;color:var(--text)">IT Monthly Acceptance</p>
-        <div class="chart-wrap" style="height:220px"><canvas id="itMonthChart"></canvas></div>
-      </div>
-      <div class="card">
-        <p style="font-size:13px;font-weight:700;margin-bottom:16px;color:var(--text)">IT Acceptance Distribution</p>
-        <div class="chart-wrap" style="height:220px;display:flex;align-items:center;justify-content:center"><canvas id="itPieChart"></canvas></div>
-      </div>
-    </div>
-
-    <!-- §5 REGION -->
-    <div class="card" style="margin-bottom:28px">
-      <p style="font-size:13px;font-weight:700;margin-bottom:16px;color:var(--text)">Acceptance by Region</p>
-      <div class="chart-wrap" style="height:300px"><canvas id="regionChart"></canvas></div>
-    </div>
-
-    <!-- §6 SITE TABLE WITH CAT FILTERS -->
-    <!-- AGED SITES SECTION -->
-    <div style="margin-bottom:28px">
-      <div class="sec-label sec-it">&#128344; Aged Sites — Under IT/RFIT &amp; Not Yet Accepted</div>
-      <div class="sec-hr"></div>
-
-      <!-- KPI row -->
-      <div class="row cols-3" id="aged-kpi-row" style="margin-bottom:16px"></div>
-
-      <!-- Chart + summary -->
-      <div style="display:grid;grid-template-columns:2fr 1fr;gap:16px;margin-bottom:16px">
-        <div class="card">
-          <p style="font-size:13px;font-weight:700;margin-bottom:4px;color:var(--text)">Aging Distribution — Days Since IT/RFIT</p>
-          <p style="font-size:11px;color:var(--muted);margin-bottom:14px">Aged = today − RFIT date · sites not yet accepted · click any bar</p>
-          <div style="height:220px"><canvas id="agedChart"></canvas></div>
-        </div>
-        <div class="card">
-          <p style="font-size:13px;font-weight:700;margin-bottom:14px;color:var(--text)">Summary by Bucket</p>
-          <div id="aged-summary-list"></div>
-        </div>
-      </div>
-
-      <!-- Table with filter buttons -->
-      <div class="card-flat">
-        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:14px">
-          <div>
-            <h3 style="font-size:14px;font-weight:700">Aged Sites Table</h3>
-            <p id="aged-table-label" style="font-size:11px;color:var(--muted);margin-top:2px">—</p>
-          </div>
-          <div style="display:flex;gap:8px;flex-wrap:wrap" id="aged-filter-btns"></div>
-        </div>
-        <div class="tbl-wrap" style="max-height:380px">
-          <table style="width:100%;border-collapse:collapse;font-size:12px">
-            <thead id="aged-table-head"></thead>
-            <tbody id="aged-table-body"></tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-
-    <!-- AGING SECTION -->
-    <div style="margin-bottom:28px">
-      <div class="sec-label sec-main">&#9200; Aging Distribution — Submitted Sites</div>
-      <div class="sec-hr"></div>
-      <div style="display:grid;grid-template-columns:2fr 1fr;gap:16px">
-        <div class="card">
-          <p style="font-size:13px;font-weight:700;margin-bottom:4px;color:var(--text)">Aging of Submitted Sites</p>
-          <p style="font-size:11px;color:var(--muted);margin-bottom:16px">Days from RFIT to SSV Submission — click any bar to see sites</p>
-          <div style="height:220px"><canvas id="agingChart"></canvas></div>
-        </div>
-        <div class="card">
-          <p style="font-size:13px;font-weight:700;margin-bottom:14px;color:var(--text)">Aging Summary</p>
-          <div id="aging-summary"></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="card-flat">
-      <!-- header row -->
-      <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:14px">
-        <div>
-          <h2 style="font-size:16px;font-weight:800">Site Records</h2>
-          <p id="table-count" style="font-size:12px;color:var(--muted);margin-top:2px">—</p>
-        </div>
-        <div class="search-box">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path stroke-linecap="round" d="M21 21l-4.35-4.35"/></svg>
-          <input id="search-input" type="text" placeholder="Search site ID, region…" oninput="applyFilters()"/>
-        </div>
-      </div>
-
-      <!-- CAT filter buttons -->
-      <div class="cat-filters" id="cat-filters">
-        <button class="cat-btn active" data-cat="All" onclick="setCat('All',this)">All</button>
-        <button class="cat-btn cat-a" data-cat="A" onclick="setCat('A',this)">
-          <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#6366f1;margin-right:5px;vertical-align:middle"></span>CAT A — 4G Only
-        </button>
-        <button class="cat-btn cat-b" data-cat="B" onclick="setCat('B',this)">
-          <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#10b981;margin-right:5px;vertical-align:middle"></span>CAT B — 5G Only
-        </button>
-        <button class="cat-btn cat-c" data-cat="C" onclick="setCat('C',this)">
-          <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#f59e0b;margin-right:5px;vertical-align:middle"></span>CAT C — HO5
-        </button>
-        <button class="cat-btn cat-d" data-cat="D" onclick="setCat('D',this)">
-          <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#3b82f6;margin-right:5px;vertical-align:middle"></span>CAT D — SSV Final
-        </button>
-        <span id="cat-count-badge" style="font-size:11px;color:var(--muted);margin-left:4px"></span>
-      </div>
-
-      <!-- SSV Status filter chips -->
-      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px" id="ssv-filter-chips"></div>
-
-      <!-- table -->
-      <div class="tbl-wrap">
-        <table id="data-table">
-          <thead><tr id="table-header"></tr></thead>
-          <tbody id="table-body"></tbody>
-        </table>
-      </div>
-
-      <!-- pagination -->
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-top:14px;flex-wrap:wrap;gap:8px">
-        <span id="page-info" style="font-size:12px;color:var(--muted)">—</span>
-        <div style="display:flex;gap:8px">
-          <button class="pag-btn" id="prev-btn" onclick="changePage(-1)">← Prev</button>
-          <button class="pag-btn" id="next-btn" onclick="changePage(1)">Next →</button>
-        </div>
-      </div>
-    </div>
-
-    <p style="text-align:center;font-size:11px;color:var(--subtle);margin-top:32px">Management Dashboard · Click any difference number to drill into mismatch sites</p>
-  </div>
-</div>
-
-<!-- DRILL-DOWN MODAL -->
-<div id="modal-overlay" onclick="if(event.target===this)closeModal()">
-  <div id="modal-box">
-    <div id="modal-header">
-      <div>
-        <h3 id="modal-title" style="font-size:16px;font-weight:800;color:var(--text)"></h3>
-        <p id="modal-subtitle" style="font-size:12px;color:var(--muted);margin-top:4px"></p>
-      </div>
-      <button id="modal-close" onclick="closeModal()">×</button>
-    </div>
-    <div id="modal-body">
-      <input id="modal-search" class="modal-search" type="text" placeholder="Search site ID, region, city…" oninput="filterModal()"/>
-      <div id="modal-counts" style="margin-bottom:14px"></div>
-      <div id="modal-list"></div>
-    </div>
-  </div>
-</div>
-
+<div id="app"></div>
 <script>
-const DATA_URL='./data.json', ROWS_PER_PAGE=20;
+var D = {"ibs":[],"rel":[],"hw":[],"sw":[]};
+var ST = {tab:"overview", drill:null, lookupResult:null};
 
-/*
- ╔═══════════════════════════════════════════════════════════════════╗
- ║  HOW TO USE ON ONEDRIVE / SHAREPOINT / LOCAL FILE                ║
- ╠═══════════════════════════════════════════════════════════════════╣
- ║  OneDrive blocks fetch(). To fix, embed your data directly:      ║
- ║                                                                   ║
- ║  1. Open mobily_dashboard.html, load both Excel files            ║
- ║  2. Click "Export JSON for GitHub" — downloads data.json         ║
- ║  3. Open data.json in Notepad → Select All → Copy                ║
- ║  4. In THIS file find:  window.DASHBOARD_DATA = null;            ║
- ║  5. Replace null with the JSON:                                   ║
- ║        window.DASHBOARD_DATA = { "meta": { ... whole JSON } };   ║
- ║  6. Save index.html → works on OneDrive with no fetch error      ║
- ║                                                                   ║
- ║  To UPDATE: repeat steps 1-6 with a fresh export                 ║
- ╚═══════════════════════════════════════════════════════════════════╝
-*/
-window.DASHBOARD_DATA = null; // ← REPLACE null WITH YOUR EXPORTED JSON
-let allRows=[],filteredRows=[],sortColIdx=-1,sortAsc=true,currentPage=1;
-let activeCat='All', activeSsv='All';
-let lineC=null,donutC=null,regionC=null,itMonthC=null,itPieC=null;
-let _itData=null, _modalAllRows=[];
+function esc(v){return (v===null||v===undefined||v===false)?"&mdash;":(String(v).replace(/&/g,"&amp;").replace(/</g,"&lt;") || "&mdash;");}
+function agC(d){if(d==null)return"#bbb";if(d>60)return"#E74C3C";if(d>30)return"#F5A623";if(d>14)return"#ca8a04";return"#00B140";}
+function badge(s){var m={Accepted:"b-acc",Submitted:"b-sub","Under IT":"b-uit",Issue:"b-iss","Not Found":"b-nf"};return'<span class="badge '+(m[s]||"b-sub")+'"><span class="dot"></span>'+esc(s)+'</span>';}
+function t4g(s){var ok=s==="Accepted"||s==="Not Required";return'<span class="tech '+(ok?"t4g-ok":"t4g-bad")+'">4G '+esc(s)+'</span>';}
+function t5g(s){var ok=s==="Accepted"||s==="No 5G"||s==="N/A";return'<span class="tech '+(ok?"t5g-ok":"t5g-bad")+'">5G '+esc(s)+'</span>';}
+function agT(d){if(d==null)return'<span style="color:#ddd">&mdash;</span>';return'<span style="color:'+agC(d)+';font-weight:700">'+d+'d</span>';}
 
-/* helpers */
-function $(id){return document.getElementById(id);}
-function fmtDate(iso){try{return new Date(iso).toLocaleString('en-GB',{day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'});}catch{return iso;}}
-function pct(n,t){return t?Math.round(n/t*100):0;}
-function fmtN(n){return typeof n==='number'?n.toLocaleString():n;}
+function all(){return[].concat(D.ibs||[],D.rel||[],D.hw||[],D.sw||[]);}
+function siteMap(){var m={};all().forEach(function(r){if(!m[r.sid])m[r.sid]=[];m[r.sid].push(r);});return m;}
 
-function setLoading(on){
-  $('skeletons').style.display=on?'block':'none';
-  $('main-content').style.display=on?'none':'block';
-  $('refresh-btn').disabled=on;
-  $('refresh-icon').classList.toggle('spin',on);
-}
-function showError(m){$('error-msg').textContent=m;$('error-banner').classList.add('visible');}
-function hideError(){$('error-banner').classList.remove('visible');}
+var PAGE_SIZE=50;
+var tablePages={};
 
-/* KPI colors */
-const KPI_DEFS=[
-  {bg:'linear-gradient(135deg,#eef2ff,#e0e7ff)',icon:'📡',color:'#6366f1'},
-  {bg:'linear-gradient(135deg,#d1fae5,#a7f3d0)',icon:'✅',color:'#10b981'},
-  {bg:'linear-gradient(135deg,#d1fae5,#a7f3d0)',icon:'📊',color:'#059669'},
-  {bg:'linear-gradient(135deg,#fef3c7,#fde68a)',icon:'📶',color:'#d97706'},
-  {bg:'linear-gradient(135deg,#dbeafe,#bfdbfe)',icon:'🖥️',color:'#2563eb'},
-  {bg:'linear-gradient(135deg,#fce7f3,#fbcfe8)',icon:'🚀',color:'#db2777'},
-];
-
-function renderKPIs(kpis){
-  $('kpi-main').innerHTML=kpis.map((k,i)=>{
-    const d=KPI_DEFS[i%6];
-    const val=typeof k.value==='number'?(k.unit==='%'?k.value.toFixed(1)+'%':k.value.toLocaleString()):k.value;
-    const up=k.trend==='up';
-    return `<div class="card kpi" style="background:${d.bg};border:none">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start">
-        <span style="font-size:24px">${d.icon}</span>
-        <span class="kpi-trend ${up?'up':'down'}">${up?'▲':'▼'} ${Math.abs(k.change)}%</span>
-      </div>
-      <div>
-        <div class="kpi-val" style="color:${d.color}">${val}</div>
-        <div class="kpi-label">${k.label}</div>
-      </div>
-    </div>`;
-  }).join('');
-}
-
-function renderProgress(kpis,total){
-  const items=[
-    {l:'SSV Final Accepted',c:'#6366f1'},{l:'HO5 Accepted',c:'#0ea5e9'},
-    {l:'IT Combined Acc.',c:'#10b981'},{l:'RFS Declared',c:'#f59e0b'},
-  ];
-  $('progress-section').innerHTML=items.map(it=>{
-    const val=kpis.find(k=>k.label===it.l)?.value||0;
-    const p=pct(val,total);
-    return `<div>
-      <div style="display:flex;justify-content:space-between;margin-bottom:6px">
-        <span style="font-size:13px;font-weight:600;color:var(--text)">${it.l}</span>
-        <span style="font-size:13px;font-weight:700;color:var(--text)">${val.toLocaleString()} <span style="font-size:11px;color:var(--muted);font-weight:400">(${p}%)</span></span>
-      </div>
-      <div class="prog-track"><div class="prog-fill" style="width:${p}%;background:${it.c}"></div></div>
-    </div>`;
-  }).join('');
-}
-
-/* Chart.js shared options */
-const tooltip={backgroundColor:'rgba(15,23,42,.85)',titleColor:'#f1f5f9',bodyColor:'#94a3b8',padding:12,cornerRadius:8,borderColor:'rgba(255,255,255,.05)',borderWidth:1};
-const gridCfg={color:'rgba(0,0,0,.05)'};
-const tickCfg={color:'#94a3b8',font:{family:'Plus Jakarta Sans',size:11}};
-
-function renderLineChart(d){
-  $('chart-title').textContent=d.title;
-  if(lineC)lineC.destroy();
-  lineC=new Chart($('lineChart').getContext('2d'),{
-    type:'line',
-    data:{labels:d.labels,datasets:d.datasets.map((ds,i)=>({
-      label:ds.label,data:ds.data,borderColor:ds.color,backgroundColor:ds.color+'22',
-      borderWidth:2.5,pointBackgroundColor:ds.color,pointRadius:4,pointHoverRadius:7,
-      tension:.4,fill:true
-    }))},
-    options:{responsive:true,maintainAspectRatio:false,
-      interaction:{mode:'index',intersect:false},
-      plugins:{legend:{labels:{color:'#475569',font:{family:'Plus Jakarta Sans',size:12},boxWidth:10,padding:14}},tooltip},
-      scales:{x:{grid:gridCfg,ticks:{...tickCfg,maxRotation:35}},y:{grid:gridCfg,ticks:tickCfg}}}
+function buildTable(rows,type,tkey){
+  if(!rows||!rows.length)return'<p style="padding:20px;text-align:center;color:#94a3b8">No records</p>';
+  var isHW=type==="hw",isSW=type==="sw",isLK=type==="lookup";
+  var cols=isLK?["Site ID","Category","Sub-Cat","Status","4G","5G","IT Feedback","Owner","Issues","RFIT","Aging","Accepted","Reason"]
+    :isHW?["Site ID","Status","4G","5G","Type","Activity","RFIT","Aging","Accepted","Owner","Reason"]
+    :isSW?["Site ID","Status","5G","Activity","RFIT","Aging","Accepted","Owner","Reason"]
+    :["Site ID","Project","Status","IT Feedback","5G","RFIT","Aging","Accepted","Owner","Reason"];
+  var pg=tablePages[tkey]||0;
+  var start=pg*PAGE_SIZE,end=Math.min(start+PAGE_SIZE,rows.length);
+  var vis=rows.slice(start,end);
+  var h='<table class="tbl"><thead><tr>'+cols.map(function(c){return'<th>'+c+'</th>';}).join("")+'</tr></thead><tbody>';
+  vis.forEach(function(r){
+    if(!r)return;
+    h+='<tr>';
+    if(isLK){h+='<td class="sid">W'+esc(r.sid)+'</td><td>'+esc(r.cat)+'</td><td>'+esc(r.subcat)+'</td><td>'+badge(r.finalStatus)+'</td><td>'+t4g(r.fg4)+'</td><td>'+t5g(r.fg5)+'</td><td>'+esc(r.itfb)+'</td><td>'+esc(r.ao)+'</td><td>'+esc(r.an)+'</td><td>'+esc(r.rfit)+'</td><td>'+agT(r.aging)+'</td><td>'+esc(r.accDate)+'</td><td>'+esc(r.pendingReason)+'</td>';}
+    else if(isHW){h+='<td class="sid">W'+esc(r.sid)+'</td><td>'+badge(r.finalStatus)+'</td><td>'+t4g(r.fg4)+'</td><td>'+t5g(r.fg5)+'</td><td>'+esc(r.activityType)+'</td><td>'+esc(r.activity)+'</td><td>'+esc(r.rfit)+'</td><td>'+agT(r.aging)+'</td><td>'+esc(r.accDate)+'</td><td>'+esc(r.ao)+'</td><td>'+esc(r.pendingReason)+'</td>';}
+    else if(isSW){h+='<td class="sid">W'+esc(r.sid)+'</td><td>'+badge(r.finalStatus)+'</td><td>'+t5g(r.fg5)+'</td><td>'+esc(r.activity)+'</td><td>'+esc(r.rfit)+'</td><td>'+agT(r.aging)+'</td><td>'+esc(r.accDate)+'</td><td>'+esc(r.ao)+'</td><td>'+esc(r.pendingReason)+'</td>';}
+    else{h+='<td class="sid">W'+esc(r.sid)+'</td><td>'+esc(r.subcat)+'</td><td>'+badge(r.finalStatus)+'</td><td>'+esc(r.itfb)+'</td><td>'+t5g(r.fg5)+'</td><td>'+esc(r.rfit)+'</td><td>'+agT(r.aging)+'</td><td>'+esc(r.accDate)+'</td><td>'+esc(r.ao)+'</td><td>'+esc(r.pendingReason)+'</td>';}
+    h+='</tr>';
   });
-}
-
-function renderDonutChart(d){
-  if(donutC)donutC.destroy();
-  const COLORS=['#6366f1','#10b981','#f59e0b','#3b82f6'];
-  donutC=new Chart($('donutChart').getContext('2d'),{
-    type:'doughnut',
-    data:{labels:d.labels,datasets:[{data:d.data,backgroundColor:COLORS.map(c=>c+'dd'),borderColor:'#fff',borderWidth:3,hoverOffset:10}]},
-    options:{responsive:true,maintainAspectRatio:false,cutout:'65%',
-      plugins:{legend:{position:'bottom',labels:{color:'#475569',font:{family:'Plus Jakarta Sans',size:11},boxWidth:10,padding:10}},tooltip}}
-  });
-}
-
-function renderRegionChart(rb){
-  if(regionC)regionC.destroy();
-  regionC=new Chart($('regionChart').getContext('2d'),{
-    type:'bar',
-    data:{labels:rb.labels,datasets:[
-      {label:'Total Sites',   data:rb.total,       backgroundColor:'rgba(99,102,241,.15)',borderColor:'#6366f1',borderWidth:1.5,borderRadius:4},
-      {label:'SSV Accepted',  data:rb.ssvAccepted, backgroundColor:'rgba(16,185,129,.5)', borderColor:'#10b981',borderWidth:1.5,borderRadius:4},
-      {label:'HO5 Accepted',  data:rb.ho5Accepted, backgroundColor:'rgba(245,158,11,.5)', borderColor:'#f59e0b',borderWidth:1.5,borderRadius:4},
-      {label:'RFS Declared',  data:rb.rfs,         backgroundColor:'rgba(59,130,246,.5)', borderColor:'#3b82f6',borderWidth:1.5,borderRadius:4},
-    ]},
-    options:{responsive:true,maintainAspectRatio:false,
-      interaction:{mode:'index',intersect:false},
-      plugins:{legend:{labels:{color:'#475569',font:{family:'Plus Jakarta Sans',size:11},boxWidth:10,padding:12}},tooltip},
-      scales:{x:{grid:{display:false},ticks:{...tickCfg,maxRotation:35}},y:{grid:gridCfg,ticks:tickCfg}}}
-  });
-}
-
-function renderITMonthChart(d){
-  if(!d||!d.labels)return;
-  if(itMonthC)itMonthC.destroy();
-  itMonthC=new Chart($('itMonthChart').getContext('2d'),{
-    type:'bar',
-    data:{labels:d.labels,datasets:d.datasets.map(ds=>({
-      label:ds.label,data:ds.data,backgroundColor:ds.color+'99',borderColor:ds.color,
-      borderWidth:1.5,borderRadius:5,hoverBackgroundColor:ds.color
-    }))},
-    options:{responsive:true,maintainAspectRatio:false,
-      interaction:{mode:'index',intersect:false},
-      plugins:{legend:{labels:{color:'#475569',font:{family:'Plus Jakarta Sans',size:11},boxWidth:10,padding:12}},tooltip},
-      scales:{x:{stacked:true,grid:{display:false},ticks:{...tickCfg,maxRotation:35}},y:{stacked:true,grid:gridCfg,ticks:tickCfg}}}
-  });
-}
-
-function renderITPieChart(it){
-  if(itPieC)itPieC.destroy();
-  const total5g=it.it5gTotal||0, accepted5g=it.it5gAccepted||0, pending5g=total5g-accepted5g;
-  const accepted4g=it.it4gOnly||0;
-  itPieC=new Chart($('itPieChart').getContext('2d'),{
-    type:'doughnut',
-    data:{
-      labels:['5G Accepted','5G Pending','4G-Only Accepted'],
-      datasets:[{
-        data:[accepted5g, pending5g, accepted4g],
-        backgroundColor:['#818cf8dd','#e0e7ffdd','#fbbf24dd'],
-        borderColor:['#6366f1','#c7d2fe','#f59e0b'],
-        borderWidth:2,hoverOffset:8
-      }]
-    },
-    options:{responsive:true,maintainAspectRatio:false,cutout:'60%',
-      plugins:{legend:{position:'bottom',labels:{color:'#475569',font:{family:'Plus Jakarta Sans',size:11},boxWidth:10,padding:10}},tooltip}}
-  });
-}
-
-/* Clickable number cards for 4G Activity & SSV */
-function renderClickableCards(it){
-  if(!it) return;
-
-  // 4G Activity Only cards
-  const g4all   = it.g4Groups?.pending?.length ? [...(it.g4Groups.accepted||[]),...(it.g4Groups.pending||[])] : (it.g4onlyAll||[]);
-  const g4acc   = it.g4Groups?.accepted || it.g4onlyAcc || [];
-  const g4pend  = it.g4Groups?.pending  || it.g4onlyPend || [];
-  const g4total = g4acc.length + g4pend.length;
-
-  function numCard(lbl,val,color,pctVal,sites,barColor){
-    const hasData = sites && sites.length > 0;
-    return `<div class="num-card">
-      <div class="lbl">${lbl}</div>
-      <div class="num clickable" style="color:${color}" onclick='openSiteListModal(${JSON.stringify(lbl)},${JSON.stringify(sites||[])})'>${val.toLocaleString()}</div>
-      <div class="sub">${pctVal}</div>
-      <div class="bar"><div class="bar-fill" style="width:${pctVal.replace(/[^0-9]/g,'')||100}%;background:${barColor}"></div></div>
-    </div>`;
+  h+='</tbody></table>';
+  var pages=Math.ceil(rows.length/PAGE_SIZE);
+  if(pages>1){
+    h+='<div class="pg"><button onclick="tp(''+tkey+'','+(pg-1)+')" '+(pg===0?'disabled':'')+'>Prev</button>';
+    h+='<span>'+(pg+1)+'/'+pages+' ('+rows.length+' records)</span>';
+    h+='<button onclick="tp(''+tkey+'','+(pg+1)+')" '+(pg>=pages-1?'disabled':'')+'>Next</button></div>';
   }
-
-  const g4pctA = g4total ? Math.round(g4acc.length/g4total*100)+'% accepted' : '—';
-  const g4pctP = g4total ? Math.round(g4pend.length/g4total*100)+'% pending'  : '—';
-
-  $('g4only-cards').innerHTML =
-    numCard('Total 4G Activity Only', g4total, '#f59e0b', 'In 4G tab with status 4G Only', [...g4acc,...g4pend], '#f59e0b') +
-    numCard('Accepted', g4acc.length, '#10b981', g4pctA, g4acc, '#10b981') +
-    numCard('Pending',  g4pend.length,'#94a3b8', g4pctP, g4pend,'#94a3b8');
-
-  // SSV 5G IT Feedback cards
-  const ssvAcc  = it.ssvGroups?.accepted  || it.ssvAccepted  || [];
-  const ssvSub  = it.ssvGroups?.submitted || it.ssvSubmitted || [];
-  const ssvUIT  = it.ssvGroups?.underit   || it.ssvUnderIT   || [];
-  const ssvPend = it.ssvGroups?.pending   || it.ssvPending   || [];
-  const ssvTotal = ssvAcc.length+ssvSub.length+ssvUIT.length+ssvPend.length;
-  function ssvPct(n){ return ssvTotal?Math.round(n/ssvTotal*100)+'% of 5G sites':'—'; }
-
-  $('ssv-cards').innerHTML =
-    numCard('Accepted',      ssvAcc.length,  '#10b981', ssvPct(ssvAcc.length),  ssvAcc,  '#10b981') +
-    numCard('Submitted',     ssvSub.length,  '#6366f1', ssvPct(ssvSub.length),  ssvSub,  '#6366f1') +
-    numCard('Under IT',      ssvUIT.length,  '#f59e0b', ssvPct(ssvUIT.length),  ssvUIT,  '#f59e0b') +
-    numCard('Pending / Other',ssvPend.length,'#94a3b8', ssvPct(ssvPend.length), ssvPend, '#94a3b8');
+  return h;
 }
 
-/* Site list modal for IT cards */
-let _siteModalRows=[], _siteModalLabel='';
-function openSiteListModal(label, sites){
-  if(!sites||!sites.length){alert('No sites in this group.');return;}
-  _modalAllRows=[]; // reset diff mode
-  _siteModalLabel=label;
-  _siteModalRows=sites;
-  $('modal-title').textContent = label + ' — Site IDs';
-  $('modal-subtitle').textContent = sites.length.toLocaleString()+' site'+(sites.length!==1?'s':'')+' · Click a row to copy the Site ID';
-  $('modal-search').value='';
-  renderSiteModalList(sites);
-  $('modal-overlay').classList.add('open');
-  document.addEventListener('keydown',_escClose);
+function tp(k,p){tablePages[k]=p;render();}
+
+function showDrill(t,rows,type){ST.drill={title:t,rows:rows,type:type};tablePages.drill=0;render();}
+function closeDrill(){ST.drill=null;render();}
+
+function mc(label,val,color,onclick,sub){
+  return'<div class="mc" style="background:'+color+'11;border:1px solid '+color+'33" onclick="'+onclick+'"><div class="v" style="color:'+color+'">'+val.toLocaleString()+'</div><div class="l">'+label+'</div>'+(sub?'<div class="s2">'+sub+'</div>':'')+'</div>';
 }
 
-function renderSiteModalList(sites){
-  const STATUS_COLOR={'accepted':'#10b981','submitted':'#6366f1','under it':'#f59e0b'};
-  $('modal-counts').innerHTML=`<span class="count-pill" style="background:#eef2ff;color:#4338ca;border:1px solid #c7d2fe">${sites.length} site${sites.length!==1?'s':''}</span>`;
+function catSection(title,icon,rows,type){
+  var acc=rows.filter(function(r){return r.finalStatus==="Accepted";}).length;
+  var pct=rows.length?Math.round(acc/rows.length*100):0;
+  var iss=rows.filter(function(r){return r&&r.issue;});
+  var pend=rows.filter(function(r){return r&&!r.issue&&r.finalStatus!=="Accepted";});
+  var isHW=type==="hw";
+  var tkey="cat_"+type;
 
-  if(!sites.length){
-    $('modal-list').innerHTML=`<p style="text-align:center;color:var(--muted);padding:40px;font-size:13px">No sites match.</p>`;
-    return;
+  var h='<div class="card"><div class="card-hdr">'+icon+' <h3>'+title+'</h3>';
+  h+='<div style="text-align:right"><div style="font-size:20px;font-weight:800;color:#00B140">'+pct+'%</div>';
+  h+='<div style="height:6px;width:90px;background:#dce6f0;border-radius:3px;overflow:hidden;margin-top:2px"><div style="height:100%;width:'+pct+'%;background:#00B140;border-radius:3px"></div></div></div></div>';
+  h+='<div class="card-body"><div class="mc-grid">';
+  h+=mc("Total",rows.length,"#4A90D9","showDrill('All "+title+"',D."+(type==="ns_ibs"?"ibs":type==="ns_rel"?"rel":type)+",'"+type+"')");
+  h+=mc("Accepted",acc,"#00B140","showDrill('Accepted',D."+(type==="ns_ibs"?"ibs":type==="ns_rel"?"rel":type)+".filter(function(r){return r.finalStatus==='Accepted'}),'"+type+"')");
+  if(pend.length)h+=mc("Pending",pend.length,"#2E86C1","showDrill('Pending',D."+(type==="ns_ibs"?"ibs":type==="ns_rel"?"rel":type)+".filter(function(r){return r&&!r.issue&&r.finalStatus!=='Accepted'}),'"+type+"')");
+  if(iss.length)h+=mc("Issues",iss.length,"#E74C3C","showDrill('Issues',D."+(type==="ns_ibs"?"ibs":type==="ns_rel"?"rel":type)+".filter(function(r){return r&&r.issue}),'"+type+"')");
+  h+='</div>';
+
+  if(isHW){
+    var fg4o=rows.filter(function(r){return r.activityType==="4G Only";});
+    var fg45=rows.filter(function(r){return r.activityType==="4G/5G";});
+    var i4g=rows.filter(function(r){return r.is4gIssue;});
+    var i5g=rows.filter(function(r){return r.is5gIssue;});
+    var nUIT=rows.filter(function(r){return r.isUnderIT;});
+    var nSub=rows.filter(function(r){return r.isSubmitted;});
+    h+='<div class="sep"><div class="mc-grid">';
+    h+=mc("4G Only",fg4o.length,"#2563eb","showDrill('4G Only',D.hw.filter(function(r){return r.activityType==\'4G Only\'}),'hw')","Acc: "+fg4o.filter(function(r){return r.finalStatus==="Accepted";}).length);
+    h+=mc("4G/5G",fg45.length,"#7c3aed","showDrill('4G/5G',D.hw.filter(function(r){return r.activityType==\'4G/5G\'}),'hw')","Acc: "+fg45.filter(function(r){return r.finalStatus==="Accepted";}).length);
+    if(i4g.length)h+=mc("4G Issues",i4g.length,"#E74C3C","showDrill('4G Issues',D.hw.filter(function(r){return r.is4gIssue}),'hw')");
+    if(i5g.length)h+=mc("5G Issues",i5g.length,"#ea580c","showDrill('5G Issues',D.hw.filter(function(r){return r.is5gIssue}),'hw')");
+    if(nUIT.length)h+=mc("Under IT",nUIT.length,"#ca8a04","showDrill('Under IT',D.hw.filter(function(r){return r.isUnderIT}),'hw')");
+    if(nSub.length)h+=mc("Submitted",nSub.length,"#2E86C1","showDrill('Submitted',D.hw.filter(function(r){return r.isSubmitted}),'hw')");
+    h+='</div></div>';
   }
+  h+='</div>';
 
-  // Table header
-  let html=`<table style="width:100%;border-collapse:collapse;font-size:12px">
-    <thead><tr style="background:#f8faff;position:sticky;top:0">
-      <th style="padding:9px 12px;text-align:left;font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;border-bottom:1.5px solid var(--border)">#</th>
-      <th style="padding:9px 12px;text-align:left;font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;border-bottom:1.5px solid var(--border)">Site ID</th>
-      <th style="padding:9px 12px;text-align:left;font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;border-bottom:1.5px solid var(--border)">IT Feedback</th>
-      <th style="padding:9px 12px;text-align:left;font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;border-bottom:1.5px solid var(--border)">Acc. Date</th>
-      <th style="padding:9px 12px;text-align:left;font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;border-bottom:1.5px solid var(--border)">Gov / City</th>
-    </tr></thead><tbody>`;
-
-  sites.forEach(function(s,i){
-    const fb = s.feedback||s.itFeedback||'—';
-    const fbLower = fb.toLowerCase();
-    const fbColor = STATUS_COLOR[fbLower]||'#94a3b8';
-    const gov = s.gov||''; const city = s.city||'';
-    const accDate = s.accDate||'';
-    html+=`<tr style="cursor:pointer;transition:background .1s" 
-      onmouseover="this.style.background='#f0f4ff'" 
-      onmouseout="this.style.background=''"
-      onclick="navigator.clipboard&&navigator.clipboard.writeText('${s.id}');this.style.background='#d1fae5'">
-      <td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:var(--subtle)">${i+1}</td>
-      <td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;font-weight:700;color:#4338ca;font-family:monospace;font-size:13px">${s.id}</td>
-      <td style="padding:9px 12px;border-bottom:1px solid #f1f5f9"><span style="background:${fbColor}22;color:${fbColor};padding:2px 8px;border-radius:8px;font-size:10px;font-weight:700">${fb}</span></td>
-      <td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:var(--muted);font-size:11px">${accDate}</td>
-      <td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:var(--muted);font-size:11px">${gov}${city?' · '+city:''}</td>
-    </tr>`;
-  });
-
-  html+='</tbody></table>';
-  $('modal-list').innerHTML=html;
-}
-
-/* IT Section */
-function renderITSection(it){
-  _itData=it;
-  $('it-5g-val').textContent=fmtN(it.it5gAccepted);
-  $('it-5g-sub').textContent=fmtN(it.it5gTotal)+' in 5G tab';
-  $('it-4g-val').textContent=fmtN(it.it4gOnly);
-  $('it-comb-val').textContent=fmtN(it.itCombined);
-  $('it-main-val').textContent=fmtN(it.mainSSVFinal);
-  const diff=it.difference;
-  const pill=$('it-diff-pill');
-  $('it-diff-label').textContent=diff===0?'Perfect match':diff>0?'Main counts more':'IT counts more';
-  pill.textContent=(diff>0?'+':'')+diff;
-  pill.className='diff-pill '+(diff===0?'diff-zero':diff>0?'diff-pos':'diff-neg');
-  const hasMismatch=(it.mainOnlySites?.length)||(it.itOnlySites?.length);
-  if(hasMismatch){
-    pill.classList.add('clickable');
-    pill.onclick=()=>openDiffModal(it);
-    $('it-diff-hint').style.display='block';
-  } else {
-    pill.classList.remove('clickable'); pill.onclick=null;
-    $('it-diff-hint').style.display='none';
-  }
-  // Detail KPIs
-  $('it-kpi-detail').innerHTML=[
-    {label:'5G Tab — Total',    value:it.it5gTotal,    sub:pct(it.it5gTotal,it.it5gTotal+it.it4gTotal)+'% of IT scope',bar:pct(it.it5gAccepted,it.it5gTotal||1),c:'#6366f1'},
-    {label:'5G Tab — Accepted', value:it.it5gAccepted, sub:pct(it.it5gAccepted,it.it5gTotal||1)+'% of 5G tab',        bar:pct(it.it5gAccepted,it.it5gTotal||1),c:'#10b981'},
-    {label:'4G Tab — Total',    value:it.it4gTotal,    sub:'4G scope sites',                                            bar:pct(it.it4gTotal,it.it5gTotal+it.it4gTotal||1),c:'#0ea5e9'},
-    {label:'4G-Only Accepted',  value:it.it4gOnly,     sub:pct(it.it4gOnly,it.it4gTotal||1)+'% of 4G tab',            bar:pct(it.it4gOnly,it.it4gTotal||1),c:'#f59e0b'},
-  ].map(k=>`<div class="card" style="padding:16px">
-    <div style="font-size:24px;font-weight:800;color:${k.c};letter-spacing:-1px">${fmtN(k.value)}</div>
-    <div style="font-size:12px;font-weight:600;color:var(--text);margin:4px 0 2px">${k.label}</div>
-    <div style="font-size:11px;color:var(--muted);margin-bottom:10px">${k.sub}</div>
-    <div class="prog-track"><div class="prog-fill" style="width:${k.bar}%;background:${k.c}"></div></div>
-  </div>`).join('');
-}
-
-/* Table */
-let tableColumns=[];
-const BADGE_COLS=new Set(['SSV Status']);
-const CAT_COL_IDX=6; // 'Category' column index
-const SSV_COL_IDX=4;
-
-function catBadge(v){
-  const m={'A':'badge-a','B':'badge-b','C':'badge-c','D':'badge-d'};
-  return m[v]?`<span class="badge ${m[v]}">CAT ${v}</span>`:`<span class="badge badge-dash">${v}</span>`;
-}
-function statusBadge(v){
-  const s=String(v).toLowerCase();
-  if(s==='accepted')return`<span class="badge badge-green">${v}</span>`;
-  if(s==='submitted')return`<span class="badge badge-blue">${v}</span>`;
-  if(s==='pending')return`<span class="badge badge-amber">${v}</span>`;
-  return`<span class="badge badge-gray">${v}</span>`;
-}
-
-function renderTableHeader(cols){
-  tableColumns=cols;
-  $('table-header').innerHTML=cols.map((c,i)=>`<th onclick="sortTable(${i})">${c}<span id="sort-${i}" class="sort-icon">⇅</span></th>`).join('');
-}
-
-function applyFilters(){
-  const q=$('search-input').value.toLowerCase().trim();
-  filteredRows=allRows.filter(r=>{
-    const mq=!q||r.some(c=>String(c).toLowerCase().includes(q));
-    const mc=activeCat==='All'||String(r[CAT_COL_IDX])===activeCat;
-    const ms=activeSsv==='All'||String(r[SSV_COL_IDX]).toLowerCase()===activeSsv.toLowerCase();
-    return mq&&mc&&ms;
-  });
-  if(sortColIdx>=0)doSort();
-  currentPage=1;renderTablePage();
-  $('cat-count-badge').textContent=activeCat==='All'?'':`${filteredRows.length} sites`;
-}
-
-function setCat(cat,btn){
-  activeCat=cat;
-  document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  applyFilters();
-}
-
-function buildSsvChips(rows){
-  const statuses=['All',...new Set(rows.map(r=>r[SSV_COL_IDX]).filter(Boolean))];
-  $('ssv-filter-chips').innerHTML=statuses.map(s=>`
-    <button onclick="setSsv('${s}',this)" style="padding:4px 12px;border-radius:999px;font-size:11px;font-weight:600;border:1.5px solid var(--border);background:#fff;color:var(--muted);cursor:pointer;transition:all .15s" class="ssv-chip ${s===activeSsv?'ssv-active':''}">${s}</button>`).join('');
-  // style active
-  document.querySelectorAll('.ssv-chip').forEach(el=>{if(el.textContent.trim()===activeSsv){el.style.background='#6366f1';el.style.color='#fff';el.style.borderColor='#6366f1';}});
-}
-
-function setSsv(val,btn){
-  activeSsv=val;
-  document.querySelectorAll('.ssv-chip').forEach(el=>{
-    const active=el.textContent.trim()===val;
-    el.style.background=active?'#6366f1':'#fff';
-    el.style.color=active?'#fff':'var(--muted)';
-    el.style.borderColor=active?'#6366f1':'var(--border)';
-  });
-  applyFilters();
-}
-
-function sortTable(ci){
-  sortAsc=(sortColIdx===ci)?!sortAsc:true; sortColIdx=ci;
-  document.querySelectorAll('.sort-icon').forEach((el,i)=>{
-    el.textContent=i===ci?(sortAsc?'↑':'↓'):'⇅';
-    el.classList.toggle('active',i===ci);
-  });
-  doSort(); currentPage=1; renderTablePage();
-}
-function doSort(){
-  filteredRows.sort((a,b)=>{
-    const av=a[sortColIdx]??'',bv=b[sortColIdx]??'';
-    const an=parseFloat(av),bn=parseFloat(bv);
-    if(!isNaN(an)&&!isNaN(bn))return sortAsc?an-bn:bn-an;
-    return sortAsc?String(av).localeCompare(String(bv)):String(bv).localeCompare(String(av));
-  });
-}
-function renderTablePage(){
-  const start=(currentPage-1)*ROWS_PER_PAGE, pg=filteredRows.slice(start,start+ROWS_PER_PAGE);
-  const total=filteredRows.length, pages=Math.max(1,Math.ceil(total/ROWS_PER_PAGE));
-  $('table-body').innerHTML=pg.length
-    ? pg.map(r=>`<tr>${r.map((c,ci)=>{
-        if(tableColumns[ci]==='Category')return`<td>${catBadge(c)}</td>`;
-        if(BADGE_COLS.has(tableColumns[ci]))return`<td>${statusBadge(c)}</td>`;
-        return`<td>${c}</td>`;
-      }).join('')}</tr>`).join('')
-    : `<tr><td colspan="${tableColumns.length}" style="text-align:center;padding:40px;color:var(--muted);font-size:13px">No records match your filters.</td></tr>`;
-  $('page-info').textContent=`Showing ${Math.min(start+1,total)}–${Math.min(start+ROWS_PER_PAGE,total)} of ${total} records`;
-  $('prev-btn').disabled=currentPage<=1;
-  $('next-btn').disabled=currentPage>=pages;
-  $('table-count').textContent=`${total} record${total!==1?'s':''}`;
-}
-function changePage(d){currentPage=Math.max(1,Math.min(Math.ceil(filteredRows.length/ROWS_PER_PAGE),currentPage+d));renderTablePage();}
-
-/* Modal */
-function openDiffModal(it){
-  _siteModalRows=[]; // reset site list mode
-  _modalAllRows=[];
-  (it.mainOnlySites||[]).forEach(s=>_modalAllRows.push({...s,_side:'main'}));
-  (it.itOnlySites||[]).forEach(s=>_modalAllRows.push({...s,_side:'it'}));
-  $('modal-title').textContent='Mismatch Site IDs — IT vs Main';
-  $('modal-subtitle').textContent=
-    `${(it.mainOnlySites||[]).length} in Main only · ${(it.itOnlySites||[]).length} in IT only · Net: ${it.difference>0?'+':''}${it.difference}`;
-  $('modal-search').value='';
-  renderModalList(_modalAllRows);
-  $('modal-overlay').classList.add('open');
-  document.addEventListener('keydown',_escClose);
-}
-function _escClose(e){if(e.key==='Escape')closeModal();}
-function closeModal(){$('modal-overlay').classList.remove('open');document.removeEventListener('keydown',_escClose);}
-function filterModal(){
-  const q=$('modal-search').value.toLowerCase().trim();
-  if(_siteModalRows.length){
-    // site list modal mode
-    const filtered=_siteModalRows.filter(s=>Object.values(s).some(v=>String(v).toLowerCase().includes(q)));
-    renderSiteModalList(filtered);
-  } else {
-    // diff modal mode
-    renderModalList(_modalAllRows.filter(s=>Object.values(s).some(v=>String(v).toLowerCase().includes(q))));
-  }
-}
-function renderModalList(rows){
-  const main=rows.filter(r=>r._side==='main'), it=rows.filter(r=>r._side==='it');
-  $('modal-counts').innerHTML=
-    `<span class="count-pill" style="background:#eef2ff;color:#4338ca;border:1px solid #c7d2fe">In Main only: ${main.length}</span>`+
-    `<span class="count-pill" style="background:#d1fae5;color:#065f46;border:1px solid #6ee7b7">In IT only: ${it.length}</span>`;
-  let html='';
-  if(main.length){
-    html+=`<p style="font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin:4px 0 8px">In Main SSV — not in IT combined</p>`;
-    html+=main.map(s=>`<div class="modal-site-row">
-      <span class="modal-badge badge-main-tag">MAIN</span>
-      <span class="modal-site-id">${s.id}</span>
-      <span style="color:var(--muted)">${s.gov||''}${s.city?' · '+s.city:''}</span>
-      <span style="color:var(--subtle)">${s.activity||''}</span>
-      <span style="color:var(--subtle)">${s.ssvAccDate||''}</span>
-    </div>`).join('');
-  }
-  if(it.length){
-    html+=`<p style="font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin:${main.length?'16px':4}px 0 8px">In IT combined — not in Main SSV</p>`;
-    html+=it.map(s=>`<div class="modal-site-row">
-      <span class="modal-badge badge-it-tag">IT</span>
-      <span class="modal-site-id">${s.id}</span>
-      <span style="color:var(--muted)">${s.src||''}</span>
-      <span style="color:var(--subtle)">${s.feedback||''}</span>
-      <span style="color:var(--subtle)">${s.accDate||''}</span>
-    </div>`).join('');
-  }
-  if(!rows.length)html=`<p style="text-align:center;color:var(--muted);padding:40px;font-size:13px">No sites match your search.</p>`;
-  $('modal-list').innerHTML=html;
-}
-
-/* Main render */
-function renderDashboard(data){
-  $('dash-title').textContent=data.meta.project;
-  $('dash-subtitle').textContent=`${data.meta.reportTitle} · ${data.meta.period}`;
-  $('last-updated').textContent=fmtDate(data.meta.lastUpdated);
-  const total=data.kpis.find(k=>k.label==='Total Sites')?.value||0;
-  renderKPIs(data.kpis);
-  renderSubmittedKPIs(data);
-  renderProgress(data.kpis,total);
-  renderLineChart(data.chart);
-  renderDonutChart(data.donut);
-  if(data.itSummary?.enabled){
-    renderITSection(data.itSummary);
-    renderClickableCards(data.itSummary);
-    renderITPieChart(data.itSummary);
-  }
-  if(data.itMonthChart)renderITMonthChart(data.itMonthChart);
-  if(data.regionBreakdown?.labels?.length)renderRegionChart(data.regionBreakdown);
-  if(data.agedSites)renderAgedSection(data.agedSites);
-  allRows=data.table.rows; filteredRows=[...allRows];
-  renderTableHeader(data.table.columns);
-  buildSsvChips(allRows);
-  renderTablePage();
-}
-
-/* Submitted KPIs */
-let _sub4gSites=[], _sub5gSites=[], _agingBucketsM={}, _agingChart2=null;
-let _totalSites=0;
-
-function renderSubmittedKPIs(data){
-  _sub4gSites=(data.submitted4G?.sites||[]);
-  _sub5gSites=(data.submitted5G?.sites||[]);
-  _totalSites=data.kpis.find(k=>k.label==='Total Sites')?.value||1;
-
-  // Update submitted cards (submitted but NOT yet accepted)
-  const s4=$('mgmt-4g-sub'), s5=$('mgmt-5g-sub');
-  if(s4){s4.textContent=(data.submitted4G?.count||0).toLocaleString();}
-  if(s5){s5.textContent=(data.submitted5G?.count||0).toLocaleString();}
-  const l4=$('mgmt-4g-sub-last'), l5=$('mgmt-5g-sub-last');
-  if(l4)l4.textContent='Last: '+(data.submitted4G?.lastDate||'—')+' · Pending only';
-  if(l5)l5.textContent='Last: '+(data.submitted5G?.lastDate||'—')+' · Pending only';
-  const b4=$('mgmt-4g-sub-bar'), b5=$('mgmt-5g-sub-bar');
-  if(b4)b4.style.width=Math.round((data.submitted4G?.count||0)/_totalSites*100)+'%';
-  if(b5)b5.style.width=Math.round((data.submitted5G?.count||0)/_totalSites*100)+'%';
-
-  // Aging
-  if(data.aging){
-    _agingBucketsM=data.aging.buckets||{};
-    renderAgingChartM();
-    renderAgingSummaryM();
-  }
-}
-
-function renderAgingChartM(){
-  const labels=['0-7 days','8-14 days','15-30 days','31-60 days','60+ days'];
-  const keys=['0-7','8-14','15-30','31-60','60+'];
-  const colors=['#10b981','#6366f1','#f59e0b','#ef4444','#7c3aed'];
-  const data=keys.map(k=>(_agingBucketsM[k]?.count||0));
-  const canvas=$('agingChart');
-  if(!canvas)return;
-  if(_agingChart2)_agingChart2.destroy();
-  _agingChart2=new Chart(canvas.getContext('2d'),{
-    type:'bar',
-    data:{labels,datasets:[{
-      data,
-      backgroundColor:colors.map(c=>c+'cc'),
-      borderColor:colors,
-      borderWidth:2,
-      borderRadius:8,
-      borderSkipped:false,
-      hoverBackgroundColor:colors
-    }]},
-    options:{
-      responsive:true,maintainAspectRatio:false,
-      plugins:{
-        legend:{display:false},
-        tooltip:{
-          callbacks:{label:item=>item.raw+' sites'},
-          backgroundColor:'rgba(15,23,42,.88)',titleColor:'#f1f5f9',bodyColor:'#94a3b8',padding:12,cornerRadius:8
-        }
-      },
-      scales:{
-        x:{grid:{display:false},ticks:{color:'#64748b',font:{size:11}}},
-        y:{grid:{color:'rgba(0,0,0,.05)'},ticks:{color:'#64748b',font:{size:11}},beginAtZero:true}
-      },
-      onClick(evt,elements){
-        if(!elements.length)return;
-        const key=keys[elements[0].index];
-        const sites=_agingBucketsM[key]?.sites||[];
-        openAgingModalM(key+' days',sites);
-      }
-    }
-  });
-}
-
-function renderAgingSummaryM(){
-  const el=$('aging-summary');
-  if(!el)return;
-  const keys=['0-7','8-14','15-30','31-60','60+'];
-  const colors=['#10b981','#6366f1','#f59e0b','#ef4444','#7c3aed'];
-  const total=Object.values(_agingBucketsM).reduce((a,b)=>a+(b.count||0),0)||1;
-  el.innerHTML=keys.map((k,i)=>{
-    const n=_agingBucketsM[k]?.count||0;
-    const pct=Math.round(n/total*100);
-    return `<div onclick="openAgingModalM('${k} days',_agingBucketsM['${k}']?.sites||[])"
-      style="display:flex;align-items:center;justify-content:space-between;padding:9px 12px;border-radius:8px;margin-bottom:7px;cursor:pointer;border:1px solid var(--border);transition:background .15s"
-      onmouseover="this.style.background='#f0f4ff'" onmouseout="this.style.background=''">
-      <div style="display:flex;align-items:center;gap:8px">
-        <div style="width:10px;height:10px;border-radius:50%;background:${colors[i]}"></div>
-        <span style="font-size:12px;font-weight:600;color:var(--text)">${k} days</span>
-      </div>
-      <div style="display:flex;align-items:center;gap:8px">
-        <span style="font-size:20px;font-weight:800;color:${colors[i]}">${n}</span>
-        <span style="font-size:10px;color:var(--muted);background:#f1f5f9;padding:2px 6px;border-radius:6px">${pct}%</span>
-      </div>
-    </div>`;
-  }).join('');
-}
-
-function openAgingModalM(label, sites){
-  if(!sites||!sites.length){alert('No sites in this group.');return;}
-  _siteModalRows=[]; _modalAllRows=[];
-  $('modal-title').textContent='Aging: '+label+' — Submitted (Pending Acceptance)';
-  $('modal-subtitle').textContent=sites.length+' site'+(sites.length!==1?'s':'')+' · Submitted but not yet accepted · Click a row to copy Site ID';
-  $('modal-search').value='';
-
-  const STATUS_COLOR={accepted:'#10b981',submitted:'#6366f1','under it':'#f59e0b'};
-  const CAT_COLOR={A:'#f59e0b',B:'#6366f1',C:'#ef4444',D:'#0ea5e9'};
-
-  $('modal-counts').innerHTML=`<span class="count-pill" style="background:#eef2ff;color:#4338ca;border:1px solid #c7d2fe">${sites.length} sites</span>`;
-
-  let tableHtml=`<table style="width:100%;border-collapse:collapse;font-size:12px">
-    <thead><tr style="background:#f8faff;position:sticky;top:0">
-      ${['#','Site ID','Gov / City','Activity','CAT','RFIT Date','Sub Date','Aging Days','Status'].map(h=>
-        `<th style="padding:9px 12px;text-align:left;font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;border-bottom:1.5px solid var(--border);white-space:nowrap">${h}</th>`
-      ).join('')}
-    </tr></thead><tbody>`;
-
-  sites.forEach((s,i)=>{
-    const agingN=typeof s.agingDays==='number'?s.agingDays:null;
-    const agingColor=agingN===null?'#94a3b8':agingN<=7?'#10b981':agingN<=14?'#6366f1':agingN<=30?'#f59e0b':'#ef4444';
-    const catColor=CAT_COLOR[s.cat]||'#94a3b8';
-    const st=(s.ssvStatus||'').toLowerCase();
-    const stColor=STATUS_COLOR[st]||'#94a3b8';
-    tableHtml+=`<tr style="cursor:pointer;transition:background .1s"
-      onmouseover="this.style.background='#f0f4ff'" onmouseout="this.style.background=''"
-      onclick="navigator.clipboard&&navigator.clipboard.writeText('${s.id}');this.style.background='#d1fae5'">
-      <td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:#94a3b8">${i+1}</td>
-      <td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;font-weight:700;color:#4338ca;font-family:monospace;font-size:13px">${s.id}</td>
-      <td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:var(--muted);font-size:11px">${s.gov||''}${s.city?' · '+s.city:''}</td>
-      <td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:var(--muted)">${s.activity||''}</td>
-      <td style="padding:9px 12px;border-bottom:1px solid #f1f5f9"><span style="background:${catColor}22;color:${catColor};padding:2px 8px;border-radius:8px;font-size:10px;font-weight:700">CAT ${s.cat}</span></td>
-      <td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:var(--muted);font-size:11px">${s.rfitDate||'—'}</td>
-      <td style="padding:9px 12px;border-bottom:1px solid #f1f5f9;color:var(--muted);font-size:11px">${s.subDate||'—'}</td>
-      <td style="padding:9px 12px;border-bottom:1px solid #f1f5f9"><span style="font-size:16px;font-weight:800;color:${agingColor}">${s.agingDays}</span><span style="color:#94a3b8;font-size:10px"> d</span></td>
-      <td style="padding:9px 12px;border-bottom:1px solid #f1f5f9"><span style="background:${stColor}22;color:${stColor};padding:2px 8px;border-radius:8px;font-size:10px;font-weight:700">${s.ssvStatus||'—'}</span></td>
-    </tr>`;
-  });
-  tableHtml+='</tbody></table>';
-  $('modal-list').innerHTML=tableHtml;
-  $('modal-overlay').classList.add('open');
-  document.addEventListener('keydown',_escClose);
-}
-
-function openSubmittedModal(tech){
-  const sites=tech==='4G'?_sub4gSites:_sub5gSites;
-  const label=tech+' SSV Submitted';
-  openAgingModalM(label, sites.map(s=>({
-    ...s, rfitDate:'—', agingDays:'—', ssvStatus:s.ssvStatus||'—'
-  })));
-}
-
-/* Make main KPIs clickable - open modal with site list */
-function makeKPIClickable(){
-  // The data for each KPI tile comes from table rows filtered by category/status
-  // Wire up each KPI after renderDashboard sets the values
-}
-
-/* Aged Sites — management dashboard */
-let _agedDataM=null, _agedChartM=null, _agedFilterM='All';
-const AGED_KEYS=['0-30','31-60','61-90','91-180','180+'];
-const AGED_LABELS=['0–30 days','31–60 days','61–90 days','91–180 days','180+ days'];
-const AGED_COLS=['#10b981','#6366f1','#f59e0b','#ef4444','#7c3aed'];
-
-function renderAgedSection(rawSites){
-  if(!rawSites||!rawSites.length) return;
-
-  // ── 1. Recalculate agingDays live: today − RFIT ──────────────────────────
-  const now = Date.now();
-  const BUCKET_KEYS = ['0-30','31-60','61-90','91-180','180+'];
-  const buckets = {'0-30':[],'31-60':[],'61-90':[],'91-180':[],'180+':[]};
-
-  const sites = rawSites.map(s => {
-    let days = 0;
-    const iso = s.rfitISO || s._rfitISO || '';
-    if(iso){
-      const ms = new Date(iso).getTime();
-      if(!isNaN(ms)) days = Math.max(0, Math.round((now - ms)/(86400000)));
-    } else if(s.rfitDate){
-      const ms = new Date(s.rfitDate).getTime();
-      if(!isNaN(ms)) days = Math.max(0, Math.round((now - ms)/(86400000)));
-    }
-    return {...s, agingDays: days};
-  }).sort((a,b) => b.agingDays - a.agingDays);
-
-  sites.forEach(s => {
-    const d = s.agingDays;
-    if(d <= 30)        buckets['0-30'].push(s);
-    else if(d <= 60)   buckets['31-60'].push(s);
-    else if(d <= 90)   buckets['61-90'].push(s);
-    else if(d <= 180)  buckets['91-180'].push(s);
-    else               buckets['180+'].push(s);
-  });
-
-  // ── 2. Store in _agedDataM for drill-downs ───────────────────────────────
-  _agedDataM = {
-    allSites:       sites,
-    total:          sites.length,
-    withSubmission: sites.filter(s => s.ssvSubDate).length,
-    noSubmission:   sites.filter(s => !s.ssvSubDate).length,
-    buckets: Object.fromEntries(
-      BUCKET_KEYS.map(k => [k, {count: buckets[k].length, sites: buckets[k]}])
-    )
-  };
-
-  // ── 3. KPI cards ─────────────────────────────────────────────────────────
-  const kpiEl = $('aged-kpi-row');
-  if(kpiEl){
-    const d = _agedDataM;
-    kpiEl.innerHTML = [
-      {label:'Total Aged Sites',    val:d.total,          sub:'Under IT/RFIT · not accepted',      col:'#ef4444', icon:'⏰',
-       click:"openAgedModalM('All Sites',_agedDataM.allSites)"},
-      {label:'With SSV Submission', val:d.withSubmission, sub:'Submitted · pending acceptance',     col:'#f59e0b', icon:'📝',
-       click:"openAgedModalM('Submitted — Pending',_agedDataM.allSites.filter(s=>s.ssvSubDate))"},
-      {label:'No Submission Yet',   val:d.noSubmission,   sub:'RFIT done · no SSV submitted yet',  col:'#7c3aed', icon:'🚫',
-       click:"openAgedModalM('No SSV Submission',_agedDataM.allSites.filter(s=>!s.ssvSubDate))"},
-    ].map(k => `<div class="card kpi" style="cursor:pointer;background:linear-gradient(135deg,${k.col}12,${k.col}06);border:1.5px solid ${k.col}33" onclick="${k.click}">
-      <span style="font-size:22px">${k.icon}</span>
-      <div style="font-size:28px;font-weight:800;color:${k.col};letter-spacing:-1px">${k.val}</div>
-      <div style="font-size:12px;font-weight:600;color:var(--text);margin-top:4px">${k.label}</div>
-      <div style="font-size:11px;color:var(--muted);margin-top:2px">${k.sub}</div>
-    </div>`).join('');
-  }
-
-  // ── 4. Bar chart ─────────────────────────────────────────────────────────
-  const canvas = $('agedChart');
-  if(canvas){
-    if(_agedChartM) _agedChartM.destroy();
-    const chartData = BUCKET_KEYS.map(k => _agedDataM.buckets[k].count);
-    _agedChartM = new Chart(canvas.getContext('2d'), {
-      type: 'bar',
-      data: {
-        labels: AGED_LABELS,
-        datasets: [{
-          label: 'Aged Sites',
-          data: chartData,
-          backgroundColor: AGED_COLS.map(c => c+'cc'),
-          borderColor: AGED_COLS,
-          borderWidth: 2,
-          borderRadius: 10,
-          borderSkipped: false,
-          hoverBackgroundColor: AGED_COLS
-        }]
-      },
-      options: {
-        responsive: true, maintainAspectRatio: false,
-        plugins: {
-          legend: {display: false},
-          tooltip: {
-            callbacks: {label: i => i.raw + ' sites'},
-            backgroundColor:'rgba(15,23,42,.88)', titleColor:'#f1f5f9',
-            bodyColor:'#94a3b8', padding:12, cornerRadius:8
-          }
-        },
-        scales: {
-          x: {grid:{display:false}, ticks:{color:'#64748b',font:{size:11}}},
-          y: {grid:{color:'rgba(0,0,0,.05)'}, ticks:{color:'#64748b',font:{size:11}}, beginAtZero:true}
-        },
-        onClick(evt, elements){
-          if(!elements.length) return;
-          const k = BUCKET_KEYS[elements[0].index];
-          openAgedModalM(AGED_LABELS[elements[0].index], _agedDataM.buckets[k].sites);
-        }
-      }
+  if(iss.length){
+    var byOwner={};
+    iss.forEach(function(r){var o=r.ao||"Unknown";if(!byOwner[o])byOwner[o]=[];byOwner[o].push(r);});
+    h+='<div class="acc-hdr" style="background:#fde8e6">&#9888; Issues by Action Owner ('+iss.length+')</div>';
+    Object.keys(byOwner).forEach(function(o){
+      h+='<div class="own-hdr">'+esc(o)+' <span style="font-weight:400;color:#6B8199">'+byOwner[o].length+' site(s)</span></div>';
+      h+=buildTable(byOwner[o],type,tkey+"_iss_"+o);
     });
   }
-
-  // ── 5. Summary list ───────────────────────────────────────────────────────
-  const sumEl = $('aged-summary-list');
-  if(sumEl){
-    const total = _agedDataM.total || 1;
-    sumEl.innerHTML = BUCKET_KEYS.map((k,i) => {
-      const n   = _agedDataM.buckets[k].count;
-      const pct = Math.round(n / total * 100);
-      return `<div onclick="openAgedModalM('${AGED_LABELS[i]}',_agedDataM.buckets['${k}'].sites)"
-        style="display:flex;align-items:center;justify-content:space-between;padding:9px 12px;
-               border-radius:8px;margin-bottom:7px;cursor:pointer;border:1px solid var(--border);transition:background .15s"
-        onmouseover="this.style.background='#f0f4ff'" onmouseout="this.style.background=''">
-        <div style="display:flex;align-items:center;gap:8px">
-          <div style="width:10px;height:10px;border-radius:50%;background:${AGED_COLS[i]}"></div>
-          <span style="font-size:12px;font-weight:600;color:var(--text)">${AGED_LABELS[i]}</span>
-        </div>
-        <div style="display:flex;align-items:center;gap:8px">
-          <span style="font-size:20px;font-weight:800;color:${AGED_COLS[i]}">${n}</span>
-          <span style="font-size:10px;color:var(--muted);background:#f1f5f9;padding:2px 6px;border-radius:6px">${pct}%</span>
-        </div>
-      </div>`;
-    }).join('');
+  if(pend.length){
+    h+='<div class="acc-hdr" style="background:#fef6e6">&#9203; Pending ('+pend.length+')</div>';
+    h+=buildTable(pend,type,tkey+"_pend");
   }
-
-  // ── 6. Table ─────────────────────────────────────────────────────────────
-  renderAgedTableM('All');
+  h+='<div class="acc-hdr" style="background:#e6f9ed">&#10003; Accepted ('+acc+')</div>';
+  h+=buildTable(rows.filter(function(r){return r.finalStatus==="Accepted";}),type,tkey+"_acc");
+  h+='</div>';
+  return h;
 }
 
-function renderAgedTableM(filter){
-  _agedFilterM=filter;
-  const all=(_agedDataM?.allSites||[]);
-  const sites=filter==='All'?all:
-               filter==='Submitted'?all.filter(s=>s.ssvSubDate):
-               all.filter(s=>!s.ssvSubDate);
-  const sorted=[...sites].sort((a,b)=>b.agingDays-a.agingDays);
-
-  // Buttons
-  const btnsEl=$('aged-filter-btns');
-  if(btnsEl) btnsEl.innerHTML=[
-    {k:'All',l:`All (${all.length})`},
-    {k:'Submitted',l:`Submitted (${all.filter(s=>s.ssvSubDate).length})`},
-    {k:'Not Submitted',l:`No Sub (${all.filter(s=>!s.ssvSubDate).length})`}
-  ].map(b=>{
-    const a=b.k===filter;
-    return `<button onclick="renderAgedTableM('${b.k}')" style="padding:5px 13px;border-radius:999px;font-size:11px;font-weight:700;cursor:pointer;border:1.5px solid ${a?'var(--purple)':'var(--border)'};background:${a?'var(--purple)':'#fff'};color:${a?'#fff':'var(--muted)'};">${b.l}</button>`;
-  }).join('');
-
-  const lbl=$('aged-table-label');
-  if(lbl)lbl.textContent=sorted.length+' site'+(sorted.length!==1?'s':'')+' · sorted by aging (oldest first)';
-
-  const CAT_COLOR={A:'#f59e0b',B:'#6366f1',C:'#ef4444',D:'#0ea5e9'};
-  const thS='padding:10px 13px;text-align:left;font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;border-bottom:1.5px solid var(--border);white-space:nowrap;background:#f8faff;position:sticky;top:0;';
-  const tdS='padding:10px 13px;border-bottom:1px solid #f1f5f9;font-size:12px;';
-
-  const head=$('aged-table-head');
-  if(head) head.innerHTML='<tr>'+['#','Site ID','Governate','City','Activity','CAT','RFIT Date','Aging (Days)','SSV Sub Date','Status'].map(h=>`<th style="${thS}">${h}</th>`).join('')+'</tr>';
-
-  const body=$('aged-table-body');
-  if(!body)return;
-  if(!sorted.length){
-    body.innerHTML=`<tr><td colspan="10" style="text-align:center;padding:36px;color:var(--muted);font-size:13px">No sites in this filter.</td></tr>`;
-    return;
-  }
-  body.innerHTML=sorted.map((s,i)=>{
-    const days=s.agingDays;
-    const ageCol=days<=30?'#10b981':days<=60?'#f59e0b':'#ef4444';
-    const catCol=CAT_COLOR[s.cat]||'#94a3b8';
-    const subCol=s.ssvSubDate?'#10b981':'#94a3b8';
-    return `<tr style="cursor:pointer;transition:background .1s" onmouseover="this.style.background='#f0f4ff'" onmouseout="this.style.background=''" onclick="navigator.clipboard&&navigator.clipboard.writeText('${s.id}');this.style.background='#d1fae5'">
-      <td style="${tdS}color:#94a3b8">${i+1}</td>
-      <td style="${tdS}font-weight:700;color:#4338ca;font-family:monospace;font-size:13px">${s.id}</td>
-      <td style="${tdS}">${s.gov}</td>
-      <td style="${tdS}color:var(--muted)">${s.city}</td>
-      <td style="${tdS}color:var(--muted)">${s.activity}</td>
-      <td style="${tdS}"><span style="background:${catCol}22;color:${catCol};padding:2px 8px;border-radius:8px;font-size:10px;font-weight:700">CAT ${s.cat}</span></td>
-      <td style="${tdS}color:var(--muted);font-size:11px">${s.rfitDate}</td>
-      <td style="${tdS}text-align:center"><span style="font-size:18px;font-weight:800;color:${ageCol}">${days}</span><span style="color:#94a3b8;font-size:10px"> d</span></td>
-      <td style="${tdS}color:var(--muted);font-size:11px">${s.ssvSubDate||'—'}</td>
-      <td style="${tdS}"><span style="background:${subCol}22;color:${subCol};padding:2px 8px;border-radius:8px;font-size:10px;font-weight:700">${s.ssvSubStatus}</span></td>
-    </tr>`;
-  }).join('');
-}
-
-function openAgedModalM(label, sites){
-  if(!sites||!sites.length){alert('No sites in this group.');return;}
-  _siteModalRows=[]; _modalAllRows=[];
-  $('modal-title').textContent='Aged Sites — '+label;
-  $('modal-subtitle').textContent=sites.length+' site'+(sites.length!==1?'s':'')+' · Under IT/RFIT · not yet accepted · click to copy ID';
-  $('modal-search').value='';
-
-  const CAT_COLOR={A:'#f59e0b',B:'#6366f1',C:'#ef4444',D:'#0ea5e9'};
-  $('modal-counts').innerHTML=`<span class="count-pill" style="background:#fee2e2;color:#dc2626;border:1px solid #fca5a5">${sites.length} aged site${sites.length!==1?'s':''}</span>`;
-
-  const sorted=[...sites].sort((a,b)=>b.agingDays-a.agingDays);
-  const thS='padding:9px 12px;text-align:left;font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;border-bottom:1.5px solid var(--border);background:#f8faff;white-space:nowrap;';
-  const tdS='padding:9px 12px;border-bottom:1px solid #f1f5f9;font-size:12px;';
-
-  let html=`<table style="width:100%;border-collapse:collapse"><thead><tr>
-    ${['#','Site ID','Gov / City','Activity','CAT','RFIT Date','Aging','SSV Sub Date','Status'].map(h=>`<th style="${thS}">${h}</th>`).join('')}
-  </tr></thead><tbody>`;
-
-  sorted.forEach((s,i)=>{
-    const days=s.agingDays;
-    const ageCol=days<=30?'#10b981':days<=60?'#f59e0b':'#ef4444';
-    const catCol=CAT_COLOR[s.cat]||'#94a3b8';
-    const subCol=s.ssvSubDate?'#10b981':'#94a3b8';
-    html+=`<tr style="cursor:pointer;transition:background .1s" onmouseover="this.style.background='#f0f4ff'" onmouseout="this.style.background=''" onclick="navigator.clipboard&&navigator.clipboard.writeText('${s.id}');this.style.background='#d1fae5'">
-      <td style="${tdS}color:#94a3b8">${i+1}</td>
-      <td style="${tdS}font-weight:700;color:#4338ca;font-family:monospace;font-size:13px">${s.id}</td>
-      <td style="${tdS}color:var(--muted);font-size:11px">${s.gov}${s.city?' · '+s.city:''}</td>
-      <td style="${tdS}color:var(--muted)">${s.activity}</td>
-      <td style="${tdS}"><span style="background:${catCol}22;color:${catCol};padding:2px 8px;border-radius:8px;font-size:10px;font-weight:700">CAT ${s.cat}</span></td>
-      <td style="${tdS}color:var(--muted);font-size:11px">${s.rfitDate}</td>
-      <td style="${tdS}text-align:center"><span style="font-size:18px;font-weight:800;color:${ageCol}">${days}</span><span style="color:#94a3b8;font-size:10px"> d</span></td>
-      <td style="${tdS}color:var(--muted);font-size:11px">${s.ssvSubDate||'—'}</td>
-      <td style="${tdS}"><span style="background:${subCol}22;color:${subCol};padding:2px 8px;border-radius:8px;font-size:10px;font-weight:700">${s.ssvSubStatus}</span></td>
-    </tr>`;
+function buildChart(rows){
+  var months={};
+  rows.forEach(function(r){
+    if(!r||!r.rfitMonth)return;
+    if(!months[r.rfitMonth])months[r.rfitMonth]={m:r.rfitMonth,a:0,s:0,p:0,t:0};
+    months[r.rfitMonth].t++;
+    if(r.finalStatus==="Accepted")months[r.rfitMonth].a++;
+    else if(r.finalStatus==="Submitted")months[r.rfitMonth].s++;
+    else months[r.rfitMonth].p++;
   });
-  html+='</tbody></table>';
-  $('modal-list').innerHTML=html;
-  $('modal-overlay').classList.add('open');
-  document.addEventListener('keydown',_escClose);
+  var sorted=Object.values(months).sort(function(a,b){return a.m.localeCompare(b.m);});
+  if(!sorted.length)return'';
+  var mx=Math.max.apply(null,sorted.map(function(d){return d.t;}));
+  if(!mx)mx=1;
+  var lbls=["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  var h='<div class="card"><div class="card-hdr"><h3>&#128202; Monthly RFIT &amp; Acceptance</h3></div><div class="card-body"><div class="chart-wrap">';
+  sorted.forEach(function(d){
+    var ha=Math.round(d.a/mx*120),hs=Math.round(d.s/mx*120),hp=Math.round(d.p/mx*120);
+    var mo=d.m.split("-"); var lbl=lbls[parseInt(mo[1])]+"'"+mo[0].slice(2);
+    h+='<div class="chart-col" title="'+lbl+': Acc='+d.a+' Sub='+d.s+' Pend='+d.p+'" onclick="showDrill(''+lbl+'',all().filter(function(r){return r.rfitMonth===''+d.m+'';}),'hw')">';
+    if(hp)h+='<div class="bar" style="height:'+hp+'px;background:#F5A623"></div>';
+    if(hs)h+='<div class="bar" style="height:'+hs+'px;background:#2E86C1"></div>';
+    if(ha)h+='<div class="bar" style="height:'+ha+'px;background:#00B140"></div>';
+    h+='<div class="lbl">'+lbl+'</div></div>';
+  });
+  h+='</div><div class="chart-legend"><div class="item"><div class="swatch" style="background:#00B140"></div>Accepted</div><div class="item"><div class="swatch" style="background:#2E86C1"></div>Submitted</div><div class="item"><div class="swatch" style="background:#F5A623"></div>Pending</div></div></div></div>';
+  return h;
 }
 
-/* Load */
-async function loadData(){
-  hideError(); setLoading(true);
+function render(){
+  var a=all();
+  var gs_acc=a.filter(function(r){return r&&r.finalStatus==="Accepted";}).length;
+  var gs_sub=a.filter(function(r){return r&&r.finalStatus==="Submitted";}).length;
+  var gs_uit=a.filter(function(r){return r&&r.finalStatus==="Under IT";}).length;
+  var gs_i4=a.filter(function(r){return r&&r.is4gIssue;}).length;
+  var gs_i5=a.filter(function(r){return r&&r.is5gIssue;}).length;
+  var pct=a.length?Math.round(gs_acc/a.length*100):0;
+  var dateStr="07 Jun 2026";
 
-  // PRIORITY 1: Inline embedded data (works on OneDrive, SharePoint, local file)
-  if(window.DASHBOARD_DATA){
-    try{
-      const data=window.DASHBOARD_DATA;
-      if(!data.meta||!data.kpis||!data.chart||!data.table)
-        throw new Error('Embedded data is missing required fields. Re-export from mobily_dashboard.html.');
-      renderDashboard(data); setLoading(false); return;
-    }catch(err){setLoading(false);showError(err.message);console.error(err);return;}
+  var h='';
+  h+='<div class="hdr"><div><h1>&#128225; Mobily Site Acceptance Portal</h1><small>Network Development Operations &middot; 3Y NW Expansion &middot; Data: '+dateStr+'</small></div>';
+  h+='<div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><div style="padding:5px 12px;border-radius:99px;background:rgba(255,255,255,.1);color:#b8d4f0;font-size:11px;border:1px solid rgba(255,255,255,.15)">&#128197; '+dateStr+'</div>';
+  h+='<div style="padding:5px 12px;border-radius:99px;background:rgba(255,255,255,.08);color:#b8d4f0;font-size:10px;border:1px solid rgba(255,255,255,.12)">&#9135;&#9135;&#9135; ERICSSON</div></div></div>';
+
+  var tabs=[{id:"overview",l:"Overview"},{id:"ns",l:"New Sites"},{id:"hw",l:"Expansion HW"},{id:"sw",l:"Expansion SW"},{id:"lookup",l:"Site Lookup"}];
+  h+='<div class="tabs">';tabs.forEach(function(t){h+='<button class="tab'+(ST.tab===t.id?" active":"")+'" onclick="ST.tab=''+t.id+'';render()">'+t.l+'</button>';});h+='</div>';
+  h+='<div class="content">';
+
+  if(ST.tab==="overview"){
+    h+='<div class="hero"><div style="font-size:11px;color:#b8d4f0;font-weight:600;letter-spacing:1px;margin-bottom:10px">EXECUTIVE SUMMARY</div>';
+    h+='<div class="kpi-grid">';
+    h+='<div class="kpi" onclick="showDrill('All Sites',all(),'hw')"><div class="v">'+a.length.toLocaleString()+'</div><div class="l">Total Sites</div></div>';
+    h+='<div class="kpi" onclick="showDrill('Accepted',all().filter(function(r){return r.finalStatus==='Accepted';}),'hw')"><div class="v" style="color:#00B140">'+gs_acc.toLocaleString()+'</div><div class="l">Accepted</div><div class="s">'+pct+'%</div></div>';
+    h+='<div class="kpi" onclick="showDrill('Submitted',all().filter(function(r){return r.finalStatus==='Submitted';}),'hw')"><div class="v" style="color:#2E86C1">'+gs_sub+'</div><div class="l">Submitted</div></div>';
+    h+='<div class="kpi" onclick="showDrill('Under IT',all().filter(function(r){return r.finalStatus==='Under IT';}),'hw')"><div class="v" style="color:#F5A623">'+gs_uit+'</div><div class="l">Under IT</div></div>';
+    h+='<div class="kpi" onclick="showDrill('4G Issues',all().filter(function(r){return r.is4gIssue;}),'hw')"><div class="v" style="color:#E74C3C">'+gs_i4+'</div><div class="l">4G Issues</div></div>';
+    h+='<div class="kpi" onclick="showDrill('5G Issues',all().filter(function(r){return r.is5gIssue;}),'hw')"><div class="v" style="color:#ea580c">'+gs_i5+'</div><div class="l">5G Issues</div></div>';
+    h+='</div><div class="pbar"><div class="pbar-fill" style="width:'+pct+'%"></div></div>';
+    h+='<div style="margin-top:4px;font-size:11px;color:#b8d4f0">'+gs_acc.toLocaleString()+' accepted &middot; '+(a.length-gs_acc)+' remaining</div></div>';
+    h+='<div class="cat-cards">';
+    var ns_acc=(D.ibs||[]).concat(D.rel||[]).filter(function(r){return r.finalStatus==="Accepted";}).length;
+    var hw_acc=(D.hw||[]).filter(function(r){return r.finalStatus==="Accepted";}).length;
+    var sw_acc=(D.sw||[]).filter(function(r){return r.finalStatus==="Accepted";}).length;
+    h+='<div class="cat-card" onclick="ST.tab='ns';render()"><div style="font-size:26px;font-weight:800;color:#4A90D9">'+((D.ibs||[]).length+(D.rel||[]).length).toLocaleString()+'</div><div style="font-size:10px;font-weight:700;color:#6B8199;text-transform:uppercase;margin-top:4px">New Sites</div><div style="font-size:10px;color:#6B8199;margin-top:2px">'+ns_acc+' accepted</div></div>';
+    h+='<div class="cat-card" onclick="ST.tab='hw';render()"><div style="font-size:26px;font-weight:800;color:#0891b2">'+((D.hw||[]).length).toLocaleString()+'</div><div style="font-size:10px;font-weight:700;color:#6B8199;text-transform:uppercase;margin-top:4px">Expansion HW</div><div style="font-size:10px;color:#6B8199;margin-top:2px">'+hw_acc+' accepted</div></div>';
+    h+='<div class="cat-card" onclick="ST.tab='sw';render()"><div style="font-size:26px;font-weight:800;color:#7c3aed">'+((D.sw||[]).length).toLocaleString()+'</div><div style="font-size:10px;font-weight:700;color:#6B8199;text-transform:uppercase;margin-top:4px">Expansion SW</div><div style="font-size:10px;color:#6B8199;margin-top:2px">'+sw_acc+' accepted</div></div>';
+    h+='</div>';
+    h+=buildChart(a);
   }
-
-  // PRIORITY 2: Fetch from data.json (works on GitHub Pages, web servers)
-  try{
-    const res=await fetch(`${DATA_URL}?v=${Date.now()}`);
-    if(!res.ok)throw new Error(`Server returned ${res.status} ${res.statusText}`);
-    const data=await res.json();
-    if(!data.meta||!data.kpis||!data.chart||!data.table)
-      throw new Error('data.json missing required fields. Re-export from mobily_dashboard.html.');
-    renderDashboard(data); setLoading(false);
-  }catch(err){
-    setLoading(false);
-    // Give a helpful message for the OneDrive case
-    const msg=err.message||'';
-    if(msg.includes('fetch')||msg.includes('Failed')||msg.includes('NetworkError')){
-      showError('Cannot load data.json from this location (OneDrive/SharePoint block file requests). Solution: open mobily_dashboard.html, load both Excel files, click "Export JSON for GitHub", then follow the embed instructions inside index.html.');
-    } else {
-      showError(msg||'Check data.json is in the same folder.');
+  else if(ST.tab==="ns"){
+    h+=catSection("New Site (IBS)","&#127959;",D.ibs||[],"ns_ibs");
+    h+=catSection("Relocation &amp; NXT","&#128260;",D.rel||[],"ns_rel");
+  }
+  else if(ST.tab==="hw"){h+=catSection("Expansion &ndash; HW","&#128225;",D.hw||[],"hw");}
+  else if(ST.tab==="sw"){h+=catSection("Expansion &ndash; SW","&#128190;",D.sw||[],"sw");}
+  else if(ST.tab==="lookup"){
+    h+='<div class="card"><div class="card-body">';
+    h+='<div style="display:flex;align-items:center;gap:10px;margin-bottom:12px"><span style="font-size:24px">&#128269;</span><div><div style="font-weight:700;font-size:15px">Site Lookup</div><div style="font-size:11px;color:#6B8199">Enter site IDs or upload a .txt file</div></div></div>';
+    h+='<textarea id="lkTA" class="lookup-ta" rows="3" placeholder="e.g: 3120, 4896, W2260"></textarea>';
+    h+='<div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn" style="background:#2B6CB0;color:#fff" onclick="doLookup()">&#128269; Search</button>';
+    h+='<label class="btn" style="background:#0B2E59;color:#fff;cursor:pointer">&#128196; Upload .txt<input type="file" accept=".txt" onchange="uploadTxt(this)" style="display:none"></label>';
+    if(ST.lookupResult)h+='<button class="btn" style="background:#00B140;color:#fff" onclick="exportCSV()">&#8595; Export CSV</button>';
+    h+='</div></div></div>';
+    if(ST.lookupResult){
+      var nf=ST.lookupResult.filter(function(r){return r.finalStatus==="Not Found";}).length;
+      h+='<div class="card"><div style="padding:10px 18px;border-bottom:1px solid #dce6f0;font-weight:700;font-size:13px">Results: '+ST.lookupResult.length+(nf?' <span style="color:#E74C3C;font-weight:400;font-size:11px">('+nf+' not found)</span>':'')+' </div>'+buildTable(ST.lookupResult,"lookup","lookup")+'</div>';
     }
-    console.error(err);
   }
+  h+='</div>';
+  h+='<div class="footer">Mobily Site Acceptance Portal &middot; Powered by Ericsson &middot; NDO</div>';
+
+  if(ST.drill){
+    h+='<div class="modal-bg" onclick="if(event.target===this)closeDrill()"><div class="modal"><div class="modal-hdr"><h4>'+esc(ST.drill.title)+' ('+ST.drill.rows.length+')</h4><button onclick="closeDrill()">&#215;</button></div><div class="modal-body">'+buildTable(ST.drill.rows,ST.drill.type,"drill")+'</div></div></div>';
+  }
+  document.getElementById("app").innerHTML=h;
 }
-document.addEventListener('DOMContentLoaded',loadData);
+
+function doLookup(){
+  var ta=document.getElementById("lkTA"); if(!ta)return;
+  var ids=(ta.value||"").split(/[\n,;\s]+/).filter(Boolean);
+  lookup(ids);
+}
+function lookup(ids){
+  var sm=siteMap();var result=[];
+  ids.forEach(function(id){var sid=id.replace(/^W/i,"").trim();var found=sm[sid];
+    if(found)result=result.concat(found);
+    else result.push({sid:sid,cat:"—",subcat:"—",finalStatus:"Not Found",fg4:"—",fg5:"—",itfb:"—",ao:"—",an:"Not found",aging:null,rfit:"",accDate:"",pendingReason:""});
+  });
+  ST.lookupResult=result;ST.tab="lookup";tablePages.lookup=0;render();
+}
+function uploadTxt(inp){
+  var f=inp.files[0];if(!f)return;var reader=new FileReader();
+  reader.onload=function(e){lookup((e.target.result||"").split(/[\n,;\r\s]+/).filter(Boolean));};
+  reader.readAsText(f);
+}
+function exportCSV(){
+  if(!ST.lookupResult)return;
+  var h=["Site ID","Category","Sub-Cat","Status","4G","5G","IT Feedback","Owner","Issues","RFIT","Aging","Accepted","Reason"];
+  var rows=[h.join(",")];
+  ST.lookupResult.forEach(function(r){rows.push([r.sid,r.cat,r.subcat,r.finalStatus,r.fg4,r.fg5,r.itfb,r.ao,r.an,r.rfit,r.aging,r.accDate,r.pendingReason].map(function(v){return'"'+(v||"").toString().replace(/"/g,'""')+'"';}).join(","));});
+  var blob=new Blob([rows.join("\n")],{type:"text/csv"});var a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="site_lookup.csv";a.click();
+}
+
+render();
 </script>
 </body>
 </html>
